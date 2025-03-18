@@ -7,14 +7,14 @@
 .justified-gallery {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 .justified-gallery > a,
 .justified-gallery > div,
 .justified-gallery > figure {
   position: absolute;
   display: inline-block;
-  overflow: hidden;
+  overflow: auto;
   /* background: #888888; To have gray placeholders while the gallery is loading with waitThumbnailsLoad = false */
   filter: "alpha(opacity=10)";
   opacity: 0.1;
