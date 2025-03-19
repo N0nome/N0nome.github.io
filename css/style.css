@@ -1591,7 +1591,8 @@ article .content .caption {
   font-weight: bold;
 }
 pre {
-  overflow-x: auto;
+  overflow-x: scroll;
+  white-space: pre;
   padding: 10px 15px;
   padding-bottom: 0;
   border: 1px dotted #666;
@@ -1602,11 +1603,15 @@ pre {
   -webkit-border-radius: 4px;
 }
 pre code {
+  overflow-x: scroll;
+  white-space: pre;
   display: block;
   padding: 0;
   border: none;
 }
 code {
+  overflow-x: scroll;
+  white-space: pre;
   padding: 0 5px;
   border: 1px dotted #666;
   border-radius: 2px;
@@ -1614,6 +1619,7 @@ code {
 }
 .highlight {
   overflow-x: auto;
+  white-space: pre;
   margin: 1rem 0;
   padding: 10px 15px;
   border-radius: 4px;
