@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://n0nome.github.io/2025/04/02/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/</loc>
+    
+    <lastmod>2025-04-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://n0nome.github.io/tag-random-thoughts/index.html</loc>
     
     <lastmod>2025-04-02</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://n0nome.github.io/about/index.html</loc>
     
     <lastmod>2025-04-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://n0nome.github.io/2025/04/02/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/</loc>
-    
-    <lastmod>2025-03-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -72,6 +72,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://n0nome.github.io/tags/writeup/</loc>
+    <lastmod>2025-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 
   
