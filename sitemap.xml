@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://n0nome.github.io/2025/04/18/WhiteRabbit/HackTheBox%E2%80%94%E2%80%94HTB%20WhiteRabbit%20writeup/</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://n0nome.github.io/2025/04/11/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/</loc>
     
     <lastmod>2025-04-11</lastmod>
