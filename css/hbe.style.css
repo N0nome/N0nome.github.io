@@ -128,7 +128,7 @@
 
 /* default theme {{{ */
 .hbe-input-default {
-	overflow: hidden;
+	overflow: visible;
 }
 
 .hbe-input-field-default {
@@ -221,7 +221,7 @@
 
 /* up theme {{{ */
 .hbe-input-up {
-	overflow: hidden;
+	overflow: visible;
 	padding-top: 2em;
 }
 
@@ -297,7 +297,7 @@
 
 /* wave theme {{{ */
 .hbe-input-wave {
-	overflow: hidden;
+	overflow: visible;
 	padding-top: 1em;
 }
 
@@ -366,7 +366,7 @@
 	position: absolute;
 	bottom: 100%;
 	pointer-events: none;
-	overflow: hidden;
+	overflow: visible;
 	padding: 0 1.25em;
 	-webkit-transform: translate3d(0, 3em, 0);
 	transform: translate3d(0, 3em, 0);
@@ -420,7 +420,7 @@
 
 /* xray theme {{{ */
 .hbe-input-xray {
-	overflow: hidden;
+	overflow: visible;
 	padding-bottom: 2.5em;
 }
 
@@ -500,7 +500,7 @@
 	position: absolute;
 	top: 0;
 	text-align: left;
-	overflow: hidden;
+	overflow: visible;
 	padding: 0;
 	pointer-events: none;
 	-webkit-transform: translate3d(0, 3em, 0);
@@ -600,7 +600,7 @@
 
 /* surge theme {{{ */
 .hbe-input-surge {
-	overflow: hidden;
+	overflow: visible;
 	padding-bottom: 1em;
 }
 
@@ -620,7 +620,7 @@
 	position: absolute;
 	top: 1em;
 	pointer-events: none;
-	overflow: hidden;
+	overflow: visible;
 	padding: 0 0.25em;
 	-webkit-transform: translate3d(1em, 2.75em, 0);
 	transform: translate3d(1em, 2.75em, 0);
