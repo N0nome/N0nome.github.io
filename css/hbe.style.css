@@ -8,7 +8,7 @@
 
 .hbe-container{
 	margin: 0 auto;
-	overflow: hidden;
+	overflow: visible;
 }
 .hbe-content {
 	text-align: center;
