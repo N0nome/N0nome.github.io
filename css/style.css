@@ -14,7 +14,7 @@
   display: table-cell;
 }
 .overflow-hidden {
-  overflow: hidden;
+  overflow: auto;
 }
 .overflow-scroll {
   overflow: scroll;
@@ -41,7 +41,7 @@
 }
 .truncate {
   display: inline-block;
-  overflow: hidden;
+  overflow: auto;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1129,7 +1129,7 @@ article .content video {
 }
 article .content .video-container {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   padding-top: 56.25%;
   height: 0;
 }
@@ -1376,7 +1376,7 @@ article .content .caption {
   line-height: 1.2;
 }
 #search-result p.search-result {
-  overflow: hidden;
+  overflow: auto;
   margin: 0.4em auto;
   max-height: 13em;
   text-align: justify;
