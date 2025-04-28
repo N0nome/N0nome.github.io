@@ -1,12 +1,14 @@
-/* 加密文章代码块样式 */
-#hexo-blog-encrypt pre {
-  background-color: #2d2d2d !important;  /* 黑灰色背景 */
-  color: #cccccc !important;             /* 浅灰色文字 */
+#hexo-blog-encrypt pre, #hexo-blog-encrypt div > pre {
+  background-color: #2d2d2d !important;
+  color: #cccccc !important;
   padding: 1rem !important;
   border-radius: 4px !important;
   overflow-x: auto !important;
   white-space: pre !important;
   word-wrap: normal !important;
+  width: 100% !important;
+  max-width: none !important; /* 防止父容器限制宽度 */
+  box-sizing: border-box !important;
 }
 
 /* 代码块滚动条样式 */
