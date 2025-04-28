@@ -1,56 +1,125 @@
+/* 引入 LXGW WenKai TC 字体（通过 CDN，如果可用） */
+/* 注意：Google Fonts 可能不直接提供 LXGW WenKai TC，需确认 CDN 或使用本地字体 */
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap');
+
+/* 全局文章内容字体 */
+body,
+article,
+.post-content,
+.article-content,
+p,
+div,
+span {
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+  font-size: 16px !important;
+}
+
+/* 标题字体 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* 其他元素 */
+a, blockquote, li, ul, ol {
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+}
+
+/* 确保 #hexo-blog-encrypt 内的文章内容和密码输入区域应用新字体 */
+#hexo-blog-encrypt,
+#hexo-blog-encrypt p,
+#hexo-blog-encrypt div,
+#hexo-blog-encrypt span,
+#hexo-blog-encrypt article,
+.hbe-content,
+.hbe-input-label-xray,
+.hbe-input-label-content-xray {
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+  font-size: 16px !important;
+}
+
 /* 确保 #hexo-blog-encrypt 及其父容器不限制宽度 */
 #hexo-blog-encrypt,
 #hexo-blog-encrypt > div,
 .hbe-container,
-.hbe-input {
+.hbe-input,
+.hbe-input-xray {
   width: 100% !important;
   max-width: none !important;
-  margin: 0 !important; /* 覆盖 .hbe-container 的 margin: 0 auto */
+  margin: 0 !important;
   overflow: visible !important;
+}
+
+/* 密码输入区域 - 文字居中 */
+.hbe-input-xray {
+  position: relative;
+  text-align: center !important;
+  padding: 2em 0 !important;
+}
+
+.hbe-input-label-xray {
+  text-align: center !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.hbe-input-label-content-xray {
+  display: inline-block !important;
+  padding: 0.5em !important;
+}
+
+/* 密码输入区域 - SVG 横条宽度和定位 */
+.hbe-graphic-xray {
+  width: 100% !important;
+  height: 3em !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
 /* 代码块 <pre> 样式 */
 #hexo-blog-encrypt pre {
-  background-color: #2d2d2d !important; /* 黑灰色背景 */
-  color: #cccccc !important; /* 浅灰色文字 */
+  background-color: #2d2d2d !important;
+  color: #cccccc !important;
   padding: 1rem !important;
   border-radius: 4px !important;
-  overflow-x: auto !important; /* 水平滚动条 */
-  white-space: pre !important; /* 保留原始格式 */
-  word-wrap: normal !important; /* 防止自动换行 */
+  overflow-x: auto !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
   width: 100% !important;
   max-width: none !important;
   box-sizing: border-box !important;
-  display: block !important; /* 确保 pre 不受父容器 display 影响 */
-  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important; /* 等宽字体 */
-  font-size: 14px !important; /* 字体大小，可根据需要调整 */
+  display: block !important;
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important;
+  font-size: 14px !important;
 }
 
-/* 代码块内的 <code> 元素（确保与 <pre> 一致） */
+/* 代码块内的 <code> 元素 */
 #hexo-blog-encrypt pre code {
-  background-color: #2d2d2d !important; /* 黑灰色背景，与 pre 一致 */
-  color: #cccccc !important; /* 浅灰色文字，与 pre 一致 */
+  background-color: #2d2d2d !important;
+  color: #cccccc !important;
   white-space: pre !important;
   word-wrap: normal !important;
-  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important; /* 统一字体 */
-  font-size: 14px !important; /* 统一字体大小 */
-  display: block !important; /* 确保 code 填充整个 pre */
-  padding: 0 !important; /* 移除可能的高亮插件默认内边距 */
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important;
+  font-size: 14px !important;
+  display: block !important;
+  padding: 0 !important;
 }
 
 /* WebKit 浏览器滚动条样式 */
 #hexo-blog-encrypt pre::-webkit-scrollbar {
   height: 8px;
-  background: #1a1a1a; /* 滚动条轨道颜色 */
+  background: #1a1a1a;
 }
 
 #hexo-blog-encrypt pre::-webkit-scrollbar-thumb {
-  background: #4d4d4d; /* 滚动条滑块颜色 */
+  background: #4d4d4d;
   border-radius: 4px;
 }
 
 /* Firefox 滚动条样式 */
 #hexo-blog-encrypt pre {
   scrollbar-width: thin;
-  scrollbar-color: #4d4d4d #1a1a1a; /* 滑块和轨道颜色 */
+  scrollbar-color: #4d4d4d #1a1a1a;
 }
