@@ -1,31 +1,56 @@
-#hexo-blog-encrypt, #hexo-blog-encrypt > div {
+/* 确保 #hexo-blog-encrypt 及其父容器不限制宽度 */
+#hexo-blog-encrypt,
+#hexo-blog-encrypt > div,
+.hbe-container,
+.hbe-input {
   width: 100% !important;
   max-width: none !important;
+  margin: 0 !important; /* 覆盖 .hbe-container 的 margin: 0 auto */
   overflow: visible !important;
 }
 
+/* 代码块 <pre> 样式 */
 #hexo-blog-encrypt pre {
-  background-color: #2d2d2d !important;
-  color: #cccccc !important;
+  background-color: #2d2d2d !important; /* 黑灰色背景 */
+  color: #cccccc !important; /* 浅灰色文字 */
   padding: 1rem !important;
   border-radius: 4px !important;
-  overflow-x: auto !important;
-  white-space: pre !important;
-  word-wrap: normal !important;
+  overflow-x: auto !important; /* 水平滚动条 */
+  white-space: pre !important; /* 保留原始格式 */
+  word-wrap: normal !important; /* 防止自动换行 */
   width: 100% !important;
   max-width: none !important;
   box-sizing: border-box !important;
-  scrollbar-width: thin; /* Firefox 兼容 */
-  scrollbar-color: #4d4d4d #1a1a1a;
+  display: block !important; /* 确保 pre 不受父容器 display 影响 */
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important; /* 等宽字体 */
+  font-size: 14px !important; /* 字体大小，可根据需要调整 */
 }
 
-/* WebKit 浏览器滚动条 */
+/* 代码块内的 <code> 元素（确保与 <pre> 一致） */
+#hexo-blog-encrypt pre code {
+  background-color: #2d2d2d !important; /* 黑灰色背景，与 pre 一致 */
+  color: #cccccc !important; /* 浅灰色文字，与 pre 一致 */
+  white-space: pre !important;
+  word-wrap: normal !important;
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important; /* 统一字体 */
+  font-size: 14px !important; /* 统一字体大小 */
+  display: block !important; /* 确保 code 填充整个 pre */
+  padding: 0 !important; /* 移除可能的高亮插件默认内边距 */
+}
+
+/* WebKit 浏览器滚动条样式 */
 #hexo-blog-encrypt pre::-webkit-scrollbar {
   height: 8px;
-  background: #1a1a1a;
+  background: #1a1a1a; /* 滚动条轨道颜色 */
 }
 
 #hexo-blog-encrypt pre::-webkit-scrollbar-thumb {
-  background: #4d4d4d;
+  background: #4d4d4d; /* 滚动条滑块颜色 */
   border-radius: 4px;
+}
+
+/* Firefox 滚动条样式 */
+#hexo-blog-encrypt pre {
+  scrollbar-width: thin;
+  scrollbar-color: #4d4d4d #1a1a1a; /* 滑块和轨道颜色 */
 }
