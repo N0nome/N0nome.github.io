@@ -38,24 +38,43 @@ a, blockquote, li, ul, ol {
   font-size: 16px !important;
 }
 
-/* 确保偶数次触发：确保 #hexo-blog-encrypt 及其父容器不限制宽度 */
+/* 确保 #hexo-blog-encrypt 及其父容器不限制宽度 */
 #hexo-blog-encrypt,
-#hexo-blog-encrypt > div,
-.hbe-container,
-.hbe-input,
-.hbe-input-xray {
+#hexo-blog-encrypt > div {
   width: 100% !important;
   max-width: none !important;
   margin: 0 !important;
   overflow: visible !important;
 }
 
-/* 密码输入区域 - 文字居中和动态效果 */
-.hbe-input-xray {
-  position: relative;
+/* 加密框容器 */
+.hbe-container {
+  margin: 0 auto !important;
+  overflow: auto !important;
+  width: 100% !important;
+  max-width: 600px !important;
+}
+
+.hbe-content {
   text-align: center !important;
-  padding: 2em 0 !important;
+  font-size: 150% !important;
+  padding: 1em 0 !important;
+}
+
+.hbe-input {
+  position: relative !important;
+  z-index: 1 !important;
+  display: inline-block !important;
+  margin: 1em !important;
+  width: 80% !important;
+  min-width: 200px !important;
+  vertical-align: top !important;
+}
+
+.hbe-input-xray {
   overflow: visible !important;
+  padding-bottom: 2.5em !important;
+  text-align: center !important;
 }
 
 .hbe-input-field-xray {
@@ -67,19 +86,23 @@ a, blockquote, li, ul, ol {
   font-size: 1.55em !important;
   border: none !important;
   outline: none !important;
+  -webkit-appearance: none !important;
 }
 
 .hbe-input-label-xray {
-  text-align: center !important;
   position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  top: 2em !important;
+  left: 0 !important;
+  display: block !important;
   width: 100% !important;
+  text-align: center !important;
   padding: 0 !important;
   letter-spacing: 1px !important;
   color: #84AF9B !important;
   pointer-events: none !important;
-  -webkit-transition: transform 0.2s 0.1s, color 0.3s !important;
+  -webkit-transform-origin: 0 0 !important;
+  transform-origin: 0 0 !important;
+  -webkit-transition: -webkit-transform 0.2s 0.1s, color 0.3s !important;
   transition: transform 0.2s 0.1s, color 0.3s !important;
   -webkit-transition-timing-function: ease-out !important;
   transition-timing-function: ease-out !important;
@@ -97,18 +120,17 @@ a, blockquote, li, ul, ol {
   transform: translate3d(0, 3.5em, 0) scale3d(0.85, 0.85, 1) !important;
 }
 
-/* 密码输入区域 - SVG 横条宽度和动态效果 */
 .hbe-graphic-xray {
-  width: 100% !important;
-  height: 3em !important;
   position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  width: 100% !important;
+  height: 3.275em !important;
+  top: 1.25em !important;
+  left: 0 !important;
   stroke: #84AF9B !important;
   stroke-width: 2px !important;
   fill: none !important;
   pointer-events: none !important;
-  -webkit-transition: transform 0.7s, stroke 0.7s !important;
+  -webkit-transition: -webkit-transform 0.7s, stroke 0.7s !important;
   transition: transform 0.7s, stroke 0.7s !important;
   -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1) !important;
   transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1) !important;
@@ -117,8 +139,56 @@ a, blockquote, li, ul, ol {
 .hbe-input-field-xray:focus ~ .hbe-graphic-xray,
 .input--filled .graphic-xray {
   stroke: #84AF9B !important;
-  -webkit-transform: translate3d(0, -50%, 0) !important;
-  transform: translate3d(0, -50%, 0) !important;
+  -webkit-transform: translate3d(-66.6%, 0, 0) !important;
+  transform: translate3d(-66.6%, 0, 0) !important;
+}
+
+/* TOC 样式 for encrypted articles */
+#hexo-blog-encrypt .toc,
+#hexo-blog-encrypt nav.toc,
+#hexo-blog-encrypt #toc {
+  display: block !important;
+  visibility: visible !important;
+  max-width: 300px !important;
+  margin: 1rem auto !important;
+  padding: 1rem !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 4px !important;
+  background: #f9f9f9 !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+#hexo-blog-encrypt .toc ul,
+#hexo-blog-encrypt nav.toc ul,
+#hexo-blog-encrypt #toc ul {
+  list-style: none !important;
+  padding-left: 1rem !important;
+  margin: 0 !important;
+}
+
+#hexo-blog-encrypt .toc li,
+#hexo-blog-encrypt nav.toc li,
+#hexo-blog-encrypt #toc li {
+  margin: 0.5rem 0 !important;
+}
+
+#hexo-blog-encrypt .toc a,
+#hexo-blog-encrypt nav.toc a,
+#hexo-blog-encrypt #toc a {
+  color: #84AF9B !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+#hexo-blog-encrypt .toc a:hover,
+#hexo-blog-encrypt nav.toc a:hover,
+#hexo-blog-encrypt #toc a:hover {
+  color: #2C3E50 !important;
+  text-decoration: underline !important;
 }
 
 /* 代码块 <pre> 样式 */
