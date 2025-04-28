@@ -55,15 +55,31 @@ a, blockquote, li, ul, ol {
   position: relative;
   text-align: center !important;
   padding: 2em 0 !important;
+  overflow: visible !important;
+}
+
+.hbe-input-field-xray {
+  padding: 0 !important;
+  margin-top: 1.2em !important;
+  width: 100% !important;
+  background: transparent !important;
+  color: #84AF9B !important;
+  font-size: 1.55em !important;
+  border: none !important;
+  outline: none !important;
 }
 
 .hbe-input-label-xray {
   text-align: center !important;
+  position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   width: 100% !important;
   padding: 0 !important;
-  -webkit-transition: -webkit-transform 0.2s 0.1s, color 0.3s !important;
+  letter-spacing: 1px !important;
+  color: #84AF9B !important;
+  pointer-events: none !important;
+  -webkit-transition: transform 0.2s 0.1s, color 0.3s !important;
   transition: transform 0.2s 0.1s, color 0.3s !important;
   -webkit-transition-timing-function: ease-out !important;
   transition-timing-function: ease-out !important;
@@ -85,11 +101,14 @@ a, blockquote, li, ul, ol {
 .hbe-graphic-xray {
   width: 100% !important;
   height: 3em !important;
+  position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   stroke: #84AF9B !important;
   stroke-width: 2px !important;
-  -webkit-transition: -webkit-transform 0.7s, stroke 0.7s !important;
+  fill: none !important;
+  pointer-events: none !important;
+  -webkit-transition: transform 0.7s, stroke 0.7s !important;
   transition: transform 0.7s, stroke 0.7s !important;
   -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1) !important;
   transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1) !important;
@@ -98,8 +117,8 @@ a, blockquote, li, ul, ol {
 .hbe-input-field-xray:focus ~ .hbe-graphic-xray,
 .input--filled .graphic-xray {
   stroke: #84AF9B !important;
-  -webkit-transform: translate3d(-66.6%, 0, 0) !important;
-  transform: translate3d(-66.6%, 0, 0) !important;
+  -webkit-transform: translate3d(0, -50%, 0) !important;
+  transform: translate3d(0, -50%, 0) !important;
 }
 
 /* 代码块 <pre> 样式 */
