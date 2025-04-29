@@ -251,7 +251,7 @@
 	height: 4em;
 	top: 100%;
 	left: 0;
-	background: #fff;
+	background: inherit;
 	border-top: 4px solid #9B9F9F;
 	-webkit-transform: translate3d(0, -3px, 0);
 	transform: translate3d(0, -3px, 0);
