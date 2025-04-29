@@ -62,31 +62,113 @@ a, blockquote, li, ul, ol {
 #hexo-blog-encrypt .toc,
 #hexo-blog-encrypt nav.toc,
 #hexo-blog-encrypt #toc,
-#hexo-blog-encrypt .toc-container,
 #hexo-blog-encrypt #toc-div,
 #hexo-blog-encrypt .toc-div-class {
   display: block !important;
   visibility: visible !important;
-  max-width: 300px !important;
-  margin: 1rem auto !important;
-  padding: 1rem !important;
+  float: right !important;
+  clear: both !important;
+  overflow: auto !important;
+  margin: 1rem 0 1rem 1rem !important;
+  padding: 1rem 2rem 1rem 1rem !important;
+  max-width: 20em !important;
+  max-height: calc(95vh - 7rem) !important;
+  text-align: right !important;
   font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
   font-size: 14px !important;
   line-height: 1.6 !important;
   border: 1px solid #e0e0e0 !important;
   border-radius: 4px !important;
   background: #f9f9f9 !important;
-  overflow-y: auto !important;
   box-sizing: border-box !important;
   opacity: 1 !important;
-  height: auto !important;
   position: relative !important;
+}
+
+#hexo-blog-encrypt .toc a,
+#hexo-blog-encrypt nav.toc a,
+#hexo-blog-encrypt #toc a,
+#hexo-blog-encrypt #toc-div a,
+#hexo-blog-encrypt .toc-div-class a {
+  color: #84AF9B !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+#hexo-blog-encrypt .toc a:hover,
+#hexo-blog-encrypt nav.toc a:hover,
+#hexo-blog-encrypt #toc a:hover,
+#hexo-blog-encrypt #toc-div a:hover,
+#hexo-blog-encrypt .toc-div-class a:hover {
+  color: #2bbc8a !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-1 > .toc-link,
+#hexo-blog-encrypt #toc .toc-level-1 > .toc-link,
+#hexo-blog-encrypt #toc-div .toc-level-1 > .toc-link,
+#hexo-blog-encrypt .toc-div-class .toc-level-1 > .toc-link {
+  display: none !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-2,
+#hexo-blog-encrypt #toc .toc-level-2,
+#hexo-blog-encrypt #toc-div .toc-level-2,
+#hexo-blog-encrypt .toc-div-class .toc-level-2 {
+  color: #363533 !important;
+  font-size: 0.8rem !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-2:before,
+#hexo-blog-encrypt #toc .toc-level-2:before,
+#hexo-blog-encrypt #toc-div .toc-level-2:before,
+#hexo-blog-encrypt .toc-div-class .toc-level-2:before {
+  color: #d44375 !important;
+  content: "#" !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-3,
+#hexo-blog-encrypt #toc .toc-level-3,
+#hexo-blog-encrypt #toc-div .toc-level-3,
+#hexo-blog-encrypt .toc-div-class .toc-level-3 {
+  color: #666 !important;
+  font-size: 0.7rem !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-4,
+#hexo-blog-encrypt #toc .toc-level-4,
+#hexo-blog-encrypt #toc-div .toc-level-4,
+#hexo-blog-encrypt .toc-div-class .toc-level-4 {
+  color: #525252 !important;
+  font-size: 0.4rem !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-5,
+#hexo-blog-encrypt #toc .toc-level-5,
+#hexo-blog-encrypt #toc-div .toc-level-5,
+#hexo-blog-encrypt .toc-div-class .toc-level-5 {
+  display: none !important;
+}
+
+#hexo-blog-encrypt .toc .toc-level-6,
+#hexo-blog-encrypt #toc .toc-level-6,
+#hexo-blog-encrypt #toc-div .toc-level-6,
+#hexo-blog-encrypt .toc-div-class .toc-level-6 {
+  display: none !important;
+}
+
+#hexo-blog-encrypt .toc .toc-number,
+#hexo-blog-encrypt #toc .toc-number,
+#hexo-blog-encrypt #toc-div .toc-number,
+#hexo-blog-encrypt .toc-div-class .toc-number {
+  display: none !important;
 }
 
 /* 确保目录列表可见 */
 #hexo-blog-encrypt .toc ul,
 #hexo-blog-encrypt nav.toc ul,
-#hexo-blog-encrypt #toc ul {
+#hexo-blog-encrypt #toc ul,
+#hexo-blog-encrypt #toc-div ul,
+#hexo-blog-encrypt .toc-div-class ul {
   display: block !important;
   list-style: none !important;
   padding-left: 1rem !important;
@@ -96,26 +178,11 @@ a, blockquote, li, ul, ol {
 /* 确保列表项可见 */
 #hexo-blog-encrypt .toc li,
 #hexo-blog-encrypt nav.toc li,
-#hexo-blog-encrypt #toc li {
+#hexo-blog-encrypt #toc li,
+#hexo-blog-encrypt #toc-div li,
+#hexo-blog-encrypt .toc-div-class li {
   display: list-item !important;
   margin: 0.5rem 0 !important;
-}
-
-/* 目录链接样式 */
-#hexo-blog-encrypt .toc a,
-#hexo-blog-encrypt nav.toc a,
-#hexo-blog-encrypt #toc a {
-  color: #84AF9B !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-  display: inline-block !important;
-}
-
-#hexo-blog-encrypt .toc a:hover,
-#hexo-blog-encrypt nav.toc a:hover,
-#hexo-blog-encrypt #toc a:hover {
-  color: #2C3E50 !important;
-  text-decoration: underline !important;
 }
 
 /* 防止父容器隐藏目录 */
@@ -129,7 +196,6 @@ a, blockquote, li, ul, ol {
   max-width: none !important;
   opacity: 1 !important;
 }
-
 
 /* 代码块美化 */
 #hexo-blog-encrypt pre {
