@@ -57,144 +57,98 @@ a, blockquote, li, ul, ol {
   padding: 1em 0;
 }
 
+/* xray 主题修正版 */
+.hbe-input-xray {
+  overflow: visible;
+  padding-bottom: 2.5em;
+  text-align: center;
+  position: relative;
+}
+
+.hbe-input-field-xray {
+  padding: 0;
+  margin-top: 1.5em;
+  width: 100%;
+  background: transparent;
+  color: #84AF9B;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
+}
+
+.hbe-input-label-xray {
+  position: absolute;
+  top: 1.2em;
+  left: 0;
+  width: 100%;
+  color: #84AF9B;
+  text-align: center;
+  pointer-events: none;
+  transition: transform 0.2s ease, color 0.3s ease;
+  transform-origin: 0 0;
+}
+
+.hbe-input-label-content-xray {
+  padding: 0.5em;
+}
+
+.hbe-graphic-xray {
+  position: absolute;
+  top: 1.8em;
+  left: 0;
+  width: 100%;
+  height: 2.5em;
+  pointer-events: none;
+  stroke: #84AF9B;
+  stroke-width: 2px;
+  fill: none;
+  transition: transform 0.7s cubic-bezier(0, 0.25, 0.5, 1), stroke 0.7s cubic-bezier(0, 0.25, 0.5, 1);
+}
+
+.hbe-input-field-xray:focus + .hbe-input-label-xray,
+.input--filled .hbe-input-label-xray {
+  color: #84AF9B;
+  transform: translate3d(0, -1.5em, 0) scale3d(0.8, 0.8, 1);
+}
+
+.hbe-input-field-xray:focus ~ .hbe-graphic-xray,
+.input--filled .hbe-graphic-xray {
+  stroke: #84AF9B;
+  transform: translate3d(-66%, 0, 0);
+}
 
 /* TOC 样式 */
 #hexo-blog-encrypt .toc,
 #hexo-blog-encrypt nav.toc,
-#hexo-blog-encrypt #toc,
-#hexo-blog-encrypt #toc-div,
-#hexo-blog-encrypt .toc-div-class {
-  display: block !important;
-  visibility: visible !important;
-  float: right !important;
-  clear: both !important;
-  overflow: auto !important;
-  margin: 1rem 0 1rem 1rem !important;
-  padding: 1rem 2rem 1rem 1rem !important;
-  max-width: 20em !important;
-  max-height: calc(95vh - 7rem) !important;
-  text-align: right !important;
-  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
-  font-size: 14px !important;
-  line-height: 1.6 !important;
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 4px !important;
-  background: #f9f9f9 !important;
-  box-sizing: border-box !important;
-  opacity: 1 !important;
-  position: relative !important;
+#hexo-blog-encrypt #toc {
+  display: block;
+  visibility: visible;
+  max-width: 300px;
+  margin: 1rem auto;
+  padding: 1rem;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #f9f9f9;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 #hexo-blog-encrypt .toc a,
 #hexo-blog-encrypt nav.toc a,
-#hexo-blog-encrypt #toc a,
-#hexo-blog-encrypt #toc-div a,
-#hexo-blog-encrypt .toc-div-class a {
-  color: #84AF9B !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
+#hexo-blog-encrypt #toc a {
+  color: #84AF9B;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 #hexo-blog-encrypt .toc a:hover,
 #hexo-blog-encrypt nav.toc a:hover,
-#hexo-blog-encrypt #toc a:hover,
-#hexo-blog-encrypt #toc-div a:hover,
-#hexo-blog-encrypt .toc-div-class a:hover {
-  color: #2bbc8a !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-1 > .toc-link,
-#hexo-blog-encrypt #toc .toc-level-1 > .toc-link,
-#hexo-blog-encrypt #toc-div .toc-level-1 > .toc-link,
-#hexo-blog-encrypt .toc-div-class .toc-level-1 > .toc-link {
-  display: none !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-2,
-#hexo-blog-encrypt #toc .toc-level-2,
-#hexo-blog-encrypt #toc-div .toc-level-2,
-#hexo-blog-encrypt .toc-div-class .toc-level-2 {
-  color: #363533 !important;
-  font-size: 0.8rem !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-2:before,
-#hexo-blog-encrypt #toc .toc-level-2:before,
-#hexo-blog-encrypt #toc-div .toc-level-2:before,
-#hexo-blog-encrypt .toc-div-class .toc-level-2:before {
-  color: #d44375 !important;
-  content: "#" !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-3,
-#hexo-blog-encrypt #toc .toc-level-3,
-#hexo-blog-encrypt #toc-div .toc-level-3,
-#hexo-blog-encrypt .toc-div-class .toc-level-3 {
-  color: #666 !important;
-  font-size: 0.7rem !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-4,
-#hexo-blog-encrypt #toc .toc-level-4,
-#hexo-blog-encrypt #toc-div .toc-level-4,
-#hexo-blog-encrypt .toc-div-class .toc-level-4 {
-  color: #525252 !important;
-  font-size: 0.4rem !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-5,
-#hexo-blog-encrypt #toc .toc-level-5,
-#hexo-blog-encrypt #toc-div .toc-level-5,
-#hexo-blog-encrypt .toc-div-class .toc-level-5 {
-  display: none !important;
-}
-
-#hexo-blog-encrypt .toc .toc-level-6,
-#hexo-blog-encrypt #toc .toc-level-6,
-#hexo-blog-encrypt #toc-div .toc-level-6,
-#hexo-blog-encrypt .toc-div-class .toc-level-6 {
-  display: none !important;
-}
-
-#hexo-blog-encrypt .toc .toc-number,
-#hexo-blog-encrypt #toc .toc-number,
-#hexo-blog-encrypt #toc-div .toc-number,
-#hexo-blog-encrypt .toc-div-class .toc-number {
-  display: none !important;
-}
-
-/* 确保目录列表可见 */
-#hexo-blog-encrypt .toc ul,
-#hexo-blog-encrypt nav.toc ul,
-#hexo-blog-encrypt #toc ul,
-#hexo-blog-encrypt #toc-div ul,
-#hexo-blog-encrypt .toc-div-class ul {
-  display: block !important;
-  list-style: none !important;
-  padding-left: 1rem !important;
-  margin: 0 !important;
-}
-
-/* 确保列表项可见 */
-#hexo-blog-encrypt .toc li,
-#hexo-blog-encrypt nav.toc li,
-#hexo-blog-encrypt #toc li,
-#hexo-blog-encrypt #toc-div li,
-#hexo-blog-encrypt .toc-div-class li {
-  display: list-item !important;
-  margin: 0.5rem 0 !important;
-}
-
-/* 防止父容器隐藏目录 */
-#hexo-blog-encrypt,
-#hexo-blog-encrypt > div,
-#hexo-blog-encrypt .hbe-container {
-  display: block !important;
-  visibility: visible !important;
-  overflow: visible !important;
-  width: 100% !important;
-  max-width: none !important;
-  opacity: 1 !important;
+#hexo-blog-encrypt #toc a:hover {
+  color: #2C3E50;
+  text-decoration: underline;
 }
 
 /* 代码块美化 */
