@@ -40,7 +40,7 @@
 	background: #f0f0f0;
 	color: #aaa;
 	font-weight: 400;
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
 	-webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
@@ -91,7 +91,7 @@
   border-bottom: 4px solid #2b8bc6;
   color: #fbfbfb;
   font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   text-shadow: 1px 1px 1px rgba(0,0,0,.4);
   font-size: 15px;
   text-align: left;
