@@ -57,6 +57,14 @@ a, blockquote, li, ul, ol {
   padding: 1em 0;
 }
 
+/* 强化字体样式在加密内容中的继承 */
+#hexo-blog-encrypt,
+#hexo-blog-encrypt * {
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: normal;
+}
+
 
 /* TOC 样式 */
 #hexo-blog-encrypt .toc,
