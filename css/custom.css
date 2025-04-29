@@ -22,7 +22,7 @@ a, blockquote, li, ul, ol {
   font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif !important;
 }
 
-/* 只针对 #hexo-blog-encrypt 字体调整，不干预动画 */
+/* 针对加密内容字体调整 */
 #hexo-blog-encrypt,
 #hexo-blog-encrypt p,
 #hexo-blog-encrypt div,
@@ -35,7 +35,7 @@ a, blockquote, li, ul, ol {
   font-size: 16px;
 }
 
-/* 容器基本布局，兼容 hbe */
+/* 容器基本布局 */
 #hexo-blog-encrypt,
 #hexo-blog-encrypt > div {
   width: 100%;
@@ -57,60 +57,67 @@ a, blockquote, li, ul, ol {
   padding: 1em 0;
 }
 
-/* --- 以下是修复版 xray 主题动画兼容 --- */
+/* xray 主题修正版 */
+.hbe-input-xray {
+  overflow: visible;
+  padding-bottom: 2.5em;
+  text-align: center;
+  position: relative;
+}
 
 .hbe-input-field-xray {
   padding: 0;
-  margin-top: 1.2em;
+  margin-top: 1.5em;
   width: 100%;
   background: transparent;
   color: #84AF9B;
-  font-size: 1.55em;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
 }
 
 .hbe-input-label-xray {
   position: absolute;
-  top: 2em;
+  top: 1.2em;
   left: 0;
-  display: block;
   width: 100%;
-  text-align: center;
-  padding: 0;
-  letter-spacing: 1px;
   color: #84AF9B;
+  text-align: center;
   pointer-events: none;
+  transition: transform 0.2s ease, color 0.3s ease;
   transform-origin: 0 0;
-  transition: transform 0.2s 0.1s ease-out, color 0.3s ease-out;
+}
+
+.hbe-input-label-content-xray {
+  padding: 0.5em;
 }
 
 .hbe-graphic-xray {
   position: absolute;
-  width: 100%;
-  height: 3.275em;
-  top: 1.25em;
+  top: 1.8em;
   left: 0;
+  width: 100%;
+  height: 2.5em;
+  pointer-events: none;
   stroke: #84AF9B;
   stroke-width: 2px;
   fill: none;
-  pointer-events: none;
   transition: transform 0.7s cubic-bezier(0, 0.25, 0.5, 1), stroke 0.7s cubic-bezier(0, 0.25, 0.5, 1);
 }
 
 .hbe-input-field-xray:focus + .hbe-input-label-xray,
 .input--filled .hbe-input-label-xray {
   color: #84AF9B;
-  transform: translate3d(0, 3.5em, 0) scale3d(0.85, 0.85, 1);
+  transform: translate3d(0, -1.5em, 0) scale3d(0.8, 0.8, 1);
 }
 
 .hbe-input-field-xray:focus ~ .hbe-graphic-xray,
 .input--filled .hbe-graphic-xray {
   stroke: #84AF9B;
-  transform: translate3d(-66.6%, 0, 0);
+  transform: translate3d(-66%, 0, 0);
 }
 
-/* --- 修复完毕 --- */
-
-/* 保持其他 #hexo-blog-encrypt 的 TOC 目录和代码块样式，不动 */
+/* TOC 样式 */
 #hexo-blog-encrypt .toc,
 #hexo-blog-encrypt nav.toc,
 #hexo-blog-encrypt #toc {
@@ -144,7 +151,7 @@ a, blockquote, li, ul, ol {
   text-decoration: underline;
 }
 
-/* 代码块优化 */
+/* 代码块美化 */
 #hexo-blog-encrypt pre {
   background-color: #2d2d2d;
   color: #cccccc;
@@ -167,7 +174,6 @@ a, blockquote, li, ul, ol {
   display: block;
 }
 
-/* Webkit 滚动条美化 */
 #hexo-blog-encrypt pre::-webkit-scrollbar {
   height: 8px;
   background: #1a1a1a;
@@ -178,13 +184,12 @@ a, blockquote, li, ul, ol {
   border-radius: 4px;
 }
 
-/* Firefox 滚动条美化 */
 #hexo-blog-encrypt pre {
   scrollbar-width: thin;
   scrollbar-color: #4d4d4d #1a1a1a;
 }
 
-/* 字体抗锯齿优化 */
+/* 字体抗锯齿 */
 body,
 #hexo-blog-encrypt {
   -webkit-font-smoothing: antialiased;
