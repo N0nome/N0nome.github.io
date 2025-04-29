@@ -110,7 +110,7 @@ a, blockquote, li, ul, ol {
   white-space: pre;
   width: 100%;
   box-sizing: border-box;
-  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-size: 14px;
 }
 
