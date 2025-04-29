@@ -1687,7 +1687,7 @@ article,
 p,
 div,
 span {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-size: 16px !important; /* 可调整字体大小 */
 }
 /* 标题字体 */
@@ -1697,7 +1697,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-weight: 700 !important; /* 加粗标题，可选 */
 }
 /* 其他元素（可选） */
@@ -1706,7 +1706,7 @@ blockquote,
 li,
 ul,
 ol {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
 }
 /* 确保 #hexo-blog-encrypt 内的文章内容也应用新字体 */
 #hexo-blog-encrypt,
@@ -1714,16 +1714,16 @@ ol {
 #hexo-blog-encrypt div,
 #hexo-blog-encrypt span,
 #hexo-blog-encrypt article {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-size: 16px !important;
 }
 /* 保留代码块字体（避免覆盖之前的等宽字体） */
 #hexo-blog-encrypt pre,
 #hexo-blog-encrypt pre code {
-  font-family: "JetBrains Mono", "Fira Code", "Consolas", "Source Code Pro", "Courier New", monospace !important;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
 }
 body {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-size: 16px;
 }
 h1,
@@ -1732,6 +1732,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", "Open Sans", "Source Sans Pro", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
   font-weight: 700;
 }
