@@ -121,6 +121,7 @@ a, blockquote, li, ul, ol {
   font-family: inherit;
   font-size: inherit;
   display: block;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 #hexo-blog-encrypt pre::-webkit-scrollbar {
