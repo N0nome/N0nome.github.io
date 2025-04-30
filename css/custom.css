@@ -145,3 +145,92 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ================================================
+   1. 统一所有页面的代码块外观 & Mono 字体
+   ================================================ */
+pre,
+article .post-content pre,
+article .article-content pre,
+.post-content pre,
+.article-content pre {
+  background-color: #2d2d2d !important;
+  color:           #cccccc   !important;
+  padding:         1rem      !important;
+  border-radius:   4px       !important;
+  overflow-x:      auto      !important;
+  white-space:     pre       !important;
+  box-sizing:      border-box!important;
+
+  /* Mono 字体：优先 Microsoft YaHei Mono Pro，其次系统自带等 */
+  font-family: "Microsoft YaHei Mono Pro", "SFMono-Regular", Consolas,
+               "Liberation Mono", Menlo, Courier, monospace !important;
+  font-size: 14px !important;
+}
+
+/* 确保 <code> 也继承背景&字体 */
+pre code,
+article .post-content pre code,
+article .article-content pre code,
+.post-content pre code,
+.article-content pre code {
+  background:    inherit !important;
+  color:         inherit !important;
+  font-family:   inherit !important;
+  display:       block  !important;
+}
+
+
+/* ============================================================
+   2. 一份多用：把完整 TOC 样式同时作用到 #header-post 和 #hexo-blog-encrypt
+   ============================================================ */
+#header-post #toc,
+#hexo-blog-encrypt #toc {
+  float:        right;
+  clear:        both;
+  overflow:     auto;
+  margin-top:   1rem;
+  padding-right:2rem;
+  max-width:    20em;
+  max-height:   calc(95vh - 7rem);
+  text-align:   right;
+}
+#header-post #toc a:hover,
+#hexo-blog-encrypt #toc a:hover {
+  color: #2bbc8a;
+}
+#header-post #toc .toc-level-1 > .toc-link,
+#hexo-blog-encrypt .toc-level-1 > .toc-link {
+  display: none;
+}
+#header-post #toc .toc-level-2,
+#hexo-blog-encrypt .toc-level-2 {
+  color:     #363533;
+  font-size: 0.8rem;
+}
+#header-post #toc .toc-level-2:before,
+#hexo-blog-encrypt .toc-level-2:before {
+  color:   #d44375;
+  content: "#";
+}
+#header-post #toc .toc-level-3,
+#hexo-blog-encrypt .toc-level-3 {
+  color:     #666;
+  font-size: 0.7rem;
+}
+#header-post #toc .toc-level-4,
+#hexo-blog-encrypt .toc-level-4 {
+  color:     #525252;
+  font-size: 0.4rem;
+}
+#header-post #toc .toc-level-5,
+#hexo-blog-encrypt .toc-level-5,
+#header-post #toc .toc-level-6,
+#hexo-blog-encrypt .toc-level-6 {
+  display: none;
+}
+#header-post #toc .toc-number,
+#hexo-blog-encrypt .toc-number {
+  display: none;
+}
+
