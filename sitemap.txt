@@ -1,3 +1,4 @@
+https://n0nome.github.io/2025/05/04/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/
 https://n0nome.github.io/2025/04/30/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/
 https://n0nome.github.io/2025/04/30/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/
 https://n0nome.github.io/2025/04/18/WhiteRabbit/HackTheBox%E2%80%94%E2%80%94HTB%20WhiteRabbit%20writeup/
