@@ -149,12 +149,55 @@
     
     <div class="content index py4 ">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   
 
-  <div class="content" itemprop="articleBody">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——HTB Strutted Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">
+          
+            n0nome
+          
+        </span>
+      </span>
       
-          <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+    <div class="postdate">
+      
+        <time datetime="2025-04-02T08:33:58.458Z" class="dt-published" itemprop="datePublished">2025-04-02</time>
+        
+        (Updated: <time datetime="2025-04-02T09:08:31.457Z" class="dt-updated" itemprop="dateModified">2025-04-02</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+
+  
+
+
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
 <p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250225082458.png" data-caption=""><img src="/images/Pasted%20image%2020250225082458.png"></a><br><code>在退役吧唧中的免费吧唧</code></p>
 <h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA)<br>|_  256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519)<br>80/tcp open  http    nginx 1.18.0 (Ubuntu)<br>|_http-title: Did not follow redirect to http://strutted.htb/<br>|_http-server-header: nginx/1.18.0 (Ubuntu)<br>Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port<br>Device type: general purpose<br>Running: Linux 4.X|5.X<br>OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5<br>OS details: Linux 4.15 - 5.19<br>Network Distance: 2 hops<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br></code></pre></td></tr></table></figure>
 <p>先把域名加到hosts里面</p>
@@ -184,9 +227,11 @@
 <p>get root</p>
 <h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">root:$y$j9T$4kM4HKyBvH.VNLjh.Zd60/$27BeC7cFIgPH.bVrllpoxXQwtc4tMCN6EZkI9Tqbw/B:20100:0:99999:7:::<br>daemon:*:19405:0:99999:7:::<br>bin:*:19405:0:99999:7:::<br>sys:*:19405:0:99999:7:::<br>sync:*:19405:0:99999:7:::<br>games:*:19405:0:99999:7:::<br>man:*:19405:0:99999:7:::<br>lp:*:19405:0:99999:7:::<br>mail:*:19405:0:99999:7:::<br>news:*:19405:0:99999:7:::<br>uucp:*:19405:0:99999:7:::<br>proxy:*:19405:0:99999:7:::<br>www-data:*:19405:0:99999:7:::<br>backup:*:19405:0:99999:7:::<br>list:*:19405:0:99999:7:::<br>irc:*:19405:0:99999:7:::<br>gnats:*:19405:0:99999:7:::<br>nobody:*:19405:0:99999:7:::<br>_apt:*:19405:0:99999:7:::<br>systemd-network:*:19405:0:99999:7:::<br>systemd-resolve:*:19405:0:99999:7:::<br>messagebus:*:19405:0:99999:7:::<br>systemd-timesync:*:19405:0:99999:7:::<br>pollinate:*:19405:0:99999:7:::<br>sshd:*:19405:0:99999:7:::<br>syslog:*:19405:0:99999:7:::<br>uuidd:*:19405:0:99999:7:::<br>tcpdump:*:19405:0:99999:7:::<br>tss:*:19405:0:99999:7:::<br>landscape:*:19405:0:99999:7:::<br>fwupd-refresh:*:19405:0:99999:7:::<br>usbmux:*:19474:0:99999:7:::<br>lxd:!:19474::::::<br>tomcat:!*:20095::::::<br>james:$y$j9T$Agb7G27RJ0LCkmXQ3kDEK0$xoWkrSDF/pC4dkrIlBKe0LpYWCZH4YTz0NJ/zEn8.59:20100:0:99999:7:::<br></code></pre></td></tr></table></figure>
 
-        
   </div>
 </article>
+
+
+
 
         
           <div id="footer-post-container">
