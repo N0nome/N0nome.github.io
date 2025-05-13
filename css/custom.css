@@ -184,6 +184,7 @@ article .article-content pre code,
 /* ============================================================
    2. 一份多用：把完整 TOC 样式同时作用到 #header-post 和 #hexo-blog-encrypt
    ============================================================ */
+/*
 #header-post #toc,
 #hexo-blog-encrypt #toc {
   float:        right;
@@ -232,5 +233,59 @@ article .article-content pre code,
 #header-post #toc .toc-number,
 #hexo-blog-encrypt .toc-number {
   display: none;
-}
+}*/
+  #hexo-blog-encrypt + #toc,
+  #hexo-blog-encrypt + .toc-article {
+    float:        right;
+    clear:        both;
+    overflow:     auto;
+    margin-top:   1rem;
+    padding-right:2rem;
+    max-width:    20em;
+    max-height:   calc(95vh - 7rem);
+    text-align:   right;
+  }
+  #hexo-blog-encrypt + #toc a:hover,
+  #hexo-blog-encrypt + .toc-article a:hover {
+    color: #2bbc8a;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-1 > .toc-link,
+  #hexo-blog-encrypt + .toc-article .toc-level-1 > .toc-link {
+    display: none;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-2,
+  #hexo-blog-encrypt + .toc-article .toc-level-2 {
+    color:     #363533;
+    font-size: 0.8rem;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-2:before,
+  #hexo-blog-encrypt + .toc-article .toc-level-2:before {
+    color:   #d44375;
+    content: "#";
+  }
+  /* 其余层级样式同 custom.css 或 style.css，按需复制 */
+  /* TOC 三级标题 */
+  #hexo-blog-encrypt + #toc .toc-level-3,
+  #hexo-blog-encrypt + .toc-article .toc-level-3 {
+    color:     #666;
+    font-size: 0.7rem;
+  }
 
+  /* TOC 四级标题 */
+  #hexo-blog-encrypt + #toc .toc-level-4,
+  #hexo-blog-encrypt + .toc-article .toc-level-4 {
+    color:     #525252;
+    font-size: 0.4rem;
+  }
+
+  /* TOC 五级标题隐藏 */
+  #hexo-blog-encrypt + #toc .toc-level-5,
+  #hexo-blog-encrypt + .toc-article .toc-level-5 {
+    display: none;
+  }
+ 
+  /* TOC 六级标题隐藏 */
+  #hexo-blog-encrypt + #toc .toc-level-6,
+  #hexo-blog-encrypt + .toc-article .toc-level-6 {
+    display: none;
+  }

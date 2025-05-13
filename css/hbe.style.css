@@ -747,3 +747,35 @@
 	transform: translate3d(0, 2em, 0) scale3d(0.655, 0.655, 1);
 }
 /* shrink theme }}} */
+
+
+  #hexo-blog-encrypt + #toc,
+  #hexo-blog-encrypt + .toc-article {
+    float:        right;
+    clear:        both;
+    overflow:     auto;
+    margin-top:   1rem;
+    padding-right:2rem;
+    max-width:    20em;
+    max-height:   calc(95vh - 7rem);
+    text-align:   right;
+  }
+  #hexo-blog-encrypt + #toc a:hover,
+  #hexo-blog-encrypt + .toc-article a:hover {
+    color: #2bbc8a;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-1 > .toc-link,
+  #hexo-blog-encrypt + .toc-article .toc-level-1 > .toc-link {
+    display: none;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-2,
+  #hexo-blog-encrypt + .toc-article .toc-level-2 {
+    color:     #363533;
+    font-size: 0.8rem;
+  }
+  #hexo-blog-encrypt + #toc .toc-level-2:before,
+  #hexo-blog-encrypt + .toc-article .toc-level-2:before {
+    color:   #d44375;
+    content: "#";
+  }
+  /* 其余层级样式同 custom.css 或 style.css，按需复制 */
