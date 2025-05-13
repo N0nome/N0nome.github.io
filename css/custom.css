@@ -67,7 +67,7 @@ a, blockquote, li, ul, ol {
 
 
 /* TOC 样式 */
-/*
+
 #hexo-blog-encrypt .toc,
 #hexo-blog-encrypt nav.toc,
 #hexo-blog-encrypt #toc {
@@ -100,7 +100,7 @@ a, blockquote, li, ul, ol {
   color: #2C3E50;
   text-decoration: underline;
 }
-*/
+
 /* 代码块美化 */
 #hexo-blog-encrypt pre {
   background-color: #2d2d2d;
@@ -185,7 +185,7 @@ article .article-content pre code,
 /* ============================================================
    2. 一份多用：把完整 TOC 样式同时作用到 #header-post 和 #hexo-blog-encrypt
    ============================================================ */
-/*
+
 #header-post #toc,
 #hexo-blog-encrypt #toc {
   float:        right;
@@ -285,100 +285,5 @@ article .article-content pre code,
 #hexo-blog-encrypt + .toc-article .toc-level-6 {
   display: none;
 }
-*/
 
-/* 统一 TOC 样式，适用于 #header-post 和 #hexo-blog-encrypt */
-.toc,
-nav.toc,
-#toc {
-  display: block;
-  visibility: visible;
-  overflow: auto;
-  margin: 1rem auto;
-  padding: 1rem;
-  max-width: 300px;
-  font-family: "LXGW WenKai TC", "LXGW WenKai TC Fallback: Arial", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  background: #f9f9f9;
-  box-sizing: border-box;
-}
 
-#header-post #toc,
-#hexo-blog-encrypt #toc {
-  float: right;
-  clear: both;
-  margin-top: 1rem;
-  padding-right: 2rem;
-  max-width: 20em;
-  max-height: calc(95vh - 7rem);
-  text-align: right;
-}
-
-.toc a,
-nav.toc a,
-#toc a {
-  color: #84AF9B;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.toc a:hover,
-nav.toc a:hover,
-#toc a:hover,
-#header-post #toc a:hover,
-#hexo-blog-encrypt #toc a:hover {
-  color: #2bbc8a;
-  text-decoration: underline;
-}
-
-.toc .toc-level-1 > .toc-link,
-#header-post #toc .toc-level-1 > .toc-link,
-#hexo-blog-encrypt .toc-level-1 > .toc-link {
-  display: none;
-}
-
-.toc .toc-level-2,
-#header-post #toc .toc-level-2,
-#hexo-blog-encrypt .toc-level-2 {
-  color: #363533;
-  font-size: 0.8rem;
-}
-
-.toc .toc-level-2:before,
-#header-post #toc .toc-level-2:before,
-#hexo-blog-encrypt .toc-level-2:before {
-  color: #d44375;
-  content: "#";
-}
-
-.toc .toc-level-3,
-#header-post #toc .toc-level-3,
-#hexo-blog-encrypt .toc-level-3 {
-  color: #666;
-  font-size: 0.7rem;
-}
-
-.toc .toc-level-4,
-#header-post #toc .toc-level-4,
-#hexo-blog-encrypt .toc-level-4 {
-  color: #525252;
-  font-size: 0.4rem;
-}
-
-.toc .toc-level-5,
-.toc .toc-level-6,
-#header-post #toc .toc-level-5,
-#header-post #toc .toc-level-6,
-#hexo-blog-encrypt .toc-level-5,
-#hexo-blog-encrypt .toc-level-6 {
-  display: none;
-}
-
-.toc .toc-number,
-#header-post #toc .toc-number,
-#hexo-blog-encrypt .toc-number {
-  display: none;
-}
