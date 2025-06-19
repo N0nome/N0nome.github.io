@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Athena维修记录补档 | Hexo | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="writeup">
+  <meta name="description" content="补档一下我上一篇的愚蠢，全程都是自己yy按照上一篇的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成 这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下 正常安装完成reboot我好好去翻了一下官方的doc当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包    但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Athena维修记录补档">
+<meta property="og:url" content="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="补档一下我上一篇的愚蠢，全程都是自己yy按照上一篇的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成 这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下 正常安装完成reboot我好好去翻了一下官方的doc当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包    但">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/athenacon.png">
+<meta property="og:image" content="http://example.com/images/athenacon-1.png">
+<meta property="og:image" content="http://example.com/images/athenacon-2.png">
+<meta property="og:image" content="http://example.com/images/athenacon-3.png">
+<meta property="article:published_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/athenacon.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="">
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">John Doe</h5>
+        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              Archives
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              Tags
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/yscoder" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="http://www.weibo.com/ysweb" target="_blank" >
+              <i class="icon icon-lg icon-weibo"></i>
+              Weibo
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/404"  >
+              <i class="icon icon-lg icon-link"></i>
+              测试
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2025</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Athena维修记录补档</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">Athena维修记录补档</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2025-06-19T13:59:04.959Z" itemprop="datePublished" class="page-time">
+  2025-06-19
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-Athena维修记录补档/Athena维修记录补档" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%A3%E5%B8%B8%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90reboot"><span class="post-toc-number">1.</span> <span class="post-toc-text">正常安装完成reboot</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%8B%E8%AF%95%E8%AF%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">重新安装一下试试</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>补档一下我<a target="_blank" rel="noopener" href="https://n0nome.github.io/2025/05/27/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/">上一篇</a>的愚蠢，全程都是自己yy<br>按照<a target="_blank" rel="noopener" href="https://n0nome.github.io/2025/05/27/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/">上一篇</a>的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成</p>
+<p>这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下</p>
+<h2 id="正常安装完成reboot"><a href="#正常安装完成reboot" class="headerlink" title="正常安装完成reboot"></a>正常安装完成reboot</h2><p>我好好去翻了一下官方的<a target="_blank" rel="noopener" href="https://athenaos.org/en/support/troubleshooting/">doc</a><br><img src="/images/athenacon.png"><br>当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty<br><img src="/images/athenacon-1.png"><br>尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包<br>    但是doc中提供的这些包名来自于Fedora 或 RHEL 系列发行版，arch上有他自己的<br>    Fedora&#x2F;RHEL 包名	Arch Linux 对应包名<br>    xorg-x11-server-Xorg	xorg-server<br>    xorg-x11-server-Xwayland	xorg-xwayland<br>    xorg-x11-drv-libinput	xf86-input-libinput<br>    当然也可以安装xorg完整的，不过我没有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S xorg-server xorg-xwayland xf86-input-libinput</span><br></pre></td></tr></table></figure>
+<p><img src="/images/athenacon-2.png"><br>安装完毕之后，有点不敢重启了哈哈哈</p>
+<p>同志，大胆重启<br>很好，还是blackscreen，再重启进入tty看一下日志吧</p>
+<p>journalctl看报错还是x驱动的报错，那我直接先把他给挪出去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> <span class="built_in">mv</span> /usr/lib/xorg/modules/drivers/vmware_drv.so /root/</span><br><span class="line"><span class="built_in">sudo</span> pacman -S xf86-video-vesa xf86-video-fbdev</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart sddm</span><br><span class="line"></span><br><span class="line">[<span class="built_in">sudo</span>] xxx 的密码：</span><br><span class="line">警告：xf86-video-vesa-2.6.0-2 已经为最新 -- 重新安装</span><br><span class="line">正在解析依赖关系...</span><br><span class="line">正在查找软件包冲突...</span><br><span class="line"></span><br><span class="line">软件包 (2) xf86-video-fbdev-0.5.1-1  xf86-video-vesa-2.6.0-2</span><br><span class="line"></span><br><span class="line">下载大小：      0.01 MiB</span><br><span class="line">全部安装大小：  0.07 MiB</span><br><span class="line">净更新大小：    0.03 MiB</span><br><span class="line"></span><br><span class="line">:: 进行安装吗？ [Y/n] </span><br><span class="line">:: 正在获取软件包......</span><br><span class="line"> xf86-video-fbdev-0.5.1-1-x86_64                                                                              13.3 KiB  54.6 KiB/s 00:00 [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查密钥环里的密钥                                                                                                             [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查软件包完整性                                                                                                               [####################################################################################] 100%</span><br><span class="line">(2/2) 正在加载软件包文件                                                                                                                 [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查文件冲突                                                                                                                   [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查可用存储空间                                                                                                               [####################################################################################] 100%</span><br><span class="line">:: 正在处理软件包的变化...</span><br><span class="line">(1/2) 正在重新安装 xf86-video-vesa                                                                                                       [####################################################################################] 100%</span><br><span class="line">(2/2) 正在安装 xf86-video-fbdev                                                                                                          [####################################################################################] 100%</span><br><span class="line">:: 正在运行事务后钩子函数...</span><br><span class="line">(1/1) Arming ConditionNeedsUpdate...</span><br></pre></td></tr></table></figure>
+<p><img src="/images/athenacon-3.png"><br>然后又回到小窗户了</p>
+<p>这可以说明是那个驱动的问题了吧</p>
+<h2 id="重新安装一下试试"><a href="#重新安装一下试试" class="headerlink" title="重新安装一下试试"></a>重新安装一下试试</h2><p>其实我感觉在<code>set cyber role</code>的过程之后还是会出现blackscreen<br>不过先重新装一下驱动和open-vm-tools试试</p>
+<p>ok，装过了，一碰就G，那个VMware_drv.so只要在那个文件夹里面就不得行。。。</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/" target="_blank" rel="external">http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/</a>
+                </p>
+                <footer><cite><a href="http://example.com">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2025/06/19/Certificate/Certificate/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">HackTheBox——HTB Certificate Writeup</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Athena维修记录补档二</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Athena维修记录补档/Athena维修记录补档" data-title="Athena维修记录补档" data-url="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "Athena维修记录补档",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

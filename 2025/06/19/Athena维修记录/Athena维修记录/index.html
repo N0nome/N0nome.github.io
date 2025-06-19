@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Athena维修记录 | Hexo | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="writeup">
+  <meta name="description" content="最近两天Athena坏了，排查来排查去发现可能是vmware的显卡驱动坏了顺便也总结一下之前无脑安装Athena的错误 无脑安装Athena在之前的文章中还用proxychains4去挂代理，实际上没什么用现在请在主机上的代理工具上开启tun模式，他会创建一个虚拟网卡，将流量都转发到这个上面，具体的在这里不详细讲了，可以Google一下. 开了tun模式之后再进行安装就可以了，这时候也不需要修改&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Athena维修记录">
+<meta property="og:url" content="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近两天Athena坏了，排查来排查去发现可能是vmware的显卡驱动坏了顺便也总结一下之前无脑安装Athena的错误 无脑安装Athena在之前的文章中还用proxychains4去挂代理，实际上没什么用现在请在主机上的代理工具上开启tun模式，他会创建一个虚拟网卡，将流量都转发到这个上面，具体的在这里不详细讲了，可以Google一下. 开了tun模式之后再进行安装就可以了，这时候也不需要修改&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/athena.png">
+<meta property="og:image" content="http://example.com/images/athena-1.png">
+<meta property="og:image" content="http://example.com/images/athena-2.png">
+<meta property="og:image" content="http://example.com/images/athena-3.png">
+<meta property="og:image" content="http://example.com/images/athena-4.png">
+<meta property="og:image" content="http://example.com/images/athena-5.png">
+<meta property="og:image" content="http://example.com/images/athena-6.png">
+<meta property="og:image" content="http://example.com/images/athena-7.png">
+<meta property="og:image" content="http://example.com/images/athena-8.png">
+<meta property="og:image" content="http://example.com/images/athena-9.png">
+<meta property="og:image" content="http://example.com/images/athena-10.png">
+<meta property="og:image" content="http://example.com/images/athena-11.png">
+<meta property="article:published_time" content="2025-06-19T13:59:04.955Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:04.955Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/athena.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="">
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">John Doe</h5>
+        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              Archives
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              Tags
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/yscoder" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="http://www.weibo.com/ysweb" target="_blank" >
+              <i class="icon icon-lg icon-weibo"></i>
+              Weibo
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/404"  >
+              <i class="icon icon-lg icon-link"></i>
+              测试
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2025</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Athena维修记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">Athena维修记录</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2025-06-19T13:59:04.955Z" itemprop="datePublished" class="page-time">
+  2025-06-19
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-Athena维修记录/Athena维修记录" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%A0%E8%84%91%E5%AE%89%E8%A3%85Athena"><span class="post-toc-number">1.</span> <span class="post-toc-text">无脑安装Athena</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-number">2.</span> <span class="post-toc-text">显卡驱动的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#display-manager"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">display-manager</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E5%A4%8D"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修复</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近两天Athena坏了，排查来排查去发现可能是vmware的显卡驱动坏了<br>顺便也总结一下之前<a target="_blank" rel="noopener" href="https://n0nome.github.io/2025/04/02/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/">无脑安装Athena的错误</a></p>
+<h2 id="无脑安装Athena"><a href="#无脑安装Athena" class="headerlink" title="无脑安装Athena"></a>无脑安装Athena</h2><p>在之前的文章中还用proxychains4去挂代理，实际上没什么用<br>现在请在主机上的代理工具上开启<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/TUN/TAP">tun模式</a>，他会创建一个虚拟网卡，将流量都转发到这个上面，具体的在这里不详细讲了，可以<a target="_blank" rel="noopener" href="https://www.google.com/search?q=tun%E6%A8%A1%E5%BC%8F&sca_esv=834482dd15337b1d&rlz=1C1ONGR_en__1147__1147&ei=I2I1aK6wC6yQ4-EPo9qToQQ&ved=0ahUKEwjuzdWFicONAxUsyDgGHSPtJEQQ4dUDCBA&uact=5&oq=tun%E6%A8%A1%E5%BC%8F&gs_lp=Egxnd3Mtd2l6LXNlcnAiCXR1buaooeW8j0ieGVDOA1inGHAIeAGQAQCYAacBoAHECKoBAzAuOLgBA8gBAPgBAZgCCKAC1QLCAgoQABiwAxjWBBhHwgIFEAAYgATCAgoQABiABBhDGIoFwgIUEC4YgAQYxwEYmAUYmQUYngUYrwGYAwCIBgGQBgqSBwM2LjKgB9UJsgcDMC4yuAe7AsIHBzAuMy40LjHIByQ&sclient=gws-wiz-serp">Google</a>一下.</p>
+<p>开了tun模式之后再进行安装就可以了，这时候也不需要修改<code>/etc/pacman.conf</code>中的配置了，可以顺利的执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> pacman-key --init</span><br><span class="line"></span><br><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> pacman -Sy</span><br><span class="line">:: Synchronizing package databases...</span><br><span class="line"> athena is up to <span class="built_in">date</span></span><br><span class="line"> core is up to <span class="built_in">date</span></span><br><span class="line"> extra is up to <span class="built_in">date</span></span><br><span class="line"> multilib is up to <span class="built_in">date</span></span><br><span class="line"> chaotic-aur         627.1 KiB   366 KiB/s 00:02 [#####################################################################################] 100%</span><br></pre></td></tr></table></figure>
+
+<p>正常安装到结束也不会出现什么问题<br><img src="/images/athena.png"></p>
+<h2 id="显卡驱动的问题"><a href="#显卡驱动的问题" class="headerlink" title="显卡驱动的问题"></a>显卡驱动的问题</h2><p>这时候重要的问题来了</p>
+<p>如果这时候重启，可能会出现我出现的问题——loading kernel之后就黑屏了，没有loading的详细信息，按什么键也不可以进去tty交互页面<br>不信我们来重启一下<br><img src="/images/athena-1.png"><br><img src="/images/athena-2.png"><br>看，还可以看到有一个小窗户</p>
+<p>重启一下修改一下grub引导进入tty的交互页面<br><img src="/images/athena-3.png"><br>进入到这个界面的时候按<code>e</code>进入grub命令行<br><img src="/images/athena-4.png"><br>按👇方向键找到下图中的部分<br><img src="/images/athena-5.png"><br>给他改一下<br><img src="/images/athena-6.png"><br>删掉<code>quiet</code>，再结尾加上<code>systemd.unit=multi-user.target nomodeset</code><br>Ctrl+x 然后他会loading<br>这时候就会看到加载过程和tty交互的<br><img src="/images/athena-7.png"><br><img src="/images/athena-8.png"><br>输入刚刚安装创建的用户名回车就可以登录进去了</p>
+<p>这里如果自己想要排查的话建议开ssh，然后用ssh连上去，因为在虚拟机的这个交互不太方便</p>
+<p>以防万一先装一下openssh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S openssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="built_in">sudo</span> su <span class="comment">#(没错可以直接切换到root)</span></span><br><span class="line">passwd xxx <span class="comment">#你的用户名</span></span><br></pre></td></tr></table></figure>
+<p>然后在主机就可以ssh连上去排查了</p>
+<h3 id="display-manager"><a href="#display-manager" class="headerlink" title="display-manager"></a>display-manager</h3><p>但你查看display-manager状态的时候会看到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> systemctl status display-manager</span><br><span class="line">○ sddm.service - Simple Desktop Display Manager</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/sddm.service; enabled; preset: disabled)</span><br><span class="line">     Active: inactive (dead)</span><br><span class="line">       Docs: man:sddm(1)</span><br><span class="line">             man:sddm.conf(5)</span><br></pre></td></tr></table></figure>
+<p>继续</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> journalctl -u sddm.service -n 50</span><br><span class="line">5月 27 15:20:04 Athena systemd[1]: Started Simple Desktop Display Manager.</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Initializing...</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Starting...</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Logind interface found</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Adding new display...</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Loaded empty theme configuration</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Xauthority path: <span class="string">&quot;/run/sddm/xauth_oLQvgT&quot;</span></span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Using VT 2</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Display server starting...</span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Writing cookie to <span class="string">&quot;/run/sddm/xauth_oLQvgT&quot;</span></span><br><span class="line">5月 27 15:20:04 Athena sddm[610]: Running: /usr/bin/X -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_oLQvgT -noreset -displayfd 16</span><br><span class="line">5月 27 15:20:06 Athena systemd-coredump[648]: [🡕] Process 620 (Xorg) of user 0 dumped core.</span><br><span class="line">                                               </span><br><span class="line">                                               Stack trace of thread 620:</span><br><span class="line">                                               <span class="comment">#0  0x00007f20e31d974c n/a (libc.so.6 + 0x9774c)</span></span><br><span class="line">                                               <span class="comment">#1  0x00007f20e317fdc0 raise (libc.so.6 + 0x3ddc0)</span></span><br><span class="line">                                               <span class="comment">#2  0x00007f20e316757a abort (libc.so.6 + 0x2557a)</span></span><br><span class="line">                                               <span class="comment">#3  0x00005566d1994b3e OsAbort (/usr/lib/Xorg + 0x153b3e)</span></span><br><span class="line">                                               <span class="comment">#4  0x00005566d1996037 FatalError (/usr/lib/Xorg + 0x155037)</span></span><br><span class="line">                                               <span class="comment">#5  0x00005566d199cfd8 n/a (/usr/lib/Xorg + 0x15bfd8)</span></span><br><span class="line">                                               <span class="comment">#6  0x00007f20e317fef0 n/a (libc.so.6 + 0x3def0)</span></span><br><span class="line">                                               <span class="comment">#7  0x00007f20e32c7849 n/a (libc.so.6 + 0x185849)</span></span><br><span class="line">                                               <span class="comment">#8  0x00007f20e37b9694 n/a (vmware_drv.so + 0xb694)</span></span><br><span class="line">                                               <span class="comment">#9  0x00005566d18b5c4b AddScreen (/usr/lib/Xorg + 0x74c4b)</span></span><br><span class="line">                                               <span class="comment">#10 0x00005566d19ba15d InitOutput (/usr/lib/Xorg + 0x17915d)</span></span><br><span class="line">                                               <span class="comment">#11 0x00005566d1873c69 n/a (/usr/lib/Xorg + 0x32c69)</span></span><br><span class="line">                                               <span class="comment">#12 0x00007f20e31696b5 n/a (libc.so.6 + 0x276b5)</span></span><br><span class="line">                                               <span class="comment">#13 0x00007f20e3169769 __libc_start_main (libc.so.6 + 0x27769)</span></span><br><span class="line">                                               <span class="comment">#14 0x00005566d18752b5 _start (/usr/lib/Xorg + 0x342b5)</span></span><br><span class="line">                                               ELF object binary architecture: AMD x86-64</span><br><span class="line">5月 27 15:20:06 Athena sddm[610]: Failed to <span class="built_in">read</span> display number from pipe</span><br><span class="line">5月 27 15:20:06 Athena sddm[610]: Display server stopping...</span><br><span class="line">5月 27 15:20:06 Athena sddm[610]: Attempt 1 starting the Display server on vt 2 failed</span><br><span class="line">5月 27 15:20:08 Athena sddm[610]: Display server starting...</span><br><span class="line">5月 27 15:20:08 Athena sddm[610]: Writing cookie to <span class="string">&quot;/run/sddm/xauth_oLQvgT&quot;</span></span><br><span class="line">。。。</span><br><span class="line">。。。</span><br><span class="line">。。。</span><br><span class="line">5月 27 15:20:14 Athena sddm[610]: Failed to <span class="built_in">read</span> display number from pipe</span><br><span class="line">5月 27 15:20:14 Athena sddm[610]: Display server stopping...</span><br><span class="line">5月 27 15:20:14 Athena sddm[610]: Attempt 3 starting the Display server on vt 2 failed</span><br><span class="line">5月 27 15:20:14 Athena sddm[610]: Could not start Display server on vt 2</span><br><span class="line">5月 27 15:22:04 Athena sddm[610]: Signal received: SIGTERM</span><br><span class="line">5月 27 15:22:04 Athena systemd[1]: Stopping Simple Desktop Display Manager...</span><br><span class="line">5月 27 15:22:04 Athena systemd[1]: sddm.service: Deactivated successfully.</span><br><span class="line">5月 27 15:22:04 Athena systemd[1]: Stopped Simple Desktop Display Manager.</span><br><span class="line">5月 27 15:22:04 Athena systemd[1]: sddm.service: Consumed 5.537s CPU <span class="keyword">time</span>, 17.1M memory peak.</span><br></pre></td></tr></table></figure>
+
+<p>这里测试一下Xorg能不能单独运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ startx</span><br><span class="line">xauth:  file /home/xxx/.Xauthority does not exist</span><br><span class="line">xauth:  file /home/xxx/.Xauthority does not exist</span><br><span class="line">^C^C</span><br><span class="line">/usr/lib/Xorg.wrap: Only console <span class="built_in">users</span> are allowed to run the X server</span><br><span class="line">xinit: giving up</span><br><span class="line">xinit: unable to connect to X server: Connection refused</span><br><span class="line">xinit: server error</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> Xorg -retro</span><br><span class="line"></span><br><span class="line">X.Org X Server 1.21.1.16</span><br><span class="line">X Protocol Version 11, Revision 0</span><br><span class="line">Current Operating System: Linux Athena 6.14.7-arch2-1 <span class="comment">#1 SMP PREEMPT_DYNAMIC Thu, 22 May 2025 05:37:49 +0000 x86_64</span></span><br><span class="line">Kernel <span class="built_in">command</span> line: BOOT_IMAGE=/vmlinuz-linux root=UUID=35dfce14-7d79-45a1-bee0-4081dfa4543a rw rootflags=subvol=@ loglevel=3 audit=0 nvme_load=<span class="built_in">yes</span> zswap.enabled=0 fbcon=nodefer nowatchdog systemd.unit=multi-user.target nomodeset</span><br><span class="line"> </span><br><span class="line">Current version of pixman: 0.46.0</span><br><span class="line">        Before reporting problems, check http://wiki.x.org</span><br><span class="line">        to make sure that you have the latest version.</span><br><span class="line">Markers: (--) probed, (**) from config file, (==) default setting,</span><br><span class="line">        (++) from <span class="built_in">command</span> line, (!!) notice, (II) informational,</span><br><span class="line">        (WW) warning, (EE) error, (NI) not implemented, (??) unknown.</span><br><span class="line">(==) Log file: <span class="string">&quot;/var/log/Xorg.0.log&quot;</span>, Time: Tue May 27 16:25:42 2025</span><br><span class="line">(==) Using config directory: <span class="string">&quot;/etc/X11/xorg.conf.d&quot;</span></span><br><span class="line">(==) Using system config directory <span class="string">&quot;/usr/share/X11/xorg.conf.d&quot;</span></span><br><span class="line">(EE) </span><br><span class="line">(EE) Backtrace:</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 0: /usr/lib/Xorg (?+0x0) [0x55d9c137ef7c]</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 1: /usr/lib/libc.so.6 (?+0x0) [0x7f1d01ad7ef0]</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 2: /usr/lib/libc.so.6 (?+0x0) [0x7f1d01c1f849]</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 3: /usr/lib/xorg/modules/drivers/vmware_drv.so (?+0x0) [0x7f1d02111694]</span><br><span class="line">(EE) 4: /usr/lib/Xorg (AddScreen+0x11b) [0x55d9c1297c4b]</span><br><span class="line">(EE) 5: /usr/lib/Xorg (InitOutput+0x3bd) [0x55d9c139c15d]</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 6: /usr/lib/Xorg (?+0x0) [0x55d9c1255c69]</span><br><span class="line">(EE) unw_get_proc_name failed: no unwind info found [-10]</span><br><span class="line">(EE) 7: /usr/lib/libc.so.6 (?+0x0) [0x7f1d01ac16b5]</span><br><span class="line">(EE) 8: /usr/lib/libc.so.6 (__libc_start_main+0x89) [0x7f1d01ac1769]</span><br><span class="line">(EE) 9: /usr/lib/Xorg (_start+0x25) [0x55d9c12572b5]</span><br><span class="line">(EE) </span><br><span class="line">(EE) Segmentation fault at address 0x0</span><br><span class="line">(EE) </span><br><span class="line">Fatal server error:</span><br><span class="line">(EE) Caught signal 11 (Segmentation fault). Server aborting</span><br><span class="line">(EE) </span><br><span class="line">(EE) </span><br><span class="line">Please consult the The X.Org Foundation support </span><br><span class="line">         at http://wiki.x.org</span><br><span class="line"> <span class="keyword">for</span> <span class="built_in">help</span>. </span><br><span class="line">(EE) Please also check the <span class="built_in">log</span> file at <span class="string">&quot;/var/log/Xorg.0.log&quot;</span> <span class="keyword">for</span> additional information.</span><br><span class="line">(EE) </span><br><span class="line">(EE) Server terminated with error (1). Closing <span class="built_in">log</span> file.</span><br><span class="line">已中止</span><br></pre></td></tr></table></figure>
+<p>真是tmd事多呀</p>
+<p>看下显卡</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ lspci -k | grep -EA3 <span class="string">&#x27;(VGA|3D)&#x27;</span></span><br><span class="line">00:0f.0 VGA compatible controller: VMware SVGA II Adapter</span><br><span class="line">        Subsystem: VMware SVGA II Adapter</span><br><span class="line">        Kernel modules: vmwgfx</span><br><span class="line">00:10.0 SCSI storage controller: Broadcom / LSI 53c1030 PCI-X Fusion-MPT Dual Ultra320 SCSI (rev 01)</span><br><span class="line">        Subsystem: VMware LSI Logic Parallel SCSI Controller (emulated)</span><br></pre></td></tr></table></figure>
+
+<p>从上面的sddm日志里看，Xorg 在加载 vmware_drv.so 时又崩溃了（Segfault），导致 SDDM 一直重试启动 Xorg 也失败。</p>
+<p>如果想进入图形化界面，可以绕过出现问题的VMware驱动，改用内核自带的modesetting驱动（来自gpt）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装备用驱动包</span></span><br><span class="line"><span class="comment"># 确保已经安装了 fbdev/vesa 作为备胎（虽然真正启用的是 modesetting）：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> pacman -S xf86-video-fbdev xf86-video-vesa</span><br><span class="line"><span class="comment"># 2. 删除可能残留的 VMware X 驱动配置</span></span><br><span class="line"><span class="comment"># 把任何强制加载 vmware_drv 的配置都删掉：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -f /etc/X11/xorg.conf.d/20-vmware.conf \</span><br><span class="line">           /usr/share/X11/xorg.conf.d/20-vmware.conf</span><br><span class="line"><span class="comment"># 3. 强制让 Xorg 只用 modesetting</span></span><br><span class="line"><span class="comment"># 在 /etc/X11/xorg.conf.d/ 下新建一个配置文件：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/X11/xorg.conf.d</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/X11/xorg.conf.d/10-modesetting.conf &gt; /dev/null &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">Section <span class="string">&quot;Device&quot;</span></span><br><span class="line">    Identifier <span class="string">&quot;PrimaryGPU&quot;</span></span><br><span class="line">    Driver <span class="string">&quot;modesetting&quot;</span></span><br><span class="line">EndSection</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># 这会告诉 Xorg 不再尝试加载 vmware 驱动，而直接使用内核的 KMS modesetting。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 重启并验证</span></span><br><span class="line"><span class="comment"># 重新启动 SDDM：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl restart sddm</span><br></pre></td></tr></table></figure>
+<p>然后就会看到图形化界面<br><img src="/images/athena-9.png"><br>但是小巧可爱</p>
+<h3 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h3><p>保险起见，我先把Athena挂起，然后修复一下vmware<br><img src="/images/athena-10.png"><br>没有作用的话就是个心里安慰吧</p>
+<p>重启之后打开Athena，重新安装一下VMware的X驱动看会不会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> pacman -Syu xf86-video-vmware open-vm-tools open-vm-tools-desktop</span><br><span class="line">:: 正在同步软件包数据库...</span><br><span class="line"> athena 已经是最新版本</span><br><span class="line"> core 已经是最新版本</span><br><span class="line"> extra 已经是最新版本</span><br><span class="line"> multilib 已经是最新版本</span><br><span class="line"> chaotic-aur 已经是最新版本</span><br><span class="line">警告：xf86-video-vmware-13.4.0-4 已经为最新 -- 重新安装</span><br><span class="line">警告：open-vm-tools-6:12.5.2-2 已经为最新 -- 重新安装</span><br><span class="line">错误：未找到目标：open-vm-tools-desktop</span><br></pre></td></tr></table></figure>
+<p>重新装一下open-vm-tools，我是参考<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/zh-sg/VMware/%E5%AE%89%E8%A3%85_Arch_Linux_%E4%B8%BA%E8%99%9A%E6%8B%9F%E6%9C%BA">arch linux cn</a>中给的办法进行的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在内核中加上驱动程序</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mkinitcpio.conf</span><br><span class="line"></span><br><span class="line">MODULES=(... vmw_balloon vmw_pvscsi vsock vmw_vsock_vmci_transport ...)</span><br><span class="line"><span class="comment"># 一般是在上面</span></span><br><span class="line">esc :wq</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> systemctl start vmtoolsd.service vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>
+<p>然后大胆重启</p>
+<p><img src="/images/athena-11.png"><br>成功修好了，但是总感觉不对你知道吧，就是这应该是进行aegis-tui之后的，但是修复进去完全没看到他的影子。。。<br>大不了再进行一下试试</p>
+<p>试过了，可以正常使用了，该下啥下啥吧</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/" target="_blank" rel="external">http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/</a>
+                </p>
+                <footer><cite><a href="http://example.com">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Athena维修记录补档二</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2025/06/13/hello-world/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Athena维修记录/Athena维修记录" data-title="Athena维修记录" data-url="http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "Athena维修记录",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://example.com/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
