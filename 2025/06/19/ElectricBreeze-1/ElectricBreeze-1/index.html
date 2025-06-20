@@ -1,20 +1,382 @@
-extends partial/layout.pug
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Your security team must a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——SherLocks ElectricBreeze-1 Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Your security team must a">
+<meta property="og:locale">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-13.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-8.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-10.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-11.png">
+<meta property="og:image" content="https://n0nome.github.io/images/ElectricBreeze-1-12.png">
+<meta property="article:published_time" content="2025-06-19T13:59:05.015Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:05.019Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/ElectricBreeze-1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——SherLocks ElectricBreeze-1 Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-block site_title
-    != page.title + ' • ' + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
+    <!-- Umami Analytics -->
 
-block container
-    include mixins/post.pug
-    +post(page)
 
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-block copyright
-    include partial/copyright.pug
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/06/19/Certificate/Certificate/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&text=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&is_video=false&description=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——SherLocks ElectricBreeze-1 Writeup&body=Check out this article: https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&name=HackTheBox——SherLocks ElectricBreeze-1 Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&t=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Task1"><span class="toc-number">1.</span> <span class="toc-text">Task1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task2"><span class="toc-number">2.</span> <span class="toc-text">Task2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task3"><span class="toc-number">3.</span> <span class="toc-text">Task3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task4"><span class="toc-number">4.</span> <span class="toc-text">Task4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task5"><span class="toc-number">5.</span> <span class="toc-text">Task5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task6"><span class="toc-number">6.</span> <span class="toc-text">Task6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task7"><span class="toc-number">7.</span> <span class="toc-text">Task7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task8"><span class="toc-number">8.</span> <span class="toc-text">Task8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task9"><span class="toc-number">9.</span> <span class="toc-text">Task9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task10"><span class="toc-number">10.</span> <span class="toc-text">Task10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task11"><span class="toc-number">11.</span> <span class="toc-text">Task11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task12"><span class="toc-number">12.</span> <span class="toc-text">Task12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task13"><span class="toc-number">13.</span> <span class="toc-text">Task13</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task14"><span class="toc-number">14.</span> <span class="toc-text">Task14</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——SherLocks ElectricBreeze-1 Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-19T13:59:05.015Z" class="dt-published" itemprop="datePublished">2025-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><img src="/images/ElectricBreeze-1.png"></p>
+<pre><code>Your security team must always be up-to-date and aware of the threats targeting organizations in your industry. As you begin your journey as a Threat Intelligence Intern, equipped with some SOC experience, your manager has assigned you a task to test your research skills and how effectively you can leverage the MITRE ATT&amp;CK framework. * Conduct thorough research on Volt Typhoon. * Use the MITRE ATT&amp;CK framework to map adversary behavior and tactics into actionable insights. Impress your manager with your assessment, showcasing your passion for threat intelligence.
+
+您的安全团队必须始终掌握最新动态，并了解您所在行业中针对组织的威胁。当您以威胁情报实习生的身份开启您的职业生涯时，您已经具备了一些安全运营中心 (SOC) 经验，您的经理会给您分配一项任务，以测试您的研究技能以及您如何有效地利用 MITRE ATT&amp;CK 框架。* 对 Volt Typhoon 进行深入研究。* 使用 MITRE ATT&amp;CK 框架将攻击者的行为和策略转化为切实可行的洞察。用您的评估来打动您的经理，展现您对威胁情报的热情。
+</code></pre>
+<p>没有文件下载，全是Google信息收集</p>
+<h2 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h2><pre><code>Based on MITRE&#39;s sources, since when has Volt Typhoon been active?
+根据 MITRE 的消息来源，Volt Typhoon 自何时开始活跃？
+</code></pre>
+<p>Google一下这个东东<br><img src="/images/ElectricBreeze-1-13.png"><br>里面有一句话<code>has been active since at least 2021</code>，所以答案是<br><code>Answer:2021</code></p>
+<h2 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h2><pre><code>MITRE identifies two OS credential dumping techniques used by Volt Typhoon. One is LSASS Memory access (T1003.001). What is the Attack ID for the other technique?
+MITRE 发现 Volt Typhoon 使用了两种操作系统凭据转储技术。一种是 LSASS 内存访问 (T1003.001)。另一种技术的攻击 ID 是什么？
+</code></pre>
+<p>往下滑搜索dump可以看到<br><img src="/images/ElectricBreeze-1-1.png"><br><code>Answer:T1003.003</code></p>
+<h2 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h2><pre><code>Which database is targeted by the credential dumping technique mentioned earlier?
+前面提到的凭证转储技术针对的是哪个数据库？
+</code></pre>
+<p>点进第二个可以看到<br><img src="/images/ElectricBreeze-1-2.png"><br><code>Answer:Active Directory</code></p>
+<h2 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h2><pre><code>Which registry hive is required by the threat actor to decrypt the targeted database?  
+威胁行为者需要哪个注册表配置单元来解密目标数据库？
+</code></pre>
+<p>找注册表相关的<br><img src="/images/ElectricBreeze-1-3.png"><br><code>Answer:SYSTEM</code></p>
+<h2 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h2><pre><code>During the June 2024 campaign, an adversary was observed using a Zero-Day Exploitation targeting Versa Director. What is the name of the Software/Malware that was used?
+在 2024 年 6 月的活动中，观察到对手使用针对 Versa Director 的零日漏洞利用。被使用的软件/恶意软件的名称是什么？ 
+</code></pre>
+<p>回到<code>Volt Typhoon</code>，在里面找<code>Versa Director</code><br><img src="/images/ElectricBreeze-1-4.png"><br>开发了一个新的webshell<br><code>Answer:VersaMem</code></p>
+<h2 id="Task6"><a href="#Task6" class="headerlink" title="Task6"></a>Task6</h2><pre><code>According to the Server Software Component, what type of malware was observed?
+根据服务器软件组件，观察到什么类型的恶意软件？
+</code></pre>
+<p>答案在上面<br><code>Answer:web shell</code></p>
+<h2 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h2><pre><code>Where did the malware store captured credentials?
+恶意软件将捕获的凭据存储在哪里？
+</code></pre>
+<p>点进<code>VersaMem</code>介绍可以看到<br><img src="/images/ElectricBreeze-1-5.png"><br><code>Answer:/tmp/.temp.data</code></p>
+<h2 id="Task8"><a href="#Task8" class="headerlink" title="Task8"></a>Task8</h2><pre><code>According to MITRE’s reference, a Lumen/Black Lotus Labs article(Taking The Crossroads: The Versa Director Zero-Day Exploitaiton.), what was the filename of the first malware version scanned on VirusTotal?
+根据 MITRE 的参考，一篇 Lumen/Black Lotus Labs 的文章（Taking The Crossroads: The Versa Director Zero-Day Exploitaiton.），扫描的第一个恶意软件版本在 VirusTotal 上的文件名是什么？
+</code></pre>
+<p>下滑可以找到文章链接<a target="_blank" rel="noopener" href="https://blog.lumen.com/uncovering-the-versa-director-zero-day-exploitation/">Taking the Crossroads: The Versa Director Zero-Day Exploitation</a><br>在文章中可以看到<br><img src="/images/ElectricBreeze-1-6.png"><br><code>Answer:VersaTest.png</code></p>
+<h2 id="Task9"><a href="#Task9" class="headerlink" title="Task9"></a>Task9</h2><pre><code>What is the SHA256 hash of the file?
+文件的 SHA256 哈希值？
+</code></pre>
+<p>有耐心再往下滑可以看到已经给了<br><img src="/images/ElectricBreeze-1-7.png"><br><code>Answer:4bcedac20a75e8f8833f4725adfc87577c32990c3783bf6c743f14599a176c37</code></p>
+<h2 id="Task10"><a href="#Task10" class="headerlink" title="Task10"></a>Task10</h2><pre><code>According to VirusTotal, what is the file type of the malware?
+根据 VirusTotal，这个恶意软件的文件类型是什么？
+</code></pre>
+<p>可能他给的图不算太清楚，但也能看到<br>可以直接在<a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/4bcedac20a75e8f8833f4725adfc87577c32990c3783bf6c743f14599a176c37">VirusTotal</a>搜索上面的hash<br><img src="/images/ElectricBreeze-1-8.png"><br><code>Answer:jar</code></p>
+<h2 id="Task11"><a href="#Task11" class="headerlink" title="Task11"></a>Task11</h2><pre><code>What is the &#39;Created by&#39; value in the file&#39;s Manifest according to VirusTotal?
+根据 VirusTotal，文件 Manifest 中的&#39;创建者&#39;值是什么？
+</code></pre>
+<p>在VirusTotal中detail下滑可以看到<br><img src="/images/ElectricBreeze-1-9.png"><br><code>Answer:Apache Maven 3.6.0</code></p>
+<h2 id="Task12"><a href="#Task12" class="headerlink" title="Task12"></a>Task12</h2><pre><code>What is the CVE identifier associated with this malware and vulnerability?
+与此恶意软件和漏洞相关的 CVE 标识符是什么？
+</code></pre>
+<p>CVE在文件旁边也有<br><img src="/images/ElectricBreeze-1-10.png"><br><code>Answer:cve-2024-39717</code></p>
+<h2 id="Task13"><a href="#Task13" class="headerlink" title="Task13"></a>Task13</h2><pre><code>According to the CISA document(https://www.cisa.gov/sites/default/files/2024-03/aa24-038a_csa_prc_state_sponsored_actors_compromise_us_critical_infrastructure_3.pdf) referenced by MITRE, what is the primary strategy Volt Typhoon uses for defense evasion?
+根据 CISA 文档（ https://www.cisa.gov/sites/default/files/2024-03/aa24-038a_csa_prc_state_sponsored_actors_compromise_us_critical_infrastructure_3.pdf ）被 MITRE 引用的内容，Volt Typhoon 使用的防御规避的主要策略是什么？
+</code></pre>
+<p>翻文档（英文文档翻起来麻烦）<br><img src="/images/ElectricBreeze-1-11.png"><br>第三页有一个名词<code>living off the land</code> 本地利用<br>感兴趣可以看一下<a target="_blank" rel="noopener" href="https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/living-off-the-land-attack/">What Are Living off the Land (LOTL) Attacks?</a><br><code>Answer:LOTL</code></p>
+<h2 id="Task14"><a href="#Task14" class="headerlink" title="Task14"></a>Task14</h2><pre><code>In the CISA document, which file name is associated with the command potentially used to analyze logon patterns by Volt Typhoon?
+在 CISA 文档中，哪个文件名与 Volt Typhoon 用于分析登录模式的命令相关？
+</code></pre>
+<p>在附表中可以看到一个<code>OBSERVED COMMANDS</code>，在那里可以看到想要的<br><img src="/images/ElectricBreeze-1-12.png"><br><code>Answer:C:\users\public\documents\user.dat</code></p>
+<p>Game Over<br>题外话：还有兴趣可以看一下<a target="_blank" rel="noopener" href="https://medium.com/cyber-warriors/a-cyber-threat-intelligence-journey-from-hack-the-box-to-locked-shields-dae306d511cb">A Cyber Threat Intelligence Journey</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Task1"><span class="toc-number">1.</span> <span class="toc-text">Task1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task2"><span class="toc-number">2.</span> <span class="toc-text">Task2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task3"><span class="toc-number">3.</span> <span class="toc-text">Task3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task4"><span class="toc-number">4.</span> <span class="toc-text">Task4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task5"><span class="toc-number">5.</span> <span class="toc-text">Task5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task6"><span class="toc-number">6.</span> <span class="toc-text">Task6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task7"><span class="toc-number">7.</span> <span class="toc-text">Task7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task8"><span class="toc-number">8.</span> <span class="toc-text">Task8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task9"><span class="toc-number">9.</span> <span class="toc-text">Task9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task10"><span class="toc-number">10.</span> <span class="toc-text">Task10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task11"><span class="toc-number">11.</span> <span class="toc-text">Task11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task12"><span class="toc-number">12.</span> <span class="toc-text">Task12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task13"><span class="toc-number">13.</span> <span class="toc-text">Task13</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Task14"><span class="toc-number">14.</span> <span class="toc-text">Task14</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&text=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&is_video=false&description=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——SherLocks ElectricBreeze-1 Writeup&body=Check out this article: https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&title=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&name=HackTheBox——SherLocks ElectricBreeze-1 Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/&t=HackTheBox——SherLocks ElectricBreeze-1 Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

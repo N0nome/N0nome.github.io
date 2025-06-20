@@ -1,20 +1,313 @@
-extends partial/layout.pug
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 特大喜讯特大喜讯 特大喜讯我终于tmd修好了 如何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Athena维修记录补档二">
+<meta property="og:url" content="https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 特大喜讯特大喜讯 特大喜讯我终于tmd修好了 如何">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Athena维修记录补档二</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-block site_title
-    != page.title + ' • ' + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
+    <!-- Umami Analytics -->
 
-block container
-    include mixins/post.pug
-    +post(page)
 
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-block copyright
-    include partial/copyright.pug
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&text=Athena维修记录补档二"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&is_video=false&description=Athena维修记录补档二"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Athena维修记录补档二&body=Check out this article: https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&name=Athena维修记录补档二&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&t=Athena维修记录补档二"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%A4%A7%E5%96%9C%E8%AE%AF"><span class="toc-number">1.</span> <span class="toc-text">特大喜讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E5%A4%8D"><span class="toc-number">1.1.</span> <span class="toc-text">如何修复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E5%90%8E"><span class="toc-number">2.</span> <span class="toc-text">然后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E5%A4%A7%E8%83%86%E9%87%8D%E5%90%AF"><span class="toc-number">3.</span> <span class="toc-text">请大胆重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%84%89%E5%BF%AB%E7%9A%84%E4%BD%BF%E7%94%A8Athena%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">然后就可以愉快的使用Athena了</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Athena维修记录补档二
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-19T13:59:04.959Z" class="dt-published" itemprop="datePublished">2025-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code></p>
+<h2 id="特大喜讯"><a href="#特大喜讯" class="headerlink" title="特大喜讯"></a>特大喜讯</h2><p>特大喜讯 特大喜讯<br>我终于tmd修好了</p>
+<h3 id="如何修复"><a href="#如何修复" class="headerlink" title="如何修复"></a>如何修复</h3><p>目前保守治疗的办法是先正常进行Athena的安装<br>然后grub修改进入tty<br><code>sudo su</code> 进入root用户<br>安装openssh<br>开启ssh服务<br><code>systemctl start ssh</code><br>然后在本地ssh连接(这样方便我们下载编译的)</p>
+<p>然后我们找个文件夹，也可以创建一个<br>然后下载<a target="_blank" rel="noopener" href="https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz">xorg的VMware驱动</a><br>解压缩编译安装一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf xf86-video-vmware-13.4.0.tar.xz</span><br><span class="line"><span class="built_in">cd</span> xf86-video-vmware-13.4.0</span><br><span class="line">./configure <span class="variable">$XORG_CONFIG</span> &amp;&amp;</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br></pre></td></tr></table></figure>
+<p>为了确保万无一失，再复制一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> src/.libs/vmware_drv.so /usr/local/lib/xorg/modules/drivers/</span><br></pre></td></tr></table></figure>
+
+<p>然后</p>
+<h2 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h2><h2 id="请大胆重启"><a href="#请大胆重启" class="headerlink" title="请大胆重启"></a>请大胆重启</h2><h2 id="然后就可以愉快的使用Athena了"><a href="#然后就可以愉快的使用Athena了" class="headerlink" title="然后就可以愉快的使用Athena了"></a>然后就可以愉快的使用Athena了</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%A4%A7%E5%96%9C%E8%AE%AF"><span class="toc-number">1.</span> <span class="toc-text">特大喜讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E5%A4%8D"><span class="toc-number">1.1.</span> <span class="toc-text">如何修复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E5%90%8E"><span class="toc-number">2.</span> <span class="toc-text">然后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E5%A4%A7%E8%83%86%E9%87%8D%E5%90%AF"><span class="toc-number">3.</span> <span class="toc-text">请大胆重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%84%89%E5%BF%AB%E7%9A%84%E4%BD%BF%E7%94%A8Athena%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">然后就可以愉快的使用Athena了</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&text=Athena维修记录补档二"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&is_video=false&description=Athena维修记录补档二"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Athena维修记录补档二&body=Check out this article: https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&title=Athena维修记录补档二"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&name=Athena维修记录补档二&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/&t=Athena维修记录补档二"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

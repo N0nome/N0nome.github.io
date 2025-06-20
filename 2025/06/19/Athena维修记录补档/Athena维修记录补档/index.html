@@ -1,20 +1,320 @@
-extends partial/layout.pug
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="补档一下我上一篇的愚蠢，全程都是自己yy按照上一篇的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成 这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下 正常安装完成reboot我好好去翻了一下官方的doc当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包    但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Athena维修记录补档">
+<meta property="og:url" content="https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="补档一下我上一篇的愚蠢，全程都是自己yy按照上一篇的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成 这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下 正常安装完成reboot我好好去翻了一下官方的doc当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包    但">
+<meta property="og:locale">
+<meta property="og:image" content="https://n0nome.github.io/images/athenacon.png">
+<meta property="og:image" content="https://n0nome.github.io/images/athenacon-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/athenacon-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/athenacon-3.png">
+<meta property="article:published_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:04.959Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/athenacon.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Athena维修记录补档</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-block site_title
-    != page.title + ' • ' + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
+    <!-- Umami Analytics -->
 
-block container
-    include mixins/post.pug
-    +post(page)
 
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-block copyright
-    include partial/copyright.pug
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/06/19/Certificate/Certificate/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3%E4%BA%8C/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&text=Athena维修记录补档"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&is_video=false&description=Athena维修记录补档"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Athena维修记录补档&body=Check out this article: https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&name=Athena维修记录补档&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&t=Athena维修记录补档"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90reboot"><span class="toc-number">1.</span> <span class="toc-text">正常安装完成reboot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%8B%E8%AF%95%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">重新安装一下试试</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Athena维修记录补档
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-19T13:59:04.959Z" class="dt-published" itemprop="datePublished">2025-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>补档一下我<a href="https://n0nome.github.io/2025/05/27/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/">上一篇</a>的愚蠢，全程都是自己yy<br>按照<a href="https://n0nome.github.io/2025/05/27/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95/">上一篇</a>的操作最终还是会回归到Blackscreen，费了半天劲啥事也没干成</p>
+<p>这一篇就踏踏实实的写一下我的过程吧，最终结果可能还是没修好，但是记录一下</p>
+<h2 id="正常安装完成reboot"><a href="#正常安装完成reboot" class="headerlink" title="正常安装完成reboot"></a>正常安装完成reboot</h2><p>我好好去翻了一下官方的<a target="_blank" rel="noopener" href="https://athenaos.org/en/support/troubleshooting/">doc</a><br><img src="/images/athenacon.png"><br>当我尝试F3之后仍然无法今进入tty，那就还是按照上一篇的办法进入tty<br><img src="/images/athenacon-1.png"><br>尝试删除gnome-shell发现没有，那就按照他的安装一下Xorg的包<br>    但是doc中提供的这些包名来自于Fedora 或 RHEL 系列发行版，arch上有他自己的<br>    Fedora&#x2F;RHEL 包名	Arch Linux 对应包名<br>    xorg-x11-server-Xorg	xorg-server<br>    xorg-x11-server-Xwayland	xorg-xwayland<br>    xorg-x11-drv-libinput	xf86-input-libinput<br>    当然也可以安装xorg完整的，不过我没有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S xorg-server xorg-xwayland xf86-input-libinput</span><br></pre></td></tr></table></figure>
+<p><img src="/images/athenacon-2.png"><br>安装完毕之后，有点不敢重启了哈哈哈</p>
+<p>同志，大胆重启<br>很好，还是blackscreen，再重启进入tty看一下日志吧</p>
+<p>journalctl看报错还是x驱动的报错，那我直接先把他给挪出去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">╰─&gt;[👾]~ $ <span class="built_in">sudo</span> <span class="built_in">mv</span> /usr/lib/xorg/modules/drivers/vmware_drv.so /root/</span><br><span class="line"><span class="built_in">sudo</span> pacman -S xf86-video-vesa xf86-video-fbdev</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart sddm</span><br><span class="line"></span><br><span class="line">[<span class="built_in">sudo</span>] xxx 的密码：</span><br><span class="line">警告：xf86-video-vesa-2.6.0-2 已经为最新 -- 重新安装</span><br><span class="line">正在解析依赖关系...</span><br><span class="line">正在查找软件包冲突...</span><br><span class="line"></span><br><span class="line">软件包 (2) xf86-video-fbdev-0.5.1-1  xf86-video-vesa-2.6.0-2</span><br><span class="line"></span><br><span class="line">下载大小：      0.01 MiB</span><br><span class="line">全部安装大小：  0.07 MiB</span><br><span class="line">净更新大小：    0.03 MiB</span><br><span class="line"></span><br><span class="line">:: 进行安装吗？ [Y/n] </span><br><span class="line">:: 正在获取软件包......</span><br><span class="line"> xf86-video-fbdev-0.5.1-1-x86_64                                                                              13.3 KiB  54.6 KiB/s 00:00 [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查密钥环里的密钥                                                                                                             [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查软件包完整性                                                                                                               [####################################################################################] 100%</span><br><span class="line">(2/2) 正在加载软件包文件                                                                                                                 [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查文件冲突                                                                                                                   [####################################################################################] 100%</span><br><span class="line">(2/2) 正在检查可用存储空间                                                                                                               [####################################################################################] 100%</span><br><span class="line">:: 正在处理软件包的变化...</span><br><span class="line">(1/2) 正在重新安装 xf86-video-vesa                                                                                                       [####################################################################################] 100%</span><br><span class="line">(2/2) 正在安装 xf86-video-fbdev                                                                                                          [####################################################################################] 100%</span><br><span class="line">:: 正在运行事务后钩子函数...</span><br><span class="line">(1/1) Arming ConditionNeedsUpdate...</span><br></pre></td></tr></table></figure>
+<p><img src="/images/athenacon-3.png"><br>然后又回到小窗户了</p>
+<p>这可以说明是那个驱动的问题了吧</p>
+<h2 id="重新安装一下试试"><a href="#重新安装一下试试" class="headerlink" title="重新安装一下试试"></a>重新安装一下试试</h2><p>其实我感觉在<code>set cyber role</code>的过程之后还是会出现blackscreen<br>不过先重新装一下驱动和open-vm-tools试试</p>
+<p>ok，装过了，一碰就G，那个VMware_drv.so只要在那个文件夹里面就不得行。。。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90reboot"><span class="toc-number">1.</span> <span class="toc-text">正常安装完成reboot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%8B%E8%AF%95%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">重新安装一下试试</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&text=Athena维修记录补档"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&is_video=false&description=Athena维修记录补档"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Athena维修记录补档&body=Check out this article: https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&title=Athena维修记录补档"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&name=Athena维修记录补档&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/Athena%E7%BB%B4%E4%BF%AE%E8%AE%B0%E5%BD%95%E8%A1%A5%E6%A1%A3/&t=Athena维修记录补档"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

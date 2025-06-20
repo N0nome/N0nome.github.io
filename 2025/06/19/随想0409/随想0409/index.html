@@ -1,20 +1,301 @@
-extends partial/layout.pug
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="今天，累死。 上午当了一回甲方，全程感觉自己小丑表现； 下午修服务器，紧修慢修不用加班了。  已经一整天没有打WhiteRabbit了。但是一整天也不是没有学习，学了一会kubernetes（基础的），也学了一会怎么排查。晚上回家直接躺尸，脑子胀胀的，眼睛酸酸的，只能缓一下再学习。  笑死，隔了两天，分手了来的意料之外情理之中，只能祝好 感情马上就五年了，但是再过下去可能对两个人伤害更大更深，也挽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随想0409&amp;&amp;涩话0411">
+<meta property="og:url" content="https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="今天，累死。 上午当了一回甲方，全程感觉自己小丑表现； 下午修服务器，紧修慢修不用加班了。  已经一整天没有打WhiteRabbit了。但是一整天也不是没有学习，学了一会kubernetes（基础的），也学了一会怎么排查。晚上回家直接躺尸，脑子胀胀的，眼睛酸酸的，只能缓一下再学习。  笑死，隔了两天，分手了来的意料之外情理之中，只能祝好 感情马上就五年了，但是再过下去可能对两个人伤害更大更深，也挽">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-06-19T13:59:05.171Z">
+<meta property="article:modified_time" content="2025-06-19T13:59:05.171Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="random">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>随想0409&amp;&amp;涩话0411</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-block site_title
-    != page.title + ' • ' + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name='description', content=desc)
+    <!-- Umami Analytics -->
 
-block container
-    include mixins/post.pug
-    +post(page)
 
-block pagination
-    include mixins/paginator.pug
-    +post()
-    include partial/comment.pug
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-block copyright
-    include partial/copyright.pug
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/06/19/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&text=随想0409&amp;&amp;涩话0411"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&is_video=false&description=随想0409&amp;&amp;涩话0411"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=随想0409&amp;&amp;涩话0411&body=Check out this article: https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&name=随想0409&amp;&amp;涩话0411&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&t=随想0409&amp;&amp;涩话0411"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        随想0409&amp;&amp;涩话0411
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-19T13:59:05.171Z" class="dt-published" itemprop="datePublished">2025-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/random/" rel="tag">random</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <pre><code>今天，累死。
+上午当了一回甲方，全程感觉自己小丑表现；
+下午修服务器，紧修慢修不用加班了。
+
+已经一整天没有打WhiteRabbit了。但是一整天也不是没有学习，学了一会kubernetes（基础的），也学了一会怎么排查。晚上回家直接躺尸，脑子胀胀的，眼睛酸酸的，只能缓一下再学习。
+</code></pre>
+<p>笑死，隔了两天，分手了<br>来的意料之外情理之中，只能祝好</p>
+<p>感情马上就五年了，但是再过下去可能对两个人伤害更大更深，也挽留也不舍，没能改变什么结果。<br>晚上听张震岳的《<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6bi587lgWhM">小宇</a>》，深深陷入了空白。<br>也加上最近事情多，心如乱麻都不知该先想那件事，还好下午解决了工作上的事情，但是反应过来就要接受感情的结果了。</p>
+<p>现在坐在电脑跟前，相识相知又相互折磨的时光，就像有剪刀一样，剪出一张张画面，幻灯片一样在脑海里划过。<br>人家自始至终都对我很好，对我很包容也很关爱，奈何我就像长不大的孩子，让人家教了一遍又一遍，就是教不会。<br>可能真是从小老师教就没用，还是得我自己学才学的快，成长，也是一张内我的修行。</p>
+<p>今天领导也说我想起来一出不止一出，什么都想当然，这让我也局限于自己的思维，按照以往经验做事，最终也会让自己身陷漩涡，希望自己能够涨涨记性，不只是工作上，感情上也是。<br>接下来希望自己能真正学会脚踏实地，多思多问，，，<br>就说这么多吧。<br>hf今天下了雨，来一首eason的《<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Au411L7rw/?spm_id_from=333.337.search-card.all.click&vd_source=320d1b023f41f7733ec5bfedf3a86645">阴天快乐</a>》吧</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&text=随想0409&amp;&amp;涩话0411"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&is_video=false&description=随想0409&amp;&amp;涩话0411"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=随想0409&amp;&amp;涩话0411&body=Check out this article: https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&title=随想0409&amp;&amp;涩话0411"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&name=随想0409&amp;&amp;涩话0411&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/&t=随想0409&amp;&amp;涩话0411"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
