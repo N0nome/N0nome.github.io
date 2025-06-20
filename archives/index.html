@@ -1,497 +1,442 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
+
 <head>
-  <meta charset="utf-8">
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+
+<!-- Website keywords -->
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/default" title="N0nome`s Fucking Life" >
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://n0nome.github.io/archives/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
   
-  <title>Archives | Hexo | </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
   
-  <meta name="theme-color" content="#3F51B5">
-  
-  
-  <meta name="keywords" content="">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  <meta name="summary" content="">
-  <link rel="shortcut icon" href="/favicon.ico">
-  
-<link rel="stylesheet" href="/css/style.css">
+  <title>Archives · N0nome`s Fucking Life</title>
 
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
-  <div id="loading" class="active"></div>
-
-  <nav id="menu"  >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">John Doe</h5>
-        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
-      </hgroup>
-    </div>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">N0nome`s Fucking Life</a>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/"  >
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect active">
-            <a href="/archives"  >
-              <i class="icon icon-lg icon-archives"></i>
-              Archives
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags"  >
-              <i class="icon icon-lg icon-tags"></i>
-              Tags
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/yscoder" target="_blank" >
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="http://www.weibo.com/ysweb" target="_blank" >
-              <i class="icon icon-lg icon-weibo"></i>
-              Weibo
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/404"  >
-              <i class="icon icon-lg icon-link"></i>
-              测试
-            </a>
-          </li>
-      
-    </ul>
-
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>Hexo &copy; 2025</p>
-  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
-  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
-  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
-</footer>
-
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </div>
 
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Hexo</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">Hexo</h1>
-    <h5 class="subtitle">
-        
-        
-        
-    </h5>
-  </div>
-</header>
-
-    <div class="container body-wrap">
-      
-
-
-        <h3 class="archive-separator">June, 2025</h3>
-
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.171Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/">随想0409&amp;&amp;涩话0411</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/random/" rel="tag">random</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.167Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/">部分之前的WP</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.163Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/">无脑AthenaOS安装</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.143Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/WhiteRabbit/HackTheBox%E2%80%94%E2%80%94HTB%20WhiteRabbit%20writeup/">HackTheBox——HTB WhiteRabbit Writeup</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.111Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/Scrambled/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Scrambled/">HackTheBox——Tracks AD Scrambled</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.103Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/">HackTheBox——Tracks AD Return</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.091Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94SherLock%E2%80%94%E2%80%94UFO-1/HackTheBox%E2%80%94%E2%80%94SherLock%E2%80%94%E2%80%94%20UFO-1/">HackTheBox——SherLock——UFO-1</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.091Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/Planning/HackTheBox%E2%80%94%E2%80%94HTB%20Planning%20Writeup/">HackTheBox——HTB Planning Writeup</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.067Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/">HackTheBox——HTB Support Writeup</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-     <article class="archive-article">
-  <div class="archive-article-date">
-    <time datetime="2025-06-19T13:59:05.063Z" itemprop="datePublished" class="post-time">
-  Jun 19
-</time>
-
-  </div>
-  <div class="archive-article-inner">
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/">HackTheBox——HTB Strutted Writeup</a>
-    </h3>
-  
-
-
-
-    
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-  </div>
-</article>
-
-
-
-<nav id="page-nav">
-    <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">下一页</a>
-    </div>
-</nav>
-
-
-    </div>
-  </main>
-<div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-<script>
-var BLOG_SHARE = {
-    title: "Hexo",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://example.com/archives/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<script type="text/template" id="search-tpl">
-<li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
+        Home              </li>
     </a>
-</li>
-</script>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">N0nome`s Fucking Life</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          
+
+<section id="archive" class="archive">
+  
+  
+  <div class="archive-title">
+    <span class="archive-post-counter">
+      19 Posts In Total
+    </span>
+  </div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+  <div class="collection-title">
+    <h2 class="archive-year">
+      <a href="/archives/2025" class="archive-year">2025</a>
+    </h2>
+  </div>
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/%E9%9A%8F%E6%83%B30409/%E9%9A%8F%E6%83%B30409/" class="archive-post-link">
+        随想0409&amp;&amp;涩话0411
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/%E9%83%A8%E5%88%86%E4%B9%8B%E5%89%8D%E7%9A%84WP/" class="archive-post-link">
+        部分之前的WP
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/%E6%97%A0%E8%84%91AthenaOS%E5%AE%89%E8%A3%85/" class="archive-post-link">
+        无脑AthenaOS安装
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/WhiteRabbit/HackTheBox%E2%80%94%E2%80%94HTB%20WhiteRabbit%20writeup/" class="archive-post-link">
+        HackTheBox——HTB WhiteRabbit Writeup
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/Scrambled/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Scrambled/" class="archive-post-link">
+        HackTheBox——Tracks AD Scrambled
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/Return/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Return/" class="archive-post-link">
+        HackTheBox——Tracks AD Return
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94SherLock%E2%80%94%E2%80%94UFO-1/HackTheBox%E2%80%94%E2%80%94SherLock%E2%80%94%E2%80%94%20UFO-1/" class="archive-post-link">
+        HackTheBox——SherLock——UFO-1
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/Planning/HackTheBox%E2%80%94%E2%80%94HTB%20Planning%20Writeup/" class="archive-post-link">
+        HackTheBox——HTB Planning Writeup
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Support%20Writeup/" class="archive-post-link">
+        HackTheBox——HTB Support Writeup
+      </a>
+    </span>
+  </div>
+  
+  
+  
+  
+  
+
+  <div class="archive-post">
+    <span class="archive-post-time">
+      
+      06-19
+      
+    </span>
+    <span class="archive-post-title">
+      <a href="/2025/06/19/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/HackTheBox%E2%80%94%E2%80%94HTB%20Strutted%20Writeup/" class="archive-post-link">
+        HackTheBox——HTB Strutted Writeup
+      </a>
+    </span>
+  </div>
+  
+</section>
+
+  
+  <nav class="pagination">  
+      
+      
+      <a class="next" href="/archives/page/2/">  
+        <span class="next-text">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+        </div>
+          
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/ahonn" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+  
+</div>
 
 
-<script src="/js/search.js"></script>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2025      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">n0nome</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+
+  
 
 
 
@@ -499,8 +444,19 @@ var BLOG_SHARE = {
 
 
 
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
 
 
 
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
 </body>
+
 </html>

