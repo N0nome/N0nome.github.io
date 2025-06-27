@@ -900,7 +900,7 @@ body {
   }
   #header-post #actions .info {
     display: inline;
-    float: left;
+    float: right;
     margin-right: 2rem;
     font-style: italic;
   }
