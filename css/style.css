@@ -542,6 +542,12 @@ body {
   background-size: 100% 6px;
   background-repeat: repeat-x;
 }
+.content h2 a {
+  font-size: 1.5rem;
+}
+.content h3 a {
+  font-size: 1.3rem;
+}
 .content h6 a {
   background: none;
   color: inherit;
