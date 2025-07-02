@@ -1673,5 +1673,5 @@ code {
   height: 22px;
 }
 #header-post #actions {
-  direction: ltr !important;
+  direction: rtr !important;
 }
