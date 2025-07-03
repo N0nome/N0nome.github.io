@@ -718,118 +718,119 @@ body {
 #header-post a {
   background: none;
   color: inherit;
+  text-decoration: none;
 }
-#    text-decoration: none # 增加下划线 a.icon {
+#header-post a.icon {
   background: none;
 }
-#    text-decoration: none # 增加下划线 a.icon:hover {
+#header-post a.icon:hover {
   color: #2bbc8a;
 }
-#    text-decoration: none # 增加下划线 ol {
+#header-post ol {
   list-style-type: none;
 }
-#    text-decoration: none # 增加下划线 ul {
+#header-post ul {
   display: inline-block;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-#    text-decoration: none # 增加下划线 ul li {
+#header-post ul li {
   display: inline-block;
   margin-right: 15px;
   vertical-align: middle;
 }
-#    text-decoration: none # 增加下划线 ul li:last-child {
+#header-post ul li:last-child {
   margin-right: 0;
 }
-#    text-decoration: none # 增加下划线 #menu-icon {
+#header-post #menu-icon {
   float: right;
   margin-right: 2rem;
   margin-left: 15px;
 }
-#    text-decoration: none # 增加下划线 #menu-icon:hover {
+#header-post #menu-icon:hover {
   color: #d44375;
 }
-#    text-decoration: none # 增加下划线 #menu-icon-tablet {
+#header-post #menu-icon-tablet {
   float: right;
   margin-right: 2rem;
   margin-left: 15px;
 }
-#    text-decoration: none # 增加下划线 #menu-icon-tablet:hover {
+#header-post #menu-icon-tablet:hover {
   color: #d44375;
 }
-#    text-decoration: none # 增加下划线 #top-icon-tablet {
+#header-post #top-icon-tablet {
   position: fixed;
   right: 2rem;
   bottom: 2rem;
   margin-right: 2rem;
   margin-left: 15px;
 }
-#    text-decoration: none # 增加下划线 #top-icon-tablet:hover {
+#header-post #top-icon-tablet:hover {
   color: #d44375;
 }
-#    text-decoration: none # 增加下划线 .active {
+#header-post .active {
   color: #d44375;
 }
-#    text-decoration: none # 增加下划线 #menu {
+#header-post #menu {
   display: none;
   margin-right: 2rem;
 }
-#    text-decoration: none # 增加下划线 #nav {
+#header-post #nav {
   color: #d44375;
   letter-spacing: 0.01em;
   font-weight: 200;
   font-style: normal;
   font-size: 1.1rem;
 }
-#    text-decoration: none # 增加下划线 #nav ul {
+#header-post #nav ul {
   line-height: 10px;
 }
-#    text-decoration: none # 增加下划线 #nav ul a {
+#header-post #nav ul a {
   margin-right: 15px;
   color: #d44375;
 }
-#    text-decoration: none # 增加下划线 #nav ul a:hover {
+#header-post #nav ul a:hover {
   background-image: linear-gradient(transparent, transparent 5px, #d44375 5px, #d44375);
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
 }
-#    text-decoration: none # 增加下划线 #nav ul li {
+#header-post #nav ul li {
   border-right: 1px dotted #d44375;
 }
-#    text-decoration: none # 增加下划线 #nav ul li:last-child {
+#header-post #nav ul li:last-child {
   margin-right: 0;
   border-right: 0;
 }
-#    text-decoration: none # 增加下划线 #nav ul li:last-child a {
+#header-post #nav ul li:last-child a {
   margin-right: 0;
 }
-#    text-decoration: none # 增加下划线 #actions {
+#header-post #actions {
   float: right;
   margin-top: 2rem;
   margin-right: 2rem;
   width: 100%;
   text-align: right;
 }
-#    text-decoration: none # 增加下划线 #actions ul {
+#header-post #actions ul {
   display: block;
 }
-#    text-decoration: none # 增加下划线 #actions .info {
+#header-post #actions .info {
   display: block;
   font-style: italic;
 }
-#    text-decoration: none # 增加下划线 #share {
+#header-post #share {
   clear: both;
   padding-top: 1rem;
   padding-right: 2rem;
   text-align: right;
 }
-#    text-decoration: none # 增加下划线 #share li {
+#header-post #share li {
   display: block;
   margin: 0;
 }
-#    text-decoration: none # 增加下划线 #toc {
+#header-post #toc {
   float: right;
   clear: both;
   overflow: auto;
@@ -839,35 +840,35 @@ body {
   max-height: calc(95vh - 7rem);
   text-align: right;
 }
-#    text-decoration: none # 增加下划线 #toc a:hover {
+#header-post #toc a:hover {
   color: #2bbc8a;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-1 > .toc-link {
+#header-post #toc .toc-level-1 > .toc-link {
   display: none;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-2 {
+#header-post #toc .toc-level-2 {
   color: #363533;
-  font-size: 20px;
+  font-size: 1.1rem;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-2:before {
+#header-post #toc .toc-level-2:before {
   color: #d44375;
   content: "#";
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-3 {
+#header-post #toc .toc-level-3 {
   color: #666;
-  font-size: 15px;
+  font-size: 1.1rem;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-4 {
+#header-post #toc .toc-level-4 {
   color: #525252;
-  font-size: 15px;
+  font-size: 1.1rem;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-5 {
+#header-post #toc .toc-level-5 {
   display: none;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-level-6 {
+#header-post #toc .toc-level-6 {
   display: none;
 }
-#    text-decoration: none # 增加下划线 #toc .toc-number {
+#header-post #toc .toc-number {
   display: none;
 }
 @media screen and (max-width: 500px) {
@@ -1068,7 +1069,7 @@ body {
   margin-right: 16px;
   min-width: 100px;
   color: #666;
-  font-size: 14px;
+  font-size: 16px;
 }
 @media (min-width: 480px) {
   .post-list .post-item {
@@ -1228,7 +1229,7 @@ article .content .caption {
   }
   .article-tag:before,
   .article-category:before {
-    content: "|";
+    content: "|-_-|";
   }
 }
 #archive .post-year {
