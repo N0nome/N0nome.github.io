@@ -339,13 +339,13 @@ body .h2 {
   text-transform: none;
   letter-spacing: normal;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 body h3 {
   color: #111;
   text-decoration: underline;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
 }
 body h4,
 body h5,
