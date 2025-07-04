@@ -77,6 +77,9 @@
     
 	<!-- mathjax -->
 	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -186,8 +189,8 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    <h2 id="折磨开始"><a href="#折磨开始" class="headerlink" title="折磨开始"></a>折磨开始</h2><h3 id="先从arch开始吧"><a href="#先从arch开始吧" class="headerlink" title="先从arch开始吧"></a>先从arch开始吧</h3><h4 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h4><p>磁盘其实还好说一点，按照官方的指引<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a>来就行，他给了分区表还<br><img src="/images/arch&nix-1.png"></p>
-<h4 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h4><p>然后我分好磁盘挂载配置然后就忘记下载引导了<br><img src="/images/arch&nix-2.png"><br>进去之后重新装一下<br>然后重新装一下引导哈哈哈，真是蠢<br>然后就安装报错了，可能是因为重新进去之后没有挂载，先挂载一下然后进去再装吧<br><img src="/images/arch&nix-3.png"></p>
+    <h2 id="折磨开始"><a href="#折磨开始" class="headerlink" title="折磨开始"></a>折磨开始</h2><h3 id="先从arch开始吧"><a href="#先从arch开始吧" class="headerlink" title="先从arch开始吧"></a>先从arch开始吧</h3><h4 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h4><p>磁盘其实还好说一点，按照官方的指引<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Installation_guide">Installation guide</a>来就行，他给了分区表还<br><a data-fancybox="gallery" data-src="/images/arch&nix-1.png" data-caption=""><img src="/images/arch&nix-1.png"></a></p>
+<h4 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h4><p>然后我分好磁盘挂载配置然后就忘记下载引导了<br><a data-fancybox="gallery" data-src="/images/arch&nix-2.png" data-caption=""><img src="/images/arch&nix-2.png"></a><br>进去之后重新装一下<br>然后重新装一下引导哈哈哈，真是蠢<br>然后就安装报错了，可能是因为重新进去之后没有挂载，先挂载一下然后进去再装吧<br><a data-fancybox="gallery" data-src="/images/arch&nix-3.png" data-caption=""><img src="/images/arch&nix-3.png"></a></p>
 <p>装好之后设置一下引导</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</span><br></pre></td></tr></table></figure>
 <p>可以顺便改一下引导配置</p>
@@ -195,7 +198,7 @@
 <p>然后再运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>然后退出取消挂载重启</p>
-<h4 id="DE环境选择"><a href="#DE环境选择" class="headerlink" title="DE环境选择"></a>DE环境选择</h4><p><img src="/images/arch&nix-4.png"></p>
+<h4 id="DE环境选择"><a href="#DE环境选择" class="headerlink" title="DE环境选择"></a>DE环境选择</h4><p><a data-fancybox="gallery" data-src="/images/arch&nix-4.png" data-caption=""><img src="/images/arch&nix-4.png"></a></p>
 <p>这里就是正常进入系统了，可以选择一个DE环境进行安装了，这里可以漏扫-简单参考一下<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Desktop_environment">官方DE文档</a>，或者<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83">中文archDE文档</a><br>目前大部分用的都是kde，但是在装双系统的时候装了一次，然后就直接崩掉了（根据微薄的经验觉得还是之前文章提到的xserver坏了，要重新编译一下，这里先不，现装xfce，然后再换吧）</p>
 <p>先装xorg</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg</span><br></pre></td></tr></table></figure>
@@ -203,20 +206,20 @@
 <blockquote>
 <p>又但是，重启之后可能要重新启动一下<code>networkmanager</code><br>太好了，<code>pacstrap</code>在刚开始装的时候没装<code>networkmanager</code>，再重新装一下<br>还是老样子，重新挂载进去装，在外面装也可以其实，但是要把我们的usb插进去 </p>
 </blockquote>
-<p><img src="/images/arch&nix-5.png"><br>装好啦，可以愉快的玩耍了（费牛鼻子劲）</p>
+<p><a data-fancybox="gallery" data-src="/images/arch&nix-5.png" data-caption=""><img src="/images/arch&nix-5.png"></a><br>装好啦，可以愉快的玩耍了（费牛鼻子劲）</p>
 <h4 id="装kde"><a href="#装kde" class="headerlink" title="装kde"></a>装kde</h4><p>承接上文，先装xorg，装他的图形服务器就行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg-server xorg-apps xorg-xinit</span><br><span class="line"><span class="comment"># 这里再小一点可以这样</span></span><br><span class="line">pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xset xorg-xkill xorg-xev xorg-xinput xorg-xprop</span><br></pre></td></tr></table></figure>
 <p>然后再装kde</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里还是装最小的</span></span><br><span class="line">pacman -S plasma</span><br></pre></td></tr></table></figure>
 <p>但是这样还是不行啊，装这个plasma就会有个傻逼的discover软件商店装进去，哎，先这么装吧，之后再删<br>装display manager（sddm这里）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S sddm</span><br><span class="line"><span class="comment"># 设置开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> sddm</span><br></pre></td></tr></table></figure>
-<p>重启一下试试<br><img src="/images/arch&nix-6.png"><br>也算是进来了<br>笑死，进去了发现没终端，没装<br>有笑了，没装文件管理器<br>呜呜呜，对不起discover软件商店<br>我再也不说你了<br><img src="/images/arch&nix-7.png"><br>装好之后可以美化一下了<br>arch记录就到此为止吧</p>
-<h3 id="nixos坐牢"><a href="#nixos坐牢" class="headerlink" title="nixos坐牢"></a>nixos坐牢</h3><h4 id="nixos-wsl"><a href="#nixos-wsl" class="headerlink" title="nixos wsl"></a>nixos wsl</h4><p>又是一个更坐牢的<br><img src="/images/arch&nix-8.jpg"><br>先下一个nixos的<a target="_blank" rel="noopener" href="https://github.com/nix-community/NixOS-WSL/releases/download/2411.6.0/nixos.wsl">wsl镜像</a><br>然后可以按照<a target="_blank" rel="noopener" href="https://nix-community.github.io/NixOS-WSL/">他的GitHub</a>指示进行安装一下</p>
+<p>重启一下试试<br><a data-fancybox="gallery" data-src="/images/arch&nix-6.png" data-caption=""><img src="/images/arch&nix-6.png"></a><br>也算是进来了<br>笑死，进去了发现没终端，没装<br>有笑了，没装文件管理器<br>呜呜呜，对不起discover软件商店<br>我再也不说你了<br><a data-fancybox="gallery" data-src="/images/arch&nix-7.png" data-caption=""><img src="/images/arch&nix-7.png"></a><br>装好之后可以美化一下了<br>arch记录就到此为止吧</p>
+<h3 id="nixos坐牢"><a href="#nixos坐牢" class="headerlink" title="nixos坐牢"></a>nixos坐牢</h3><h4 id="nixos-wsl"><a href="#nixos-wsl" class="headerlink" title="nixos wsl"></a>nixos wsl</h4><p>又是一个更坐牢的<br><a data-fancybox="gallery" data-src="/images/arch&nix-8.jpg" data-caption=""><img src="/images/arch&nix-8.jpg"></a><br>先下一个nixos的<a target="_blank" rel="noopener" href="https://github.com/nix-community/NixOS-WSL/releases/download/2411.6.0/nixos.wsl">wsl镜像</a><br>然后可以按照<a target="_blank" rel="noopener" href="https://nix-community.github.io/NixOS-WSL/">他的GitHub</a>指示进行安装一下</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\xxx&gt;wsl <span class="literal">--install</span> <span class="literal">--from-file</span> <span class="string">&quot;path\to\nixos.wsl&quot;</span> <span class="literal">--name</span> nixf <span class="literal">--location</span> <span class="string">&quot;path\to\nix_wsl what to install&quot;</span></span><br><span class="line">正在安装: path\to\nixos.wsl</span><br><span class="line">已成功安装分发。可以通过 “wsl.exe <span class="literal">-d</span> nixf” 启动它==========]</span><br><span class="line">正在启动 nixf...</span><br><span class="line">wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。</span><br><span class="line">Welcome to your new NixOS<span class="literal">-WSL</span> system!</span><br><span class="line"></span><br><span class="line">Please run `sudo nix<span class="literal">-channel</span> <span class="literal">--update</span>` and `sudo nixos<span class="literal">-rebuild</span> <span class="keyword">switch</span>` now, to ensure you<span class="string">&#x27;re running the latest NixOS and NixOS-WSL versions.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">If you run into issues, please report them on our Github page at https://github.com/nix-community/NixOS-WSL or come talk to us on Matrix at #wsl:nixos.org.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">❄️ Enjoy NixOS-WSL! ❄️</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Note: this message will disappear after you rebuild your system. If you want to see it again, run `nixos-wsl-welcome`.</span></span><br></pre></td></tr></table></figure>
 <p>ok了，更新一下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nixos-channel --update</span><br></pre></td></tr></table></figure>
 <p>更新完自己的频道之后，才能用<code>nixos-rebuild</code></p>
-<h2 id="补档记录"><a href="#补档记录" class="headerlink" title="补档记录"></a>补档记录</h2><p>现在在主机上装了双系统的arch，0佬说水深，然后我没听劝，还是一头扎进来了<br>不过有一点点在vmware的经验，还可以维持进入tty的体面<br>现在时间<img src="/images/arch&nix-9.png"><br>在这个时间的前半个小时，我给系统做了快照，然后滚了一下，写完这一点就要重启了，希望不要出什么叉子<br>现在回想前两天做双系统，arch装完就黑屏，只有左上角一个下划线’_’，后怕…<br>ok了，先发文章去了。</p>
+<h2 id="补档记录"><a href="#补档记录" class="headerlink" title="补档记录"></a>补档记录</h2><p>现在在主机上装了双系统的arch，0佬说水深，然后我没听劝，还是一头扎进来了<br>不过有一点点在vmware的经验，还可以维持进入tty的体面<br>现在时间<a data-fancybox="gallery" data-src="/images/arch&nix-9.png" data-caption=""><img src="/images/arch&nix-9.png"></a><br>在这个时间的前半个小时，我给系统做了快照，然后滚了一下，写完这一点就要重启了，希望不要出什么叉子<br>现在回想前两天做双系统，arch装完就黑屏，只有左上角一个下划线’_’，后怕…<br>ok了，先发文章去了。</p>
 
   </div>
 </article>
@@ -365,6 +368,10 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
 
 
 </body>

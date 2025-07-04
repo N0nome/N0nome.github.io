@@ -78,6 +78,9 @@
     
 	<!-- mathjax -->
 	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -190,8 +193,8 @@
     <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
 <p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code></p>
 <h2 id="此处省略虚拟机配"><a href="#此处省略虚拟机配" class="headerlink" title="此处省略虚拟机配"></a>此处省略虚拟机配</h2><p>鉴于个人pc情况分配资源</p>
-<h2 id="以下为正式安装前的准备工作"><a href="#以下为正式安装前的准备工作" class="headerlink" title="以下为正式安装前的准备工作"></a>以下为正式安装前的准备工作</h2><p><img src="/images/Pasted%20image%2020250208213228.png"><br>这个界面可以先关掉，最后安装的时候再打开</p>
-<h3 id="打开terminal"><a href="#打开terminal" class="headerlink" title="打开terminal"></a>打开terminal</h3><p><img src="/images/Pasted%20image%2020250208213325.png"><br>目前系统只有alacritty这一个<br>如果运行<code>sudo pacman -Sy</code>的话，会发现一下问题</p>
+<h2 id="以下为正式安装前的准备工作"><a href="#以下为正式安装前的准备工作" class="headerlink" title="以下为正式安装前的准备工作"></a>以下为正式安装前的准备工作</h2><p><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250208213228.png" data-caption=""><img src="/images/Pasted%20image%2020250208213228.png"></a><br>这个界面可以先关掉，最后安装的时候再打开</p>
+<h3 id="打开terminal"><a href="#打开terminal" class="headerlink" title="打开terminal"></a>打开terminal</h3><p><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250208213325.png" data-caption=""><img src="/images/Pasted%20image%2020250208213325.png"></a><br>目前系统只有alacritty这一个<br>如果运行<code>sudo pacman -Sy</code>的话，会发现一下问题</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">athena                                                                                             398.9 KiB  70.3 KiB/s 00:06 [##############################################################################] 100%</span><br><span class="line"> core                                                                                               116.0 KiB  30.3 KiB/s 00:04 [##############################################################################] 100%</span><br><span class="line"> extra                                                                                                4.7 MiB   109 KiB/s 00:26 [################################################------------------------------]  62%</span><br><span class="line"> multilib                                                                                           131.6 KiB  17.0 KiB/s 00:08 [##############################################################################] 100%</span><br><span class="line"> chaotic-aur                                                                                        650.8 KiB  95.3 KiB/s 00:07 [##############################################################################] 100%</span><br><span class="line"></span><br><span class="line">:: Replace sdl2 with extra/sdl2-compat? [Y/n]</span><br></pre></td></tr></table></figure>
 <h3 id="接着往下会发现点问题"><a href="#接着往下会发现点问题" class="headerlink" title="接着往下会发现点问题"></a>接着往下会发现点问题</h3><ul>
 <li>一是<a target="_blank" rel="noopener" href="https://aur.chaotic.cx/">chaotic-aur</a>这个软件源，如果只使用现有的，基本上就会出现timeout，这里可以修改一下</li>
@@ -211,7 +214,7 @@
 <p>接下来就可以安装了</p>
 <h2 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h2><p>Athena-welcome其实是aegis-tui，直接sudo运行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo proxychains aegis-tui</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Pasted%20image%2020250211224545.png"><br>会直接进入这个页面，然后按照正常需要选择<br>这里以arch为例<br>第一个地区选上海<br><img src="/images/Pasted%20image%2020250211224743.png"><br>第二个第三个keymap选us好了<br>第四个console字体可以先选en_US,zh_CN的话可以后面自己再装,选的时候选UTF-8<br>第五第六第七创建用户名密码自己建<br><img src="/images/Pasted%20image%2020250211225246.png"><br>第八个yesno自己选<br><img src="/images/Pasted%20image%2020250211225340.png"><br>第九个hostname可以直接回车<br>第十个选抹了磁盘<br><img src="/images/Pasted%20image%2020250211225448.png"><br>回车三次到选大小<br><img src="/images/Pasted%20image%2020250211225552.png"><br>推荐2G+<br>第十四步看个人需要加密<br><img src="/images/Pasted%20image%2020250211225638.png"><br>剩下的主题看个人<br>最后如下（我的）：<br><img src="/images/Pasted%20image%2020250211230153.png"><br>回车安装就行了</p>
+<p><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211224545.png" data-caption=""><img src="/images/Pasted%20image%2020250211224545.png"></a><br>会直接进入这个页面，然后按照正常需要选择<br>这里以arch为例<br>第一个地区选上海<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211224743.png" data-caption=""><img src="/images/Pasted%20image%2020250211224743.png"></a><br>第二个第三个keymap选us好了<br>第四个console字体可以先选en_US,zh_CN的话可以后面自己再装,选的时候选UTF-8<br>第五第六第七创建用户名密码自己建<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211225246.png" data-caption=""><img src="/images/Pasted%20image%2020250211225246.png"></a><br>第八个yesno自己选<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211225340.png" data-caption=""><img src="/images/Pasted%20image%2020250211225340.png"></a><br>第九个hostname可以直接回车<br>第十个选抹了磁盘<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211225448.png" data-caption=""><img src="/images/Pasted%20image%2020250211225448.png"></a><br>回车三次到选大小<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211225552.png" data-caption=""><img src="/images/Pasted%20image%2020250211225552.png"></a><br>推荐2G+<br>第十四步看个人需要加密<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211225638.png" data-caption=""><img src="/images/Pasted%20image%2020250211225638.png"></a><br>剩下的主题看个人<br>最后如下（我的）：<br><a data-fancybox="gallery" data-src="/images/Pasted%20image%2020250211230153.png" data-caption=""><img src="/images/Pasted%20image%2020250211230153.png"></a><br>回车安装就行了</p>
 <h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ INFO ] 23:02:29 Populate keys</span><br><span class="line">[ INFO ] 23:02:29 Getting fastest Arch and Chaotic AUR mirrors for your location</span><br></pre></td></tr></table></figure>
 <p>到这会卡一下，正常等一等</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ ERROR ] 14:20:43 The package manager failed with exit code: 1</span><br><span class="line">[ ERROR ] 14:20:43 Set available cores on MAKEFLAGS ERROR: No such file or directory (os error 2)</span><br></pre></td></tr></table></figure>
@@ -364,6 +367,10 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
 
 
 </body>
