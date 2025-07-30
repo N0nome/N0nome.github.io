@@ -477,7 +477,7 @@ body {
   color: #363533;
   font-weight: 400;
   font-size: 17px;
-  font-family: 'LXGW WenKai', sans-serif;
+  font-family: 'LXGW WenKai Mono TC', sans-serif;
   line-height: 1.5;
   text-rendering: geometricPrecision;
   -moz-osx-font-smoothing: grayscale;
@@ -1420,7 +1420,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 13.600000000000001px;
-  font-family: 'LXGW WenKai', sans-serif;
+  font-family: 'LXGW WenKai Mono TC', sans-serif;
   line-height: 1.5;
   text-rendering: geometricPrecision;
   text-align: center;
