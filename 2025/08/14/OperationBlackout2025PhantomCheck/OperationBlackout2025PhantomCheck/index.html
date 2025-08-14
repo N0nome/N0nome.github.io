@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=LXGW+WenKai+Mono+TC:normal,bold,italic">
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习  Talion suspects that the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check">
+<meta property="og:url" content="https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习  Talion suspects that the">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/PhantomChecck-6.png">
+<meta property="article:published_time" content="2025-08-14T01:29:46.055Z">
+<meta property="article:modified_time" content="2025-08-14T01:29:46.187Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/PhantomChecck.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/laojun.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/laojun.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/laojun.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXS95XH60B"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXS95XH60B');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/08/14/%E9%9A%8F%E7%AC%940813/%E9%9A%8F%E7%AC%940813/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/08/12/Build/Build/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&text=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&is_video=false&description=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check&body=Check out this article: https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&name=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&t=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    
+
+    
+      <!-- 如果文章被加密，初始隐藏目录 -->
+      <div id="toc" style="">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-WMI-class-did-the-attacker-use-to-retrieve-model-and-manufacturer-information-for-virtualization-detection"><span class="toc-number">1.</span> <span class="toc-text">Which WMI class did the attacker use to retrieve model and manufacturer information for virtualization detection?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-WMI-query-did-the-attacker-execute-to-retrieve-the-current-temperature-value-of-the-machine"><span class="toc-number">2.</span> <span class="toc-text">Which WMI query did the attacker execute to retrieve the current temperature value of the machine?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-attacker-loaded-a-PowerShell-script-to-detect-virtualization-What-is-the-function-name-of-the-script"><span class="toc-number">3.</span> <span class="toc-text">The attacker loaded a PowerShell script to detect virtualization. What is the function name of the script?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-registry-key-did-the-above-script-query-to-retrieve-service-details-for-virtualization-detection"><span class="toc-number">4.</span> <span class="toc-text">Which registry key did the above script query to retrieve service details for virtualization detection?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-VM-detection-script-can-also-identify-VirtualBox-Which-processes-is-it-comparing-to-determine-if-the-system-is-running-VirtualBox"><span class="toc-number">5.</span> <span class="toc-text">The VM detection script can also identify VirtualBox. Which processes is it comparing to determine if the system is running VirtualBox?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-VM-detection-script-prints-any-detection-with-the-prefix-%E2%80%98This-is-a%E2%80%99-Which-two-virtualization-platforms-did-the-script-detect"><span class="toc-number">6.</span> <span class="toc-text">The VM detection script prints any detection with the prefix ‘This is a’. Which two virtualization platforms did the script detect?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%81%E7%AC%91%E4%BA%86%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%98%AFvery-easy%E7%9A%84%E9%9A%BE%E5%BA%A6"><span class="toc-number">7.</span> <span class="toc-text">见笑了，这个是very easy的难度</span></a></li></ol>
+      </div>
+     
+ </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-08-14T01:29:46.055Z" class="dt-published" itemprop="datePublished">2025-08-14</time>
+        
+        (Updated: <time datetime="2025-08-14T01:29:46.187Z" class="dt-updated" itemprop="dateModified">2025-08-14</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/PhantomChecck.png" data-caption=""><img src="/images/PhantomChecck.png"></a></p>
+<blockquote>
+<p>Talion suspects that the threat actor carried out anti-virtualization checks to avoid detection in sandboxed environments. Your task is to analyze the event logs and identify the specific techniques used for virtualization detection. Byte Doctor requires evidence of the registry checks or processes the attacker executed to perform these checks.</p>
+</blockquote>
+<blockquote>
+<p>Talion 怀疑威胁行为者执行了反虚拟化检查，以避免在沙盒环境中被发现。您的任务是分析事件日志并识别用于虚拟化检测的具体技术。Byte Doctor 需要攻击者执行这些检查时执行的注册表检查或进程的证据。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">╰─$ <span class="built_in">ls</span> -la</span><br><span class="line">drwxr-xr-x wansh wansh  382 B  Tue Aug 12 11:15:18 2025  .</span><br><span class="line">drwx------ wansh wansh 1020 B  Tue Aug 12 11:15:20 2025  ..</span><br><span class="line">.rw-r--r-- wansh wansh  1.1 MB Wed Apr  9 14:54:44 2025  Microsoft-Windows-Powershell.evtx</span><br><span class="line">.rw-r--r-- wansh wansh  944 KB Tue Aug 12 11:14:57 2025  redirect?auth_user_id=1487037&amp;expires=1754972090&amp;signature=df6f94ae1a1c00b35bfe0db33db2f317d6b7689013eb88987390b210bc51b4b1</span><br><span class="line">.rw-r--r-- wansh wansh   15 MB Wed Apr  9 14:54:02 2025  Windows-Powershell-Operational.evtx</span><br></pre></td></tr></table></figure>
+
+<h2 id="Which-WMI-class-did-the-attacker-use-to-retrieve-model-and-manufacturer-information-for-virtualization-detection"><a href="#Which-WMI-class-did-the-attacker-use-to-retrieve-model-and-manufacturer-information-for-virtualization-detection" class="headerlink" title="Which WMI class did the attacker use to retrieve model and manufacturer information for virtualization detection?"></a>Which WMI class did the attacker use to retrieve model and manufacturer information for virtualization detection?</h2><blockquote>
+<p>攻击者使用哪个 WMI 类来检索用于虚拟化检测的型号和制造商信息？</p>
+</blockquote>
+<p>在两个日志文件里面都可以找到相关的<br><code>类</code>一般会写作英文单词<code>class</code><br>在日志里面查找一下</p>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-1.png" data-caption=""><img src="/images/PhantomChecck-1.png"></a></p>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-2.png" data-caption=""><img src="/images/PhantomChecck-2.png"></a></p>
+<p>另一个日志文件一样的</p>
+<blockquote>
+<p>Answer:<code>Win32_ComputerSystem</code></p>
+</blockquote>
+<h2 id="Which-WMI-query-did-the-attacker-execute-to-retrieve-the-current-temperature-value-of-the-machine"><a href="#Which-WMI-query-did-the-attacker-execute-to-retrieve-the-current-temperature-value-of-the-machine" class="headerlink" title="Which WMI query did the attacker execute to retrieve the current temperature value of the machine?"></a>Which WMI query did the attacker execute to retrieve the current temperature value of the machine?</h2><blockquote>
+<p>攻击者执行了哪个 WMI 查询来检索机器的当前温度值？</p>
+</blockquote>
+<p>跟上面同样的道理，直接检索temper</p>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-3.png" data-caption=""><img src="/images/PhantomChecck-3.png"></a></p>
+<blockquote>
+<p>Answer:<code>SELECT * FROM MSAcpi_ThermalZoneTemperature</code></p>
+</blockquote>
+<h2 id="The-attacker-loaded-a-PowerShell-script-to-detect-virtualization-What-is-the-function-name-of-the-script"><a href="#The-attacker-loaded-a-PowerShell-script-to-detect-virtualization-What-is-the-function-name-of-the-script" class="headerlink" title="The attacker loaded a PowerShell script to detect virtualization. What is the function name of the script?"></a>The attacker loaded a PowerShell script to detect virtualization. What is the function name of the script?</h2><blockquote>
+<p>攻击者加载了一个 PowerShell 脚本来检测虚拟化。该脚本的函数名称是什么？</p>
+</blockquote>
+<p>这个如果直接检索<code>function</code>的话会有很多，可以先对当前的进行筛选，只保留信息和详细那两栏，警告啥的先放一放<br>然后检索一下<code>script</code></p>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-4.png" data-caption=""><img src="/images/PhantomChecck-4.png"></a></p>
+<p>稍微检索一下发现这个可能是需要检索的关键词</p>
+<blockquote>
+<p>在PowerShell 中，ScriptBlock (脚本块) 是一个由大括号<code>&#123;&#125; </code> 包裹的代码集合，可以被视为一个可执行的单元，类似于一个没有名称的函数。它包含一系列语句或表达式，可以作为单个对象传递，并且可以接受参数并返回值。简单来说，脚本块就是一段可重复使用的PowerShell 代码，可以像函数一样被调用和执行。</p>
+</blockquote>
+<p>然后可以再细一点</p>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-5.png" data-caption=""><img src="/images/PhantomChecck-5.png"></a></p>
+<blockquote>
+<p>Answer:<code>Check-VM</code></p>
+</blockquote>
+<h2 id="Which-registry-key-did-the-above-script-query-to-retrieve-service-details-for-virtualization-detection"><a href="#Which-registry-key-did-the-above-script-query-to-retrieve-service-details-for-virtualization-detection" class="headerlink" title="Which registry key did the above script query to retrieve service details for virtualization detection?"></a>Which registry key did the above script query to retrieve service details for virtualization detection?</h2><blockquote>
+<p>上述脚本查询了哪个注册表键值来获取虚拟化检测的服务详细信息？</p>
+</blockquote>
+<p>通览脚本，可以发现是一个类型一个类型逐步检测的</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Hyper-V</span></span><br><span class="line"><span class="variable">$hyperv</span> = <span class="built_in">Get-ChildItem</span> HKLM:\SOFTWARE\Microsoft</span><br><span class="line"><span class="keyword">if</span> ((<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;Hyper-V&quot;</span>) <span class="operator">-or</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;VirtualMachine&quot;</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$hypervm</span> = <span class="variable">$true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$hypervm</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$hyperv</span> = <span class="built_in">Get-ItemProperty</span> hklm:\HARDWARE\DESCRIPTION\System <span class="literal">-Name</span> SystemBiosVersion</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vrtual&quot;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="variable">$hypervm</span> = <span class="variable">$true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$hypervm</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$hyperv</span> = <span class="built_in">Get-ChildItem</span> HKLM:\HARDWARE\ACPI\FADT</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vrtual&quot;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="variable">$hypervm</span> = <span class="variable">$true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$hypervm</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$hyperv</span> = <span class="built_in">Get-ChildItem</span> HKLM:\HARDWARE\ACPI\RSDT</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vrtual&quot;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="variable">$hypervm</span> = <span class="variable">$true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$hypervm</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$hyperv</span> = <span class="built_in">Get-ChildItem</span> HKLM:\SYSTEM\ControlSet001\Services</span><br><span class="line">        <span class="keyword">if</span> ((<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vmicheartbeat&quot;</span>) <span class="operator">-or</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vmicvss&quot;</span>) <span class="operator">-or</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vmicshutdown&quot;</span>) <span class="operator">-or</span> (<span class="variable">$hyperv</span> <span class="operator">-match</span> <span class="string">&quot;vmiexchange&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="variable">$hypervm</span> = <span class="variable">$true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$hypervm</span>)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">         <span class="string">&quot;This is a Hyper-V machine.&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>HKLM:\SOFTWARE\Microsoft：该分支通常包含 Windows、Internet Explorer&#x2F;Edge、Office、.NET、Windows Update、服务配置、驱动和 Microsoft 相关软件的设置与元数据。</p>
+</blockquote>
+<blockquote>
+<p>HKLM:\HARDWARE\DESCRIPTION\System: Windows 在启动时由内核&#x2F;BIOS 动态生成的“硬件描述”分支，包含系统硬件和固件的即时信息（CPU、BIOS 版本、某些设备&#x2F;资源描述等）。</p>
+</blockquote>
+<blockquote>
+<p>HKLM:\HARDWARE\ACPI\FADT: Windows 对固件（ACPI）中的 FADT（Fixed ACPI Description Table） 的运行时快照。</p>
+</blockquote>
+<blockquote>
+<p>HKLM:\HARDWARE\ACPI\RSDT: Windows 在启动时从固件（BIOS&#x2F;UEFI）读取并放到注册表里的 RSDT（Root System Description Table） 快照。</p>
+</blockquote>
+<blockquote>
+<p>HKLM:\SYSTEM\ControlSet001\Services: Windows 注册表中保存系统服务与驱动（service&#x2F;driver）配置的分支之一。</p>
+</blockquote>
+<blockquote>
+<p>Answer:<code>HKLM:\SYSTEM\ControlSet001\Services</code></p>
+</blockquote>
+<h2 id="The-VM-detection-script-can-also-identify-VirtualBox-Which-processes-is-it-comparing-to-determine-if-the-system-is-running-VirtualBox"><a href="#The-VM-detection-script-can-also-identify-VirtualBox-Which-processes-is-it-comparing-to-determine-if-the-system-is-running-VirtualBox" class="headerlink" title="The VM detection script can also identify VirtualBox. Which processes is it comparing to determine if the system is running VirtualBox?"></a>The VM detection script can also identify VirtualBox. Which processes is it comparing to determine if the system is running VirtualBox?</h2><blockquote>
+<p>虚拟机检测脚本也可以识别 VirtualBox。它在比较哪些进程，以确定系统是否在运行 VirtualBox？</p>
+</blockquote>
+<p>直接看脚本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$vb</span> = <span class="built_in">Get-Process</span></span><br><span class="line"><span class="keyword">if</span> ((<span class="variable">$vb</span> <span class="operator">-eq</span> <span class="string">&quot;vboxservice.exe&quot;</span>) <span class="operator">-or</span> (<span class="variable">$vb</span> <span class="operator">-match</span> <span class="string">&quot;vboxtray.exe&quot;</span>))</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$vbvm</span> = <span class="variable">$true</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Answer:<code>vboxservice.exe, vboxtray.exe</code> # 中间有空格</p>
+</blockquote>
+<h2 id="The-VM-detection-script-prints-any-detection-with-the-prefix-‘This-is-a’-Which-two-virtualization-platforms-did-the-script-detect"><a href="#The-VM-detection-script-prints-any-detection-with-the-prefix-‘This-is-a’-Which-two-virtualization-platforms-did-the-script-detect" class="headerlink" title="The VM detection script prints any detection with the prefix ‘This is a’. Which two virtualization platforms did the script detect?"></a>The VM detection script prints any detection with the prefix ‘This is a’. Which two virtualization platforms did the script detect?</h2><blockquote>
+<p>虚拟机检测脚本会打印所有带有“This is a”前缀的检测结果。该脚本检测到了哪两个虚拟化平台？</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/PhantomChecck-6.png" data-caption=""><img src="/images/PhantomChecck-6.png"></a></p>
+<p>检索一下</p>
+<blockquote>
+<p>Answer:<code>Hyper-V, VMWare</code></p>
+</blockquote>
+<h2 id="见笑了，这个是very-easy的难度"><a href="#见笑了，这个是very-easy的难度" class="headerlink" title="见笑了，这个是very easy的难度"></a>见笑了，这个是very easy的难度</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-WMI-class-did-the-attacker-use-to-retrieve-model-and-manufacturer-information-for-virtualization-detection"><span class="toc-number">1.</span> <span class="toc-text">Which WMI class did the attacker use to retrieve model and manufacturer information for virtualization detection?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-WMI-query-did-the-attacker-execute-to-retrieve-the-current-temperature-value-of-the-machine"><span class="toc-number">2.</span> <span class="toc-text">Which WMI query did the attacker execute to retrieve the current temperature value of the machine?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-attacker-loaded-a-PowerShell-script-to-detect-virtualization-What-is-the-function-name-of-the-script"><span class="toc-number">3.</span> <span class="toc-text">The attacker loaded a PowerShell script to detect virtualization. What is the function name of the script?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Which-registry-key-did-the-above-script-query-to-retrieve-service-details-for-virtualization-detection"><span class="toc-number">4.</span> <span class="toc-text">Which registry key did the above script query to retrieve service details for virtualization detection?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-VM-detection-script-can-also-identify-VirtualBox-Which-processes-is-it-comparing-to-determine-if-the-system-is-running-VirtualBox"><span class="toc-number">5.</span> <span class="toc-text">The VM detection script can also identify VirtualBox. Which processes is it comparing to determine if the system is running VirtualBox?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-VM-detection-script-prints-any-detection-with-the-prefix-%E2%80%98This-is-a%E2%80%99-Which-two-virtualization-platforms-did-the-script-detect"><span class="toc-number">6.</span> <span class="toc-text">The VM detection script prints any detection with the prefix ‘This is a’. Which two virtualization platforms did the script detect?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%81%E7%AC%91%E4%BA%86%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%98%AFvery-easy%E7%9A%84%E9%9A%BE%E5%BA%A6"><span class="toc-number">7.</span> <span class="toc-text">见笑了，这个是very easy的难度</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&text=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&is_video=false&description=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check&body=Check out this article: https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&title=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&name=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/08/14/OperationBlackout2025PhantomCheck/OperationBlackout2025PhantomCheck/&t=HackTheBox——SherLock——Operation_Blackout_2025_Phantom_Check"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8805a0d3f14df2c09dd76694ea3b92b7";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
+
+
+</body>
+</html>
