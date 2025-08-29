@@ -419,7 +419,7 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 15px;
+  font-size: 17px;
   overflow: auto;
   display: block;
 }
@@ -428,7 +428,7 @@ body th {
   border-bottom: 1px dashed #666;
   color: #111;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 body td {
   padding: 0 8px;
@@ -476,8 +476,8 @@ body {
   background-color: #e2e0de;
   color: #363533;
   font-weight: 400;
-  font-size: 17px;
-  font-family: 'LXGW WenKai Mono TC', sans-serif;
+  font-size: 19px;
+  font-family: "LXGW WenKai Screen R", sans-serif;
   line-height: 1.5;
   text-rendering: geometricPrecision;
   -moz-osx-font-smoothing: grayscale;
@@ -1419,8 +1419,8 @@ article .content .caption {
   color: #e2e0de;
   font-display: swap;
   font-weight: 400;
-  font-size: 13.600000000000001px;
-  font-family: 'LXGW WenKai Mono TC', sans-serif;
+  font-size: 15.200000000000001px;
+  font-family: "LXGW WenKai Screen R", sans-serif;
   line-height: 1.5;
   text-rendering: geometricPrecision;
   text-align: center;
