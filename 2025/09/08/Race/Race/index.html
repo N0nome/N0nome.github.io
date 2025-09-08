@@ -17,7 +17,7 @@
 <meta property="og:description" content="Welcome to N0nome&#96;s F**king blog.(:This is just a joke:)Do you want to become stronger than me? You just need to move your hands more. 鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习 Nmap123456789101112131415">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n0nome.github.io/images/race-19.png">
-<meta property="og:image" content="https://n0nome.github.io/race.png">
+<meta property="og:image" content="https://n0nome.github.io/images/race.png">
 <meta property="og:image" content="https://n0nome.github.io/images/race-1.png">
 <meta property="og:image" content="https://n0nome.github.io/images/race-2.png">
 <meta property="og:image" content="https://n0nome.github.io/images/race-3.png">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://n0nome.github.io/images/race-17.png">
 <meta property="og:image" content="https://n0nome.github.io/images/race-18.png">
 <meta property="article:published_time" content="2025-09-08T06:56:48.724Z">
-<meta property="article:modified_time" content="2025-09-08T06:56:48.828Z">
+<meta property="article:modified_time" content="2025-09-08T07:07:17.219Z">
 <meta property="article:author" content="n0nome">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
@@ -179,7 +179,7 @@
       
         <time datetime="2025-09-08T06:56:48.724Z" class="dt-published" itemprop="datePublished">2025-09-08</time>
         
-        (Updated: <time datetime="2025-09-08T06:56:48.828Z" class="dt-updated" itemprop="dateModified">2025-09-08</time>)
+        (Updated: <time datetime="2025-09-08T07:07:17.219Z" class="dt-updated" itemprop="dateModified">2025-09-08</time>)
         
       
     </div>
@@ -203,7 +203,7 @@
 <p><code>鉴于博主学识浅薄，文中只写通关，其中利害关系还需要各位Google学习</code><br><a data-fancybox="gallery" data-src="/images/race-19.png" data-caption=""><img src="/images/race-19.png"></a></p>
 <h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">PORT   STATE SERVICE REASON         VERSION</span><br><span class="line">22/tcp open  ssh     syn-ack ttl 62 OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   256 62:b0:1e:c5:e8:81:5c:94:39:ed:37:7e:21:cf:b1:a8 (ECDSA)</span><br><span class="line">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHEjDeiMn6SWXVPExX7GE0w2SN1NWwcENq/k0u1U/ynE2bLsgpcSYzVj3rlLMXQmqHdDeJufIhhpiIVK09H76RA=</span><br><span class="line">|   256 37:a3:d3:<span class="built_in">cd</span>:35:dc:cc:d8:db:3c:c3:4d:ad:22:29:a9 (ED25519)</span><br><span class="line">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGdwfoBdk/yerZIQm8EL/rGDkyZZcFgS0YLynFm5MTzo</span><br><span class="line">53/tcp open  domain  syn-ack ttl 63 dnsmasq 2.51</span><br><span class="line">| dns-nsid: </span><br><span class="line">|_  bind.version: dnsmasq-2.51</span><br><span class="line">80/tcp open  http    syn-ack ttl 62 Apache httpd 2.4.52 ((Ubuntu))</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Supported Methods: HEAD GET POST OPTIONS</span><br><span class="line">|_http-title: Site doesn<span class="string">&#x27;t have a title (text/html).</span></span><br><span class="line"><span class="string">|_http-server-header: Apache/2.4.52 (Ubuntu)</span></span><br><span class="line"><span class="string">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></span><br></pre></td></tr></table></figure>
 
-<p><a data-fancybox="gallery" data-src="/race.png" data-caption=""><img src="/race.png"></a></p>
+<p><a data-fancybox="gallery" data-src="/images/race.png" data-caption=""><img src="/images/race.png"></a></p>
 <p>很奇怪诶，如果输入ip的话会跳转到<code>/racers</code>下面</p>
 <p>里面暴露了一个<code>fast@race.vl</code>，先加到hosts</p>
 <h3 id="Enum-info"><a href="#Enum-info" class="headerlink" title="Enum info"></a>Enum info</h3><p>扫一下子域和目录</p>
