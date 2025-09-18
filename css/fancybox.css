@@ -1,0 +1,6 @@
+html.fancybox-active {
+  /* 防止背景滚动 */
+  overflow: hidden !important; 
+  /* 补偿滚动条消失后失去的宽度 */
+  padding-right: calc(100vw - 100%);
+}
