@@ -443,6 +443,7 @@ body td {
 /* For Firefox */
 * {
   scrollbar-color: #999 transparent;
+  scrollbar-gutter: stable;
 }
 /* For Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
