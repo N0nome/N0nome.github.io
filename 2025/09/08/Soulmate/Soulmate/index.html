@@ -70,9 +70,6 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
     
-    
-<link rel="stylesheet" href="/css/custom.css">
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -270,6 +267,65 @@
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  // 计算滚动条宽度
+  function scrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
+
+  function applyCompensation() {
+    const w = scrollbarWidth();
+    if (w > 0) {
+      document.documentElement.style.paddingRight = w + 'px';
+      document.body.style.paddingRight = w + 'px';
+    }
+  }
+
+  function clearCompensation() {
+    document.documentElement.style.paddingRight = '';
+    document.body.style.paddingRight = '';
+  }
+
+  // MutationObserver：监测 Fancybox 容器加入/移除（通用且不依赖 Fancybox API 版本）
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      // 新增节点，若包含 Fancybox 容器则补偿
+      for (const node of m.addedNodes) {
+        if (node.nodeType === 1 && node.classList && node.classList.contains('fancybox__container')) {
+          // slight delay to let browser apply overflow:hidden
+          setTimeout(applyCompensation, 10);
+        }
+      }
+      // 移除节点，若移除了 Fancybox 容器则清理补偿
+      for (const node of m.removedNodes) {
+        if (node.nodeType === 1 && node.classList && node.classList.contains('fancybox__container')) {
+          clearCompensation();
+        }
+      }
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // 额外：监听全局点击可能关闭 modal 的元素（保险）
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.fancybox__backdrop') || e.target.closest('.fancybox__button--close') || e.target.closest('[data-fancybox-close]')) {
+      // 确保在关闭时清理
+      setTimeout(clearCompensation, 10);
+    }
+  });
+
+  // 当窗口大小改变时也清理（避免残留）
+  window.addEventListener('resize', () => {
+    if (document.querySelector('.fancybox__container') == null) clearCompensation();
+  });
+
+  // 可选：当页面加载时清理一次（预防样式残留）
+  window.addEventListener('load', clearCompensation);
+})();
+</script>
 
     </div>
     <!-- styles -->
