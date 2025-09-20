@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
+    <!-- layout/_partial/head.ejs：放到 <head> 内靠前的位置 -->
+    <script>
+    (function(){
+      try {
+        var key = 'cactus-colorscheme';
+        var saved = localStorage.getItem(key);
+        if (!saved) return;
+        // 我们把覆盖文件放在 /css/<scheme>-override.css
+         var href = '/css/' + saved + '-override.css';
+        // 如果已有相同 id 的 link 就替换，否则写入一个（document.write 更早生效）
+        if (!document.querySelector('link#cactus-theme-override')) {
+          document.write('<link id="cactus-theme-override" rel="stylesheet" href="' + href + '">');
+        } else {
+          document.querySelector('link#cactus-theme-override').href = href;
+        }
+      } catch(e){}
+    })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-screen-r/font.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.font.im/css?family=Inconsolata:normal,bold">
@@ -279,7 +298,7 @@
     </nav>
   </div>
 </footer>
-
+<script src="/js/theme-toggle.js"></script>
 <script>
 (function(){
   // 计算滚动条宽度
